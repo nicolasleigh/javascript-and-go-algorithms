@@ -76,3 +76,34 @@ function mergeSort(array) {
 
   return merge(mergeSort(left), mergeSort(right));
 }
+
+// quick sort helper function
+function swap(array, firstIndex, secondIndex) {
+  let temp = array[firstIndex];
+  array[firstIndex] = array[secondIndex];
+  array[secondIndex] = temp;
+}
+
+// quick sort helper function
+function pivot(array, pivotIndex = 0, endIndex = array.length - 1) {
+  let swapIndex = pivotIndex;
+  for (let i = pivotIndex + 1; i <= endIndex; i++) {
+    if (array[i] < array[pivotIndex]) {
+      swapIndex++;
+      swap(array, swapIndex, i);
+    }
+  }
+  swap(array, pivotIndex, swapIndex);
+  return swapIndex;
+}
+
+// time: O(nlogn)  space:O(1)
+// for almost sorted data, time: O(n^2), in this case, use insertion sort
+function quickSort(array, left = 0, right = array.length - 1) {
+  if (left < right) {
+    let pivotIndex = pivot(array, left, right);
+    quickSort(array, left, pivotIndex - 1);
+    quickSort(array, pivotIndex + 1, right);
+  }
+  return array;
+}
