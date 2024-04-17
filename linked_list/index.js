@@ -122,11 +122,13 @@ class LinkedList {
   }
 
   reverse() {
+    if (!this.head) return this;
+
     let temp = this.head;
     this.head = this.tail;
     this.tail = temp;
 
-    let next = temp.next;
+    let next = null;
     let prev = null;
 
     for (let i = 0; i < this.length; i++) {
@@ -139,25 +141,25 @@ class LinkedList {
   }
 
   reverse2() {
-    let currNode = this.head;
-    let prevNode = null;
-    let nextNode = null;
+    let temp = this.head;
+    let prev = null;
+    let next = null;
 
-    while (currNode) {
+    while (temp) {
       // Store next node.
-      nextNode = currNode.next;
+      next = temp.next;
 
       // Change next node of the current node so it would link to previous node.
-      currNode.next = prevNode;
+      temp.next = prev;
 
-      // Move prevNode and currNode nodes one step forward.
-      prevNode = currNode;
-      currNode = nextNode;
+      // Move prev and temp nodes one step forward.
+      prev = temp;
+      temp = next;
     }
 
     // Reset head and tail.
     this.tail = this.head;
-    this.head = prevNode;
+    this.head = prev;
 
     return this;
   }
