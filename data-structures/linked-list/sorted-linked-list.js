@@ -28,7 +28,7 @@ export default class SortedLinkedList extends LinkedList {
     let current = this.head;
     let index = 0;
     for (let i = 0; i < this.size(); i++) {
-      const comp = this.compareFn(value, current.element);
+      const comp = this.compareFn(value, current.value);
       if (comp === Compare.LESS_THAN) {
         return index;
       }

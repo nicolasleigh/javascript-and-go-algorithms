@@ -8,8 +8,8 @@ export default class DoublyLinkedList extends LinkedList {
     this.tail = undefined;
   }
 
-  push(element) {
-    const node = new DoublyNode(element);
+  push(value) {
+    const node = new DoublyNode(value);
 
     if (!this.head) {
       this.head = node;
@@ -24,9 +24,9 @@ export default class DoublyLinkedList extends LinkedList {
     this.count++;
   }
 
-  insert(element, index) {
+  insert(value, index) {
     if (index >= 0 && index <= this.count) {
-      const node = new DoublyNode(element);
+      const node = new DoublyNode(value);
       let current = this.head; // NEW
 
       if (index === 0) {
@@ -45,7 +45,7 @@ export default class DoublyLinkedList extends LinkedList {
         node.prev = this.tail;
         this.tail = node;
       } else {
-        const previous = this.getElementAt(index - 1);
+        const previous = this.getNodeAt(index - 1);
         current = previous.next; // NEW
         node.next = current;
         previous.next = node;
@@ -79,14 +79,14 @@ export default class DoublyLinkedList extends LinkedList {
         this.tail = current.prev;
         this.tail.next = undefined;
       } else {
-        const previous = this.getElementAt(index - 1);
+        const previous = this.getNodeAt(index - 1);
         current = previous.next;
         previous.next = current.next;
         current.next.prev = previous; // NEW
       }
 
       this.count--;
-      return current.element;
+      return current.value;
     }
 
     return undefined;
@@ -102,26 +102,26 @@ export default class DoublyLinkedList extends LinkedList {
   }
 
   inverseToString() {
-    if (this.tail == null) {
+    if (!this.tail) {
       return '';
     }
 
-    let objString = `${this.tail.element}`;
+    let objString = `${this.tail.value}`;
     let previous = this.tail.prev;
 
     while (previous) {
-      objString = `${objString},${previous.element}`;
+      objString = `${objString},${previous.value}`;
       previous = previous.prev;
     }
 
     return objString;
   }
 
-  // getElementAt(index)
+  // getNodeAt(index)
 
-  // remove(element)
+  // remove(value)
 
-  // indexOf(element)
+  // indexOf(value)
 
   // isEmpty()
 

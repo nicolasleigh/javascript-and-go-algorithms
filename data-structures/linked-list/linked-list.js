@@ -8,9 +8,9 @@ export default class LinkedList {
     this.head = undefined;
   }
 
-  push(element) {
+  push(value) {
     let current;
-    const node = new Node(element);
+    const node = new Node(value);
 
     if (!this.head) {
       this.head = node;
@@ -26,7 +26,7 @@ export default class LinkedList {
     this.count++;
   }
 
-  getElementAt(index) {
+  getNodeAt(index) {
     if (index >= 0 && index < this.count) {
       let node = this.head;
       for (let i = 0; i < index; i++) {
@@ -37,15 +37,15 @@ export default class LinkedList {
     return undefined;
   }
 
-  insert(element, index) {
+  insert(value, index) {
     if (index >= 0 && index <= this.count) {
-      const node = new Node(element);
+      const node = new Node(value);
 
       if (index === 0) {
         node.next = this.head;
         this.head = node;
       } else {
-        const previous = this.getElementAt(index - 1);
+        const previous = this.getNodeAt(index - 1);
         node.next = previous.next;
         previous.next = node;
       }
@@ -64,27 +64,27 @@ export default class LinkedList {
       if (index === 0) {
         this.head = current.next;
       } else {
-        const previous = this.getElementAt(index - 1);
+        const previous = this.getNodeAt(index - 1);
         current = previous.next;
         previous.next = current.next;
       }
 
       this.count--;
-      return current.element;
+      return current.value;
     }
 
     return undefined;
   }
 
-  remove(element) {
-    const index = this.indexOf(element);
+  remove(value) {
+    const index = this.indexOf(value);
     return this.removeAt(index);
   }
 
-  // indexOf(element) {
+  // indexOf(value) {
   //   let current = this.head;
   //   for (let i = 0; i < this.size() && current != null; i++) {
-  //     if (this.equalsFn(element, current.element)) {
+  //     if (this.equalsFn(value, current.value)) {
   //       return i;
   //     }
   //     current = current.next;
@@ -92,11 +92,11 @@ export default class LinkedList {
   //   return -1;
   // }
 
-  indexOf(element) {
+  indexOf(value) {
     let current = this.head;
     let index = 0;
     while (current) {
-      if (this.equalsFn(element, current.element)) {
+      if (this.equalsFn(value, current.value)) {
         return index;
       }
       index++;
@@ -123,15 +123,15 @@ export default class LinkedList {
   }
 
   toString() {
-    if (this.head == null) {
+    if (!this.head) {
       return '';
     }
 
-    let objString = `${this.head.element}`;
+    let objString = `${this.head.value}`;
     let current = this.head.next;
 
     while (current) {
-      objString = `${objString},${current.element}`;
+      objString = `${objString},${current.value}`;
       current = current.next;
     }
 

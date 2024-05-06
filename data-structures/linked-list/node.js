@@ -1,13 +1,13 @@
 export class Node {
-  constructor(element, next) {
-    this.element = element;
+  constructor(value, next) {
+    this.value = value;
     this.next = next;
   }
 }
 
 export class DoublyNode extends Node {
-  constructor(element, next, prev) {
-    super(element, next);
+  constructor(value, next, prev) {
+    super(value, next);
     this.prev = prev;
   }
 }

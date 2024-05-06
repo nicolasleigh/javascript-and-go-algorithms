@@ -22,7 +22,7 @@ export default class CircularLinkedList extends LinkedList {
       // current.next = node;
 
       // NEW
-      current = this.getElementAt(this.size() - 1);
+      current = this.getNodeAt(this.size() - 1);
       current.next = node;
     }
     // set node.next to head - to have circular list
@@ -40,12 +40,12 @@ export default class CircularLinkedList extends LinkedList {
           node.next = this.head;
         } else {
           node.next = this.head;
-          current = this.getElementAt(this.size() - 1); // get last node
+          current = this.getNodeAt(this.size() - 1); // get last node
           this.head = node;
           current.next = this.head;
         }
       } else {
-        const previous = this.getElementAt(index - 1);
+        const previous = this.getNodeAt(index - 1);
         node.next = previous.next;
         previous.next = node;
       }
@@ -63,34 +63,34 @@ export default class CircularLinkedList extends LinkedList {
           this.head = undefined;
         } else {
           const removed = this.head;
-          current = this.getElementAt(this.size() - 1); // get last node
+          current = this.getNodeAt(this.size() - 1); // get last node
           this.head = this.head.next;
           current.next = this.head;
           current = removed;
         }
       } else {
         // no need to update last node for circular list
-        const previous = this.getElementAt(index - 1);
+        const previous = this.getNodeAt(index - 1);
         current = previous.next;
         previous.next = current.next;
       }
       this.count--;
-      return current.element;
+      return current.value;
     }
     return undefined;
   }
 
   toString() {
-    if (this.head == null) {
+    if (!this.head) {
       return '';
     }
 
-    let objString = `${this.head.element}`;
+    let objString = `${this.head.value}`;
     let current = this.head.next;
 
     // Using for loop to avoid infinite loop
     for (let i = 1; i < this.size(); i++) {
-      objString = `${objString},${current.element}`;
+      objString = `${objString},${current.value}`;
       current = current.next;
     }
 
