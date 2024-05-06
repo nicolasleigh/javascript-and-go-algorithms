@@ -81,17 +81,27 @@ export default class LinkedList {
     return this.removeAt(index);
   }
 
+  // indexOf(element) {
+  //   let current = this.head;
+  //   for (let i = 0; i < this.size() && current != null; i++) {
+  //     if (this.equalsFn(element, current.element)) {
+  //       return i;
+  //     }
+  //     current = current.next;
+  //   }
+  //   return -1;
+  // }
+
   indexOf(element) {
     let current = this.head;
-
-    for (let i = 0; i < this.size() && current != null; i++) {
+    let index = 0;
+    while (current) {
       if (this.equalsFn(element, current.element)) {
-        return i;
+        return index;
       }
-
+      index++;
       current = current.next;
     }
-
     return -1;
   }
 
