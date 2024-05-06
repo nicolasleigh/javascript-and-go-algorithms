@@ -5,8 +5,8 @@ export default class StackLinkedList {
     this.items = new DoublyLinkedList();
   }
 
-  push(element) {
-    this.items.push(element);
+  push(value) {
+    this.items.push(value);
   }
 
   pop() {
@@ -21,7 +21,7 @@ export default class StackLinkedList {
     if (this.isEmpty()) {
       return undefined;
     }
-    return this.items.tail.element;
+    return this.items.tail.value;
   }
 
   isEmpty() {
