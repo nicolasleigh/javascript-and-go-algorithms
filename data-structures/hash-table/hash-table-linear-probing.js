@@ -1,5 +1,7 @@
 import { defaultToString } from '../../util.js';
 import { ValuePair } from '../map/value-pair.js';
+import { loseloseHashCode } from './hash-function.js';
+import { djb2HashCode } from './hash-function.js';
 
 export default class HashTableLinearProbing {
   constructor(toStrFn = defaultToString) {
@@ -7,30 +9,9 @@ export default class HashTableLinearProbing {
     this.table = {};
   }
 
-  loseloseHashCode(key) {
-    if (typeof key === 'number') {
-      return key;
-    }
-    const tableKey = this.toStrFn(key);
-    let hash = 0;
-    for (let i = 0; i < tableKey.length; i++) {
-      hash += tableKey.charCodeAt(i);
-    }
-    return hash % 37;
-  }
-
-  djb2HashCode(key) {
-    const tableKey = this.toStrFn(key);
-    let hash = 5381;
-    for (let i = 0; i < tableKey.length; i++) {
-      hash = hash * 33 + tableKey.charCodeAt(i); // hash = hash << 5 + hash + tableKey.charCodeAt(i);
-    }
-    return hash % 1013; // To avoid the hash code being too large.
-  }
-
   hashCode(key) {
-    // return this.djb2HashCode(key);
-    return this.loseloseHashCode(key);
+    // return djb2HashCode(key);
+    return loseloseHashCode(key);
   }
 
   put(key, value) {
