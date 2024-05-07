@@ -128,3 +128,10 @@ console.log(hashTable.get('Sue'));
 hashTable.remove('Jonathan');
 hashTable.remove('Tim');
 console.log(hashTable.toString());
+
+// How to Compare 2 Objects in JavaScript
+// https://www.samanthaming.com/tidbits/33-how-to-compare-2-objects/
+
+// Djb2 Hash Function and Lose Lose Hash Function
+// https://gist.github.com/amakukha/e7a8fcf0c1ad0d1b76a26349c0d6ef24
+// http://www.cse.yorku.ca/~oz/hash.html
