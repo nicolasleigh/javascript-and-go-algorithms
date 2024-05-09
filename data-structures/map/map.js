@@ -80,25 +80,25 @@ export default class Map {
   }
 }
 
-let map = new Map();
-console.log(map.set('Gandalf', 'abc@email.com'));
-console.log(map.set('John', 'ddd@email.com'));
-console.log(map.set('Tyrion', 'hhh@email.com'));
-console.log(map.size());
-console.log(map.hasKey('Gandalf'));
-console.log(map.keys());
-console.log(map.values());
-console.log(map.keyValues());
-console.log(map.keyValues()[1]);
-console.log(map.keyValues()[1].toString());
-console.log(map.get('Tyrion'));
-console.log(map.remove('John'));
-console.log(map.keys());
-console.log(map.toString());
-map.forEach((k, v) => {
-  console.log(`forEach -> key: ${k}, value: ${v}`);
-});
-map.forEach((k, v) => {
-  if (k === 'Tyrion') return false;
-  console.log(`forEach2 -> key: ${k}, value: ${v}`);
-});
+// let map = new Map();
+// console.log(map.set('Gandalf', 'abc@email.com'));
+// console.log(map.set('John', 'ddd@email.com'));
+// console.log(map.set('Tyrion', 'hhh@email.com'));
+// console.log(map.size());
+// console.log(map.hasKey('Gandalf'));
+// console.log(map.keys());
+// console.log(map.values());
+// console.log(map.keyValues());
+// console.log(map.keyValues()[1]);
+// console.log(map.keyValues()[1].toString());
+// console.log(map.get('Tyrion'));
+// console.log(map.remove('John'));
+// console.log(map.keys());
+// console.log(map.toString());
+// map.forEach((k, v) => {
+//   console.log(`forEach -> key: ${k}, value: ${v}`);
+// });
+// map.forEach((k, v) => {
+//   if (k === 'Tyrion') return false;
+//   console.log(`forEach2 -> key: ${k}, value: ${v}`);
+// });
