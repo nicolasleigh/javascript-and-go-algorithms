@@ -37,6 +37,4 @@ function getCombos(chars, k, indent) {
   return combinations;
 }
 
-// console.log('2-combinations of "ABC":');
-// console.log('Results: ' + getCombos('ABC', 2));
-console.log('Results: ' + getCombos('AB', 2));
+console.log('Results: ' + getCombos('ABCD', 2));
