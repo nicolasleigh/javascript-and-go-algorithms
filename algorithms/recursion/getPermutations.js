@@ -36,5 +36,5 @@ function getPerms(chars, indent) {
   return permutations;
 }
 
-console.log('Permutations of "ABCD":');
-console.log('Results: ' + getPerms('ABCD'));
+console.log('Permutations of "ABC":');
+console.log('Results: ' + getPerms('ABC'));
