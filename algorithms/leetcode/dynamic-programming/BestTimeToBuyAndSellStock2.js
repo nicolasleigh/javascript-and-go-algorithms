@@ -17,3 +17,20 @@ var maxProfit = function (prices) {
   }
   return dp[prices.length - 1][1];
 };
+
+// s0 --buy--> s1
+// s1 --sell--> s0
+// Similar to "309. Best Time to Buy and Sell Stock with Cooldown"
+var maxProfit = function (prices) {
+  let s0 = [];
+  let s1 = [];
+
+  s0[0] = 0;
+  s1[0] = -prices[0];
+
+  for (let i = 1; i < prices.length; i++) {
+    s0[i] = Math.max(s0[i - 1], prices[i] + s1[i - 1]);
+    s1[i] = Math.max(s1[i - 1], s0[i - 1] - prices[i]);
+  }
+  return s0[prices.length - 1];
+};
