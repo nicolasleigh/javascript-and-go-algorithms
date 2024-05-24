@@ -6,6 +6,7 @@
  * @param {string} text2
  * @return {number}
  */
+// Same as "1035. Uncrossed Lines"
 var longestCommonSubsequence = function (text1, text2) {
   const dp = Array(text1.length + 1)
     .fill()
