@@ -55,3 +55,49 @@ console.log(sortedSquared(a)); // [1, 9, 16, 25]
 console.log(sortedSquared(b)); // [4, 9, 16, 49, 81]
 console.log(sortedSquared(c)); // []
 ```
+
+#### Monotonic Array
+
+An array is monotonic if it is either monotone increasing or monotone decreasing. An array is monotone increasing if all its elements from left to right are non-decreasing. An array is monotone decreasing if all its elements from left to right are non-increasing. Given an integer array return true if the given array is monotonic, or false otherwise.
+
+##### Clarifying questions:
+
+- Is an empty array considered monotonic? - yes
+- Is an array with only 1 integer considered monotonic? - yes
+
+```js
+// Time: O(n) - Space: O(1)
+function checkMonotonic(array) {
+  const first = array[0];
+  const last = array[array.length - 1];
+
+  if (first === last) {
+    for (let i = 0; i < array.length - 1; i++) {
+      if (array[i] !== array[i + 1]) return false;
+    }
+  } else if (first < last) {
+    // Increasing
+    for (let i = 0; i < array.length - 1; i++) {
+      if (array[i] > array[i + 1]) return false;
+    }
+  } else {
+    // Decreasing
+    for (let i = 0; i < array.length - 1; i++) {
+      if (array[i] < array[i + 1]) return false;
+    }
+  }
+  return true;
+}
+
+let a = [1, 2, 2, 3];
+let b = [6, 5, 4, 4];
+let c = [1, 2, 3, 1, 4];
+let d = [];
+let e = [4];
+
+console.log(checkMonotonic(a)); // true
+console.log(checkMonotonic(b)); // true
+console.log(checkMonotonic(c)); // false
+console.log(checkMonotonic(d)); // true
+console.log(checkMonotonic(e)); // true
+```
