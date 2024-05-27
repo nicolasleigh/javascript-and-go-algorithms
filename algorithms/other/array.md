@@ -101,3 +101,49 @@ console.log(checkMonotonic(c)); // false
 console.log(checkMonotonic(d)); // true
 console.log(checkMonotonic(e)); // true
 ```
+
+#### Rotate Array
+
+Given an array, rotate the array to the right by k steps, where k is non-negative. Eg. [1, 2, 3, 4, 5, 6, 7] and k = 3, the output should be [5, 6, 7, 1, 2, 3, 4].
+
+##### Clarifying questions:
+
+- What happens if an empty array is given? - return the empty array
+- If k=0, no rotation is to happen? - yes
+
+```js
+// Method 1 - Time O(n) - Space O(n)
+const rotateArray = function (array, k) {
+  const length = array.length;
+  k = k % length;
+  const i = length - k;
+
+  const left = array.slice(0, i);
+  const right = array.slice(i);
+  return right.concat(left);
+};
+
+// Method 2 - Time O(n) - Space O(1)
+const rotateArray = function (array, k) {
+  k = k % array.length;
+  reverse(0, array.length - 1);
+  reverse(0, k - 1);
+  reverse(k, array.length - 1);
+
+  function reverse(start, end) {
+    while (start < end) {
+      [array[start], array[end]] = [array[end], array[start]];
+      start++;
+      end--;
+    }
+  }
+
+  return array;
+};
+
+let a = [1, 2, 3, 4, 5, 6, 7]; // length = 7
+console.log(rotateArray(a.slice(), 3)); // [5, 6, 7, 1, 2, 3, 4] // using a.slice() to make a copy of the array, because the method 2 modifies the original array.
+console.log(rotateArray(a.slice(), 100)); // [6, 7, 1, 2, 3, 4, 5] - 100 % 7 = 2
+console.log(rotateArray([], 2)); // []
+console.log(rotateArray([1], 2)); // [1]
+```
