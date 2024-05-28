@@ -385,3 +385,54 @@ function allPermutation(nums) {
 
 console.log(allPermutation([1, 2, 3]));
 ```
+
+#### Power Set
+
+Given an integer array of unique elements, return all possible subsets (the power set). The solution set must not contain duplicate subsets. Return the solution in any order.
+
+![image](./images/Power-Set.webp)
+![image](./images/Power-Set2.webp)
+
+```js
+// Solution 1
+// Time: O(2^n * n) - Space: O(2^n * n)
+function powerSet(nums) {
+  const output = [];
+  const helper = function (i, subset) {
+    if (i === nums.length) {
+      output.push(subset.slice());
+      return;
+    }
+    // don't include the number
+    helper(i + 1, subset);
+    // include the number
+    subset.push(nums[i]);
+    helper(i + 1, subset);
+    subset.pop();
+  };
+  helper(0, []);
+  return output;
+}
+
+// Solution 2
+function powerSet(nums) {
+  const powerSet = [];
+  function backtrack(start, subset) {
+    powerSet.push(subset.slice());
+    for (let i = start; i < nums.length; i++) {
+      subset.push(nums[i]);
+      backtrack(i + 1, subset);
+      subset.pop();
+    }
+  }
+  backtrack(0, []);
+  return powerSet;
+}
+
+console.log(powerSet([1, 8, 7]));
+// [[], [7], [8], [8, 7], [1], [1, 7], [1, 8], [1, 8, 7]]
+// [[], [1], [1, 8], [1, 8, 7], [1, 7], [8], [8, 7], [7]]
+console.log(powerSet([1, 2, 3]));
+// [[], [3], [2], [2, 3], [1], [1, 3], [1, 2], [1, 2, 3]]
+// [[], [1], [1, 2], [1, 2, 3], [1, 3], [2], [2, 3], [3]]
+```
