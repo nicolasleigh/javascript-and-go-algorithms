@@ -199,3 +199,57 @@ let b = [3, 7, 5, 6, 8, 4]; // length = 6
 console.log(maxArea(a)); // 49
 console.log(maxArea(b)); // 21
 ```
+
+### HASH TABLE
+
+#### Two Sum
+
+You are given an array of Integers and another integer targetValue. Write a function that will take these inputs and return the indices of the 2 integers in the array that add up targetValue.
+
+##### Clarifying questions:
+
+- What if no two integers add up to the targetValue? - return an empty array
+- Will multiple pairs add up to the targetValue? - no, at most 1 pair
+- Are all the integers positive? - no
+- Are the integers distinct? - yes
+- What if the array is empty? - return an empty array
+- Can I add the same number twice? - no
+
+```js
+// Method 1 - Brute force
+// Time: O(n^2) - Space: O(1)
+function findIndicesSum(array, targetValue) {
+  for (let i = 0; i < array.length - 1; i++) {
+    for (let j = i + 1; j < array.length; j++) {
+      if (array[i] + array[j] === targetValue) {
+        return [i, j];
+      }
+    }
+  }
+  return [];
+}
+
+// Method 2 - Hash table
+// Time: O(n) - Space: O(n)
+function findIndicesSum(array, targetValue) {
+  const hashTable = {};
+  for (let i = 0; i < array.length; i++) {
+    const neededValue = targetValue - array[i];
+    if (neededValue in hashTable) {
+      return [hashTable[neededValue], i];
+    }
+    hashTable[array[i]] = i;
+  }
+  return [];
+}
+
+let a = [2, 7, 11, 15];
+let b = [3, 2, 4];
+let c = [4];
+let d = [];
+
+console.log(findIndicesSum(a, 9)); // [0, 1]
+console.log(findIndicesSum(b, 6)); // [1, 2]
+console.log(findIndicesSum(c, 4)); // []
+console.log(findIndicesSum(d, 4)); // []
+```
