@@ -147,3 +147,55 @@ console.log(rotateArray(a.slice(), 100)); // [6, 7, 1, 2, 3, 4, 5] - 100 % 7 = 2
 console.log(rotateArray([], 2)); // []
 console.log(rotateArray([1], 2)); // [1]
 ```
+
+#### Container with most Water
+
+You are given an integer array height of length n. There are n vertical lines drawn such that the two endpoints of the ith line are (i, 0) and (i, height[i]).
+Find two lines that together with the x-axis form a container, such that the container contains the most water(depth is constant across containers). Return the area(that the 2 lines and the X axis make) of container which can store the max amount of water. Notice that you may not slant the container.
+
+##### Clarifying questions:
+
+- Dose Y axis count as a wall? - No
+- Does a line inside the container affect the area? - No
+
+![image](./images/Container-with-most-Water.webp)
+
+![Container with most water](https://s3-lc-upload.s3.amazonaws.com/uploads/2018/07/17/question_11.jpg)
+
+```js
+// Method 1 - Brute force
+// Time: O(n^2) - Space: O(1)
+const maxArea = function (array) {
+  let area = 0;
+  for (let i = 0; i < array.length - 1; i++) {
+    for (let j = i + 1; j < array.length; j++) {
+      const width = j - i;
+      const height = Math.min(array[i], array[j]);
+      area = Math.max(area, width * height);
+    }
+  }
+  return area;
+};
+
+// Method 2 - Two pointers
+// Time: O(n) - Space: O(1)
+const maxArea = function (array) {
+  let area = 0;
+  let left = 0;
+  let right = array.length - 1;
+  while (left < right) {
+    const width = right - left;
+    const height = Math.min(array[left], array[right]);
+    area = Math.max(area, width * height);
+    if (array[left] < array[right]) left++;
+    else right--;
+  }
+  return area;
+};
+
+let a = [1, 8, 6, 2, 5, 4, 8, 3, 7]; // length = 9
+let b = [3, 7, 5, 6, 8, 4]; // length = 6
+
+console.log(maxArea(a)); // 49
+console.log(maxArea(b)); // 21
+```
