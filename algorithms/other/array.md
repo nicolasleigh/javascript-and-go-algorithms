@@ -357,3 +357,31 @@ let b = [1, 2, [3, 4], [[2]]];
 console.log(powerSum(a)); // 228
 console.log(powerSum(b)); // 116
 ```
+
+#### Permutations
+
+Given an array of distinct integers, return all the possible permutations. You can return the answer in any order.
+
+![image](./images/Permutations.webp)
+
+```js
+// Time: O(n! * n) - Space: O(n! * n)
+function allPermutation(nums) {
+  const permutation = [];
+  function helper(nums, i) {
+    if (i === nums.length - 1) {
+      permutation.push(nums.slice());
+      return;
+    }
+    for (let j = i; j < nums.length; j++) {
+      [nums[i], nums[j]] = [nums[j], nums[i]];
+      helper(nums, i + 1);
+      [nums[i], nums[j]] = [nums[j], nums[i]];
+    }
+  }
+  helper(nums, 0);
+  return permutation;
+}
+
+console.log(allPermutation([1, 2, 3]));
+```
