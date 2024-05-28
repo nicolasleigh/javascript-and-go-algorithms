@@ -253,3 +253,31 @@ console.log(findIndicesSum(b, 6)); // [1, 2]
 console.log(findIndicesSum(c, 4)); // []
 console.log(findIndicesSum(d, 4)); // []
 ```
+
+#### Isomorphic Strings
+
+Given two strings s and t, determine if they are isomorphic. Two strings s and t are isomorphic if the characters in s can be replaced to get t. All occurrences of a character must be replaced with another character while preserving the order of characters. No two characters may map to the same character, but a character may map to itself. s and t consist of any valid ascii character.
+
+![image](./images/Isomorphic-Strings.webp)
+
+```js
+// Time: O(n) - Space: O(1)
+// String are made up of 128 ASCII characters, 2 hash tables are ocuppied 256 bytes of memory, so space complexity is O(1)
+function checkIsomorphic(s, t) {
+  if (s.length !== t.length) return false;
+  const hashS = {};
+  const hashT = {};
+  for (let i = 0; i < s.length; i++) {
+    let charS = s[i];
+    let charT = t[i];
+    if (!hashS[charS]) hashS[charS] = charT;
+    if (!hashT[charT]) hashT[charT] = charS;
+    if (hashS[charS] !== charT || hashT[charT] !== charS) return false;
+  }
+  return true;
+}
+
+console.log(checkIsomorphic('egg', 'add')); // true
+console.log(checkIsomorphic('foo', 'bar')); // false
+console.log(checkIsomorphic('paper', 'title')); // true
+```
