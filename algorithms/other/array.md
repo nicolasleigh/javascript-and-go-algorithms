@@ -484,3 +484,56 @@ let b = 'abcAabc';
 console.log(findNonRepeatingCharacter(a)); // null
 console.log(findNonRepeatingCharacter(b)); // 3
 ```
+
+#### Palindrome
+
+You are given a string. Write a function to check whether the string is a palindrome or not.
+
+##### Clarifying questions:
+
+- Is a single character string treated as a Palindrome? - yes
+- What should happen if the string input is empty? - you can assume it is non-empty
+- What should be the output of the function? - true or false
+- Should lowercase and uppercase be treated as different? - yes
+
+```js
+// Method 1
+// Time: O(n^2) - Space: O(n)
+function isPalindromeCheck(string) {
+  let newStringtoCompare = ''; // String
+  for (let i = string.length - 1; i >= 0; i--) {
+    newStringtoCompare += string[i]; // strings are immutable in JS, so the operation of appending string takes O(n) time complexity
+  }
+  if (newStringtoCompare === string) return true;
+  return false;
+}
+
+// Method 2
+// Time: O(n) - Space: O(n)
+function isPalindromeCheck(string) {
+  let newStringtoCompare = []; // Array
+  for (let i = string.length - 1; i >= 0; i--) {
+    newStringtoCompare.push(string[i]);
+  }
+  if (newStringtoCompare.join('') === string) return true;
+  return false;
+}
+
+// Method 3
+// Time: O(n) - Space: O(1)
+function isPalindromeCheck(string) {
+  let i = 0;
+  let j = string.length - 1;
+  while (i < j) {
+    if (string[i] !== string[j]) return false;
+    i++;
+    j--;
+  }
+  return true;
+}
+
+let a = 'abcba';
+let b = 'aaced';
+console.log(isPalindromeCheck(a)); // true
+console.log(isPalindromeCheck(b)); // false
+```
