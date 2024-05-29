@@ -564,3 +564,27 @@ function maxLength(string) {
 console.log(maxLength('abcdb')); // 4 abcd
 console.log(maxLength('pqbrstbuvwpvy')); // 8 rstbuvwp
 ```
+
+#### Group Anagrams
+
+Given an array of strings consisting of lower case English letters, group the anagrams together. You can return the answer in any order. An Anagram is a word or phrase formed by rearranging the letters of a different word or phrase, using all the original letters exactly once.
+
+![image](./images/Group-Anagrams.webp)
+
+```js
+// Time: O(s * nlogn) - Space: O(s * n) : s -> number of strings, n -> max number of characters in a string
+function groupAnagrams(strings) {
+  const sorted = strings.map((str) => str.split('').sort().join(''));
+  const hashTable = {};
+  for (let i = 0; i < strings.length; i++) {
+    hashTable[sorted[i]]
+      ? hashTable[sorted[i]].push(strings[i])
+      : (hashTable[sorted[i]] = [strings[i]]);
+  }
+  return Object.values(hashTable);
+}
+
+let a = ['eat', 'tea', 'tan', 'ate', 'nat', 'bat', 'tab'];
+console.log(groupAnagrams(a));
+// [ [ 'eat', 'tea', 'ate' ], [ 'tan', 'nat' ], [ 'bat', 'tab' ] ]
+```
