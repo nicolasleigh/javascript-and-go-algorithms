@@ -668,3 +668,82 @@ function searchRotatedSortedArray(nums, target) {
 console.log(searchRotatedSortedArray([4, 5, 6, 7, 0, 1, 2], 0)); // 4
 console.log(searchRotatedSortedArray([3, 4, 5, 6, 1, 2], 6)); // 3
 ```
+
+#### Find First and Last Position of Element in Sorted Array
+
+You are given an array of integers sorted in non-decreasing order, find the starting and ending position of a given target value. If target is not found in the array, return [-1, -1]. You must write an algorithm with O(log n) runtime complexity.
+
+```js
+// Time: O(logn) - Space: O(logn)
+function searchForRangeRec(array, target) {
+  const range = [-1, -1];
+  findLeftExtreme(0, array.length - 1);
+  findRightExtreme(0, array.length - 1);
+  return range;
+
+  function findLeftExtreme(left, right) {
+    if (left > right) return;
+    const mid = Math.floor((left + right) / 2);
+    if (array[mid] === target) {
+      if (mid === 0) range[0] = mid;
+      else if (array[mid - 1] === target) findLeftExtreme(left, mid - 1);
+      else range[0] = mid;
+    } else if (target < array[mid]) findLeftExtreme(left, mid - 1);
+    else findLeftExtreme(mid + 1, right);
+  }
+
+  function findRightExtreme(left, right) {
+    if (left > right) return;
+    const mid = Math.floor((left + right) / 2);
+    if (array[mid] === target) {
+      if (mid === array.length - 1) range[1] = mid;
+      else if (array[mid + 1] === target) findRightExtreme(mid + 1, right);
+      else range[1] = mid;
+    } else if (target < array[mid]) findRightExtreme(left, mid - 1);
+    else findRightExtreme(mid + 1, right);
+  }
+}
+
+// Iterative solution
+// Time: O(logn) - Space: O(1)
+function searchForRangeIterative(array, target) {
+  const leftExtreme = findLeftExtreme(array, target);
+  const rightExtreme = findRightExtreme(array, target);
+  return [leftExtreme, rightExtreme];
+
+  function findLeftExtreme(array, target) {
+    let left = 0;
+    let right = array.length - 1;
+    while (left <= right) {
+      const mid = Math.floor((left + right) / 2);
+      if (array[mid] === target) {
+        if (mid === 0) return mid;
+        if (array[mid - 1] === target) right = mid - 1;
+        else return mid;
+      } else if (target < array[mid]) right = mid - 1;
+      else left = mid + 1;
+    }
+    return -1;
+  }
+
+  function findRightExtreme(array, target) {
+    let left = 0;
+    let right = array.length - 1;
+    while (left <= right) {
+      const mid = Math.floor((left + right) / 2);
+      if (array[mid] === target) {
+        if (mid === array.length - 1) return mid;
+        if (array[mid + 1] === target) left = mid + 1;
+        else return mid;
+      } else if (target < array[mid]) right = mid - 1;
+      else left = mid + 1;
+    }
+    return -1;
+  }
+}
+
+console.log(searchForRangeRec([5, 7, 7, 8, 8, 10], 8)); // [3, 4]
+console.log(searchForRangeRec([5, 7, 7, 7, 8, 10], 7)); // [1, 3]
+console.log(searchForRangeIterative([5, 7, 7, 8, 8, 10], 8)); // [3, 4]
+console.log(searchForRangeIterative([5, 7, 7, 7, 8, 10], 7)); // [1, 3]
+```
