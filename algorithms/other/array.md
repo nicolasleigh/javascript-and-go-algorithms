@@ -537,3 +537,30 @@ let b = 'aaced';
 console.log(isPalindromeCheck(a)); // true
 console.log(isPalindromeCheck(b)); // false
 ```
+
+#### Longest Unique char Substring
+
+Given a string s, find the length of the longest substring without repeating characters.
+
+![image](./images/Longest-Unique-char-Substring.webp)
+
+```js
+// Time: O(n) - Space: O(m): m is the number of unique characters in the string
+function maxLength(string) {
+  let max = 0;
+  let start = 0;
+  const visited = {};
+  for (let i = 0; i < string.length; i++) {
+    const char = string[i];
+    if (char in visited) {
+      start = Math.max(start, visited[char] + 1);
+    }
+    max = Math.max(max, i - start + 1);
+    visited[char] = i;
+  }
+  return max;
+}
+
+console.log(maxLength('abcdb')); // 4 abcd
+console.log(maxLength('pqbrstbuvwpvy')); // 8 rstbuvwp
+```
