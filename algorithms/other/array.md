@@ -588,3 +588,40 @@ let a = ['eat', 'tea', 'tan', 'ate', 'nat', 'bat', 'tab'];
 console.log(groupAnagrams(a));
 // [ [ 'eat', 'tea', 'ate' ], [ 'tan', 'nat' ], [ 'bat', 'tab' ] ]
 ```
+
+### SEARCHING
+
+#### Binary Search
+
+Given an array of integers which is sorted in ascending order, and a target integer, write a function to search for whether the target integer is there in the given array. If it is there then return its index. Otherwise, return -1. You must write an algorithm with O(log n) runtime complexity.
+
+```js
+// Time: O(logn) - Space: O(1)
+function binarySearchInterative(nums, target) {
+  let left = 0;
+  let right = nums.length - 1;
+  while (left <= right) {
+    let mid = Math.floor((left + right) / 2);
+    if (nums[mid] === target) return mid;
+    if (nums[mid] < target) left = mid + 1;
+    else right = mid - 1;
+  }
+  return -1;
+}
+
+// Time: O(logn) - Space: O(logn)
+function binarySearchRecursive(nums, target) {
+  function helper(left, right) {
+    if (left > right) return -1;
+    let mid = Math.floor((left + right) / 2);
+    if (nums[mid] === target) return mid;
+    if (nums[mid] < target) return helper(mid + 1, right);
+    return helper(left, mid - 1);
+  }
+  return helper(0, nums.length - 1);
+}
+
+let a = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+console.log(binarySearchInterative(a, 5)); // 4
+console.log(binarySearchRecursive(a, 5)); // 4
+```
