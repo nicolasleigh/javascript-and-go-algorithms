@@ -597,7 +597,7 @@ Given an array of integers which is sorted in ascending order, and a target inte
 
 ```js
 // Time: O(logn) - Space: O(1)
-function binarySearchInterative(nums, target) {
+function binarySearchIterative(nums, target) {
   let left = 0;
   let right = nums.length - 1;
   while (left <= right) {
@@ -622,6 +622,49 @@ function binarySearchRecursive(nums, target) {
 }
 
 let a = [1, 2, 3, 4, 5, 6, 7, 8, 9];
-console.log(binarySearchInterative(a, 5)); // 4
+console.log(binarySearchIterative(a, 5)); // 4
 console.log(binarySearchRecursive(a, 5)); // 4
+```
+
+#### Search in Rotated Sorted array
+
+You are given an integer array nums sorted in ascending order (with distinct values). Prior to being passed to your function, nums is possibly rotated at an unknown pivot index k (1 <= k < nums.length) such that the resulting array is [nums[k], nums[k+1], ..., nums[n-1], nums[0], nums[1], ..., nums[k-1]] (0-indexed).
+For example, [0,1,2,4,5,6,7] might be rotated at pivot index 3 and become [4,5,6,7,0,1,2]. Given an integer target, return the index of target if it is in the array, else return -1. You must write an algorithm with O(log n) runtime complexity.
+
+![image](./images/Search-in-Rotated-Sorted-array.webp)
+
+```js
+// Time: O(logn) - Space: O(1)
+function searchRotatedSortedArray(nums, target) {
+  let left = 0;
+  let right = nums.length - 1;
+  let mid;
+  while (left <= right) {
+    mid = Math.floor((left + right) / 2);
+    if (nums[mid] === target) return mid;
+    if (nums[left] <= nums[mid]) {
+      // left part is sorted
+      if (nums[left] <= target && target < nums[mid]) {
+        // target is in the left part
+        right = mid - 1;
+      } else {
+        // target is in the right part
+        left = mid + 1;
+      }
+    } else {
+      // right part is sorted
+      if (nums[mid] < target && target <= nums[right]) {
+        // target is in the right part
+        left = mid + 1;
+      } else {
+        // target is in the left part
+        right = mid - 1;
+      }
+    }
+  }
+  return -1;
+}
+
+console.log(searchRotatedSortedArray([4, 5, 6, 7, 0, 1, 2], 0)); // 4
+console.log(searchRotatedSortedArray([3, 4, 5, 6, 1, 2], 6)); // 3
 ```
