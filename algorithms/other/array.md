@@ -436,3 +436,51 @@ console.log(powerSet([1, 2, 3]));
 // [[], [3], [2], [2, 3], [1], [1, 3], [1, 2], [1, 2, 3]]
 // [[], [1], [1, 2], [1, 2, 3], [1, 3], [2], [2, 3], [3]]
 ```
+
+### STRING
+
+#### Non repeating character
+
+You are given a string consisting of only lower case and upper-case English Alphabets and integers 0 to 9. Write a function that will take this string as Input and return the index of the first character that is non-repeating.
+
+##### Clarifying questions:
+
+- What if there is no non-repeating character? - return null
+- If 'a' and 'A' are given, are they considered the same character? - no
+
+```js
+// Method 1: Brute force
+// Time: O(n^2) - Space: O(1)
+function findNonRepeatingCharacter(string) {
+  for (let i = 0; i < string.length; i++) {
+    let repeat = false;
+    for (let j = 0; j < string.length; j++) {
+      if (i !== j && string[i] === string[j]) {
+        repeat = true;
+        break;
+      }
+    }
+    if (!repeat) return i;
+  }
+  return null;
+}
+
+// Method 2: Hash table
+// Time: O(n) - Space: O(1)
+// Maximum character numbers are 26(A-Z) + 26(a-z) + 10(0-9) = 62, so the space complexity is O(1)
+function findNonRepeatingCharacter(string) {
+  const hashTable = {};
+  for (let i = 0; i < string.length; i++) {
+    hashTable[string[i]] ? hashTable[string[i]]++ : (hashTable[string[i]] = 1);
+  }
+  for (let i = 0; i < string.length; i++) {
+    if (hashTable[string[i]] === 1) return i;
+  }
+  return null;
+}
+
+let a = 'aabbcc';
+let b = 'abcAabc';
+console.log(findNonRepeatingCharacter(a)); // null
+console.log(findNonRepeatingCharacter(b)); // 3
+```
