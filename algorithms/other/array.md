@@ -827,3 +827,28 @@ console.log(bubbleSort(a)); // [2, 3, 5, 5, 6, 8, 9]
 console.log(bubbleSort(b)); // [1, 2, 3, 4, 5]
 console.log(bubbleSort(c)); // [1, 2, 3, 4, 5]
 ```
+
+#### Insertion Sort
+
+You are given an array of integers. Write a function that will take this array as input and return the sorted array using Insertion sort.
+
+```js
+// Insertion Sort
+// Time: O(n^2) - Space: O(1)
+function insertionSort(array) {
+  for (let i = 1; i < array.length; i++) {
+    let j = i;
+    while (j > 0 && array[j] < array[j - 1]) {
+      [array[j], array[j - 1]] = [array[j - 1], array[j]];
+      j--;
+    }
+  }
+  return array;
+}
+let a = [8, 5, 2, 9, 5, 6, 3];
+let b = [1, 2, 3, 4, 5];
+let c = [5, 4, 3, 2, 1];
+console.log(insertionSort(a)); // [2, 3, 5, 5, 6, 8, 9]
+console.log(insertionSort(b)); // [1, 2, 3, 4, 5]
+console.log(insertionSort(c)); // [1, 2, 3, 4, 5]
+```
