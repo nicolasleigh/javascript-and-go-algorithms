@@ -794,3 +794,36 @@ let a = [
 console.log(searchInMatrix(a, 31)); // false
 console.log(searchInMatrix(a, 16)); // true
 ```
+
+### SORTING
+
+#### Bubble Sort
+
+You are given an array of integers. Write a function that will take this array as input and return the sorted array using Bubble sort.
+
+```js
+// Time: O(n^2) - Space: O(1)
+function bubbleSort(array) {
+  let isSorted = false;
+  let counter = 0;
+  let length = array.length;
+  while (!isSorted) {
+    isSorted = true;
+    for (let i = 0; i < length - 1 - counter; i++) {
+      if (array[i] > array[i + 1]) {
+        [array[i], array[i + 1]] = [array[i + 1], array[i]];
+        isSorted = false;
+      }
+    }
+    counter++;
+  }
+  return array;
+}
+
+let a = [8, 5, 2, 9, 5, 6, 3];
+let b = [1, 2, 3, 4, 5];
+let c = [5, 4, 3, 2, 1];
+console.log(bubbleSort(a)); // [2, 3, 5, 5, 6, 8, 9]
+console.log(bubbleSort(b)); // [1, 2, 3, 4, 5]
+console.log(bubbleSort(c)); // [1, 2, 3, 4, 5]
+```
