@@ -879,3 +879,50 @@ console.log(selectionSort(a)); // [2, 3, 5, 5, 6, 8, 9]
 console.log(selectionSort(b)); // [1, 2, 3, 4, 5]
 console.log(selectionSort(c)); // [1, 2, 3, 4, 5]
 ```
+
+#### Merge Sort
+
+You are given an array of integers. Write a function that will take this array as input and return the sorted array using Merge sort.
+
+```js
+// Time: O(nlogn) - Space: O(n)
+function mergeSort(array) {
+  if (array.length <= 1) return array;
+  const middle = Math.floor(array.length / 2);
+  const left = mergeSort(array.slice(0, middle));
+  const right = mergeSort(array.slice(middle));
+  return merge(left, right);
+
+  function merge(left, right) {
+    const result = [];
+    let i = 0;
+    let j = 0;
+    while (i < left.length && j < right.length) {
+      // using "<=" instead of "<" to make the merge sort become the "stable sorting algorithm"
+      if (left[i] <= right[j]) {
+        result.push(left[i]);
+        i++;
+      } else {
+        result.push(right[j]);
+        j++;
+      }
+    }
+    while (i < left.length) {
+      result.push(left[i]);
+      i++;
+    }
+    while (j < right.length) {
+      result.push(right[j]);
+      j++;
+    }
+    return result;
+  }
+}
+
+let a = [8, 5, 2, 9, 5, 6, 3];
+let b = [1, 2, 3, 4, 5];
+let c = [5, 4, 3, 2, 1];
+console.log(mergeSort(a)); // [2, 3, 5, 5, 6, 8, 9]
+console.log(mergeSort(b)); // [1, 2, 3, 4, 5]
+console.log(mergeSort(c)); // [1, 2, 3, 4, 5]
+```
