@@ -747,3 +747,50 @@ console.log(searchForRangeRec([5, 7, 7, 7, 8, 10], 7)); // [1, 3]
 console.log(searchForRangeIterative([5, 7, 7, 8, 8, 10], 8)); // [3, 4]
 console.log(searchForRangeIterative([5, 7, 7, 7, 8, 10], 7)); // [1, 3]
 ```
+
+#### Search in 2D Array
+
+Write an efficient algorithm that searches for a value target in an m x n integer matrix. This matrix has the following properties:
+
+- Integers in each row are sorted from left to right.
+- The first integer of each row is greater than the last integer of the previous row. If the value is there in the matrix return true, else false.
+
+![image](./images/Search-in-2D-Array1.webp)
+![image](./images/Search-in-2D-Array2.webp)
+
+```js
+// Time: O(logmn) - Space: O(1) : m -> number of rows, n -> number of columns, logmn = logm + logn
+function searchInMatrix(matrix, target) {
+  const cols = matrix[0].length;
+  const rows = matrix.length;
+  // Binary search to identify the row
+  let top = 0;
+  let bottom = rows - 1;
+  let middle;
+  while (top <= bottom) {
+    middle = Math.floor((top + bottom) / 2);
+    if (matrix[middle][0] > target) bottom = middle - 1;
+    else if (matrix[middle][cols - 1] < target) top = middle + 1;
+    else break;
+  }
+  if (top > bottom) return false;
+  // Binary search to identify the column
+  let left = 0;
+  let right = cols - 1;
+  while (left <= right) {
+    let mid = Math.floor((left + right) / 2);
+    if (matrix[middle][mid] === target) return true;
+    if (matrix[middle][mid] < target) left = mid + 1;
+    else right = mid - 1;
+  }
+  return false;
+}
+
+let a = [
+  [1, 3, 5, 7],
+  [10, 11, 16, 20],
+  [23, 30, 34, 60],
+];
+console.log(searchInMatrix(a, 31)); // false
+console.log(searchInMatrix(a, 16)); // true
+```
