@@ -983,3 +983,59 @@ console.log(quickSort(a)); // [2, 3, 5, 5, 6, 8, 9]
 console.log(quickSort(b)); // [1, 2, 3, 4, 5]
 console.log(quickSort(c)); // [1, 2, 3, 4, 5]
 ```
+
+#### Radix Sort
+
+You are given an array of **non-negative** integers. Write a function that will take this array as input and return the sorted array using Radix sort.
+
+![image](./images/Radix-Sort.webp)
+![image](./images/Radix-Sort2.webp)
+![image](./images/Radix-Sort3.webp)
+![image](./images/Radix-Sort4.webp)
+
+```js
+// Counting Sort
+// Time: O(n + k) - Space: O(n + k) : n -> number of elements, k -> range of input, if base 10, k = 10
+
+// Radix Sort
+// Time: O(d * (n + k)) - Space: O(n + k) : d -> number of digits in the greatest number, n -> number of elements, k -> range of input, if base 10, k = 10
+function radixSort(array) {
+  if (array.length === 0) return array;
+  const greatestNumber = Math.max(...array);
+  const numberOfDigits = Math.floor(Math.log10(greatestNumber) + 1);
+  // Counting sort has to be done x number of times, where x is the number of digits in the greatest number
+  for (let i = 0; i < numberOfDigits; i++) {
+    countingSort(array, i);
+  }
+  return array;
+}
+
+function countingSort(array, place) {
+  const output = new Array(array.length).fill(0);
+  const temp = new Array(10).fill(0);
+  const digitPlace = Math.pow(10, place);
+
+  for (let num of array) {
+    let digit = Math.floor(num / digitPlace) % 10;
+    temp[digit]++;
+  }
+
+  // get cumulative sum of temp
+  for (let i = 1; i < 10; i++) {
+    temp[i] += temp[i - 1];
+  }
+
+  for (let j = array.length - 1; j >= 0; j--) {
+    let digit = Math.floor(array[j] / digitPlace) % 10;
+    temp[digit]--;
+    output[temp[digit]] = array[j];
+  }
+
+  for (let i = 0; i < array.length; i++) {
+    array[i] = output[i];
+  }
+}
+
+let a = [384, 73, 374, 183, 65, 247, 185];
+console.log(radixSort(a)); // [65, 73, 183, 185, 247, 374, 384]
+```
