@@ -926,3 +926,60 @@ console.log(mergeSort(a)); // [2, 3, 5, 5, 6, 8, 9]
 console.log(mergeSort(b)); // [1, 2, 3, 4, 5]
 console.log(mergeSort(c)); // [1, 2, 3, 4, 5]
 ```
+
+#### Quick Sort
+
+You are given an array of integers. Write a function that will take this array as input and return the sorted array using Quick sort.
+
+![image](./images/Quick-Sort.webp)
+![image](./images/Quick-Sort2.webp)
+![image](./images/Quick-Sort3.webp)
+![image](./images/Quick-Sort4.webp)
+![image](./images/Quick-Sort5.webp)
+
+```js
+// Time: O(nlogn) - Space: O(logn)
+
+function swap(array, i, j) {
+  [array[i], array[j]] = [array[j], array[i]];
+}
+
+function partition(array, start = 0, end = array.length - 1) {
+  let middle = Math.floor((start + end) / 2);
+  swap(array, start, middle);
+
+  let pivot = array[start];
+  let i = start + 1;
+  let j = end;
+
+  while (i <= j) {
+    while (array[i] <= pivot) {
+      i++;
+    }
+    while (array[j] > pivot) {
+      j--;
+    }
+    if (i < j) {
+      swap(array, i, j);
+    }
+  }
+  swap(array, start, j);
+  return j;
+}
+
+function quickSort(array, start = 0, end = array.length - 1) {
+  if (start < end) {
+    let index = partition(array, start, end);
+    quickSort(array, start, index - 1);
+    quickSort(array, index + 1, end);
+  }
+  return array;
+}
+
+let a = [8, 5, 2, 9, 5, 6, 3];
+let b = [1, 2, 3, 4, 5];
+let c = [5, 4, 3, 2, 1];
+console.log(quickSort(a)); // [2, 3, 5, 5, 6, 8, 9]
+console.log(quickSort(b)); // [1, 2, 3, 4, 5]
+console.log(quickSort(c)); // [1, 2, 3, 4, 5]
+```
