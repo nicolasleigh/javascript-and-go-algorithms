@@ -277,9 +277,9 @@ function checkIsomorphic(s, t) {
   return true;
 }
 
-console.log(checkIsomorphic('egg', 'add')); // true
-console.log(checkIsomorphic('foo', 'bar')); // false
-console.log(checkIsomorphic('paper', 'title')); // true
+console.log(checkIsomorphic("egg", "add")); // true
+console.log(checkIsomorphic("foo", "bar")); // false
+console.log(checkIsomorphic("paper", "title")); // true
 ```
 
 ### RECURSION
@@ -479,8 +479,8 @@ function findNonRepeatingCharacter(string) {
   return null;
 }
 
-let a = 'aabbcc';
-let b = 'abcAabc';
+let a = "aabbcc";
+let b = "abcAabc";
 console.log(findNonRepeatingCharacter(a)); // null
 console.log(findNonRepeatingCharacter(b)); // 3
 ```
@@ -500,7 +500,7 @@ You are given a string. Write a function to check whether the string is a palind
 // Method 1
 // Time: O(n^2) - Space: O(n)
 function isPalindromeCheck(string) {
-  let newStringtoCompare = ''; // String
+  let newStringtoCompare = ""; // String
   for (let i = string.length - 1; i >= 0; i--) {
     newStringtoCompare += string[i]; // strings are immutable in JS, so the operation of appending string takes O(n) time complexity
   }
@@ -515,7 +515,7 @@ function isPalindromeCheck(string) {
   for (let i = string.length - 1; i >= 0; i--) {
     newStringtoCompare.push(string[i]);
   }
-  if (newStringtoCompare.join('') === string) return true;
+  if (newStringtoCompare.join("") === string) return true;
   return false;
 }
 
@@ -532,8 +532,8 @@ function isPalindromeCheck(string) {
   return true;
 }
 
-let a = 'abcba';
-let b = 'aaced';
+let a = "abcba";
+let b = "aaced";
 console.log(isPalindromeCheck(a)); // true
 console.log(isPalindromeCheck(b)); // false
 ```
@@ -561,8 +561,8 @@ function maxLength(string) {
   return max;
 }
 
-console.log(maxLength('abcdb')); // 4 abcd
-console.log(maxLength('pqbrstbuvwpvy')); // 8 rstbuvwp
+console.log(maxLength("abcdb")); // 4 abcd
+console.log(maxLength("pqbrstbuvwpvy")); // 8 rstbuvwp
 ```
 
 #### Group Anagrams
@@ -574,17 +574,15 @@ Given an array of strings consisting of lower case English letters, group the an
 ```js
 // Time: O(s * nlogn) - Space: O(s * n) : s -> number of strings, n -> max number of characters in a string
 function groupAnagrams(strings) {
-  const sorted = strings.map((str) => str.split('').sort().join(''));
+  const sorted = strings.map((str) => str.split("").sort().join(""));
   const hashTable = {};
   for (let i = 0; i < strings.length; i++) {
-    hashTable[sorted[i]]
-      ? hashTable[sorted[i]].push(strings[i])
-      : (hashTable[sorted[i]] = [strings[i]]);
+    hashTable[sorted[i]] ? hashTable[sorted[i]].push(strings[i]) : (hashTable[sorted[i]] = [strings[i]]);
   }
   return Object.values(hashTable);
 }
 
-let a = ['eat', 'tea', 'tan', 'ate', 'nat', 'bat', 'tab'];
+let a = ["eat", "tea", "tan", "ate", "nat", "bat", "tab"];
 console.log(groupAnagrams(a));
 // [ [ 'eat', 'tea', 'ate' ], [ 'tan', 'nat' ], [ 'bat', 'tab' ] ]
 ```
@@ -1038,4 +1036,116 @@ function countingSort(array, place) {
 
 let a = [384, 73, 374, 183, 65, 247, 185];
 console.log(radixSort(a)); // [65, 73, 183, 185, 247, 374, 384]
+```
+
+### SINGLY LINKED LIST
+
+#### Construct SLL
+
+Design a Singly linked list class that has a head and tail. Every node is to have two attributes: **value**: the value of the current node, and **next**: a pointer to the next node. The linked list is to be 0-indexed. The class should support the following:
+
+- SinglyLinkedList() Initializes the SinglyLinkedList object.
+- get(index) Get the value of the index-th node. If the index is invalid, return -1.
+- addAtHead(value) - Add a node of given value before the first element of the linked list.
+- addAtTail(value) - Add a node of given value at the last element of the linked list.
+- addAtIndex(index, value) Add a node of given value before the index-th node in the linked list. If index equals the length of the linked list, the node will be appended to the end of the linked list. If index is greater than the length, don’t insert the node.
+- deleteAtIndex(index) Delete the index-th node in the linked list, if the index is valid, else nothing happens.
+
+```js
+class Node {
+  constructor(value) {
+    this.value = value;
+    this.next = null;
+  }
+}
+
+class SinglyLinkedList {
+  constructor() {
+    this.head = null;
+    this.tail = null;
+    this.size = 0;
+  }
+  get(index) {
+    if (index < 0 || index >= this.size) return -1;
+    let count = 0;
+    let current = this.head;
+    while (count != index) {
+      current = current.next;
+      count++;
+    }
+    return current;
+  }
+  addAtHead(value) {
+    const node = new Node(value);
+    if (!this.head) {
+      this.head = node;
+      this.tail = node;
+    } else {
+      node.next = this.head;
+      this.head = node;
+    }
+    this.size++;
+    return this;
+  }
+  addAtTail(value) {
+    const node = new Node(value);
+    if (!this.head) {
+      this.head = node;
+      this.tail = node;
+    } else {
+      this.tail.next = node;
+      this.tail = node;
+    }
+    this.size++;
+    return this;
+  }
+  addAtIndex(index, value) {
+    if (index < 0 || index > this.size) return "Invalid index!";
+    if (index === this.size) return this.addAtTail(value);
+    if (index === 0) return this.addAtHead(value);
+    const node = new Node(value); // 1->2->3->null  1->5->2->3->null
+    let prev = this.get(index - 1);
+    let temp = prev.next;
+    prev.next = node;
+    node.next = temp;
+    this.size++;
+    return this;
+  }
+  deleteAtIndex(index) {
+    if (index < 0 || index >= this.size) return "Invalid index!";
+    if (index === 0) {
+      // delete head
+      let temp = this.head;
+      this.head = temp.next;
+      this.size--;
+      if (this.size === 0) {
+        this.tail = null;
+      }
+      return temp;
+    }
+    if (index === this.size - 1) {
+      // delete tail
+      let oldTail = this.tail;
+      let newTail = this.get(index - 1);
+      this.tail = newTail;
+      newTail.next = null;
+      this.size--;
+      return oldTail;
+    }
+    // delete other node
+    let prev = this.get(index - 1);
+    let deletedNode = prev.next;
+    prev.next = deletedNode.next;
+    this.size--;
+    return deletedNode;
+  }
+}
+
+const sl = new SinglyLinkedList();
+sl.addAtHead(1);
+sl.addAtTail(2);
+sl.addAtIndex(2, 3);
+console.log(sl.get(2));
+console.log(sl.deleteAtIndex(0));
+console.log(sl);
 ```
