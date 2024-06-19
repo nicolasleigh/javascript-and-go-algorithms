@@ -1149,3 +1149,40 @@ console.log(sl.get(2));
 console.log(sl.deleteAtIndex(0));
 console.log(sl);
 ```
+
+#### Delete duplicates
+
+You are given the head of a Sorted Singly Linked list. Write a function that will take the given head as input, delete all nodes that have a value that is already the value of another node so that each value appears 1 time only and return the linked list, which is still to be a sorted linked list.
+
+```js
+// Time: O(n) - Space: O(1)
+function removeDuplicates(head) {
+  let curr = head;
+  while (curr) {
+    let temp = curr.next;
+    while (temp !== null && curr.val === temp.val) {
+      temp = temp.next;
+    }
+    curr.next = temp;
+    curr = temp;
+  }
+  return head;
+}
+
+// Test case
+class Node {
+  constructor(value) {
+    this.val = value;
+    this.next = null;
+  }
+}
+const head = new Node(1);
+head.next = new Node(2);
+head.next.next = new Node(2);
+head.next.next.next = new Node(3);
+head.next.next.next.next = new Node("a");
+head.next.next.next.next.next = new Node("a");
+// 1->2->2->3->a->a
+
+console.log(JSON.stringify(removeDuplicates(head))); // 1->2->3->a
+```
