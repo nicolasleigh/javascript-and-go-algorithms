@@ -1,29 +1,28 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"strings"
+)
 
 func myAtoi(s string) int {
-	maxInt, signAllowed, whitespaceAllowed, sign, digits := int64(1<<31), true, true, 1, []int{}
+	maxInt, signAllowed, sign, digits := int64(1<<31), true, 1, []int{}
+	s = strings.TrimSpace(s)
 	for _, c := range s {
-		if c == ' ' && whitespaceAllowed {
-			continue
-		}
 		if signAllowed {
 			if c == '+' {
 				signAllowed = false
-				whitespaceAllowed = false
 				continue
 			} else if c == '-' {
 				sign = -1
 				signAllowed = false
-				whitespaceAllowed = false
 				continue
 			}
 		}
 		if c < '0' || c > '9' {
 			break
 		}
-		whitespaceAllowed, signAllowed = false, false
+		signAllowed = false
 		digits = append(digits, int(c-48))
 	}
 	var place, num int64
@@ -57,9 +56,9 @@ func myAtoi(s string) int {
 	return int(num)
 }
 
-func main(){
+func main() {
 	// int32 -- (-2,147,483,648 to +2,147,483,647) -- (-2^31 to 2^31-1)
 	// int64 -- (-9,223,372,036,854,775,808 to +9,223,372,036,854,775,807) -- (-2^63 to 2^63-1)
- s :=	"10000000000522545459"
+	s := "10000000000522545459"
 	fmt.Println(myAtoi(s))
 }
