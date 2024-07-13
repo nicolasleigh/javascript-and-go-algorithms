@@ -39,7 +39,7 @@ func convert(s string, numRows int) string {
 	}
 	solution := make([]byte, 0, len(s))
 	for _, row := range matrix {
-			solution = append(solution, row...)
+		solution = append(solution, row...)
 	}
 	return string(solution)
 }

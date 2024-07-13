@@ -18,6 +18,6 @@ func intToRoman(num int) string {
 	return res
 }
 
-func main(){
+func main() {
 	fmt.Println(intToRoman(1380))
 }

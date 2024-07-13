@@ -28,6 +28,6 @@ func reverse(x int) int {
 	return tmp
 }
 
-func main(){
+func main() {
 	fmt.Println(reverse(-123))
 }

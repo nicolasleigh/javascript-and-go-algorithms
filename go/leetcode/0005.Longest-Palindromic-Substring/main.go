@@ -47,7 +47,7 @@ func maxPalindrome(s string, i, j int, res string) string {
 	return res
 }
 
-func main(){
+func main() {
 	res := longestPalindrome("babad")
 	fmt.Println(res)
 }
