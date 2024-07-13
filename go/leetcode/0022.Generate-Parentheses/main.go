@@ -25,5 +25,5 @@ func findGenerateParenthesis(l, r int, str string, res *[]string) {
 }
 
 func main() {
-	fmt.Println(generateParenthesis(2))
+	fmt.Println(generateParenthesis(3))
 }
