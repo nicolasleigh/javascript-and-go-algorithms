@@ -35,5 +35,5 @@ func removeNthFromEnd(head *ListNode, n int) *ListNode {
 
 func main() {
 	// fmt.Println(s.ListToInts(removeNthFromEnd(s.IntsToList([]int{1,2,3,4,5}),2)))
-	fmt.Println(s.ListToInts(removeNthFromEnd(s.IntsToList([]int{1}),1)))
+	fmt.Println(s.ListToInts(removeNthFromEnd(s.IntsToList([]int{1}), 1)))
 }

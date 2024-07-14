@@ -33,7 +33,7 @@ func mergeTwoLists(l1 *ListNode, l2 *ListNode) *ListNode {
 }
 
 func main() {
-	list1, list2 := []int{1,2,4}, []int{1,3,4}
+	list1, list2 := []int{1, 2, 4}, []int{1, 3, 4}
 	l1, l2 := s.IntsToList(list1), s.IntsToList(list2)
 	l := mergeTwoLists(l1, l2)
 	fmt.Println(s.ListToInts(l))
