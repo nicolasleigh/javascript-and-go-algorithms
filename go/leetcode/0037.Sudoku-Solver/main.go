@@ -57,8 +57,6 @@ func isValid(board [][]byte, row, col int, val byte) bool {
 	return true
 }
 
-
-
 func main() {
 	board := [][]byte{
 		{'5', '3', '.', '.', '7', '.', '.', '.', '.'},

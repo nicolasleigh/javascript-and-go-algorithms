@@ -16,5 +16,5 @@ func firstMissingPositive(nums []int) int {
 }
 
 func main() {
-	fmt.Println(firstMissingPositive([]int{1,3,2}))
+	fmt.Println(firstMissingPositive([]int{1, 3, 2}))
 }
