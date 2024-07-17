@@ -2,7 +2,7 @@ package main
 
 // Constraints: 1 <= n <= 45
 func climbStairs(n int) int {
-	dp := make([]int,50)
+	dp := make([]int, 50)
 	dp[1] = 1
 	dp[2] = 2
 	for i := 3; i <= n; i++ {
