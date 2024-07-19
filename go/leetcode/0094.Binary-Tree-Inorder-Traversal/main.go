@@ -24,7 +24,7 @@ func inorder(result *[]int, node *TreeNode) {
 	}
 
 	*result = append(*result, node.Val)
-	
+
 	if node.Right != nil {
 		inorder(result, node.Right)
 	}
