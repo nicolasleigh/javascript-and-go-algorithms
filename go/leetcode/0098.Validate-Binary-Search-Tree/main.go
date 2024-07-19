@@ -31,7 +31,7 @@ func inorder(arr *[]int, node *TreeNode) {
 	}
 
 	*arr = append(*arr, node.Val)
-	
+
 	if node.Right != nil {
 		inorder(arr, node.Right)
 	}

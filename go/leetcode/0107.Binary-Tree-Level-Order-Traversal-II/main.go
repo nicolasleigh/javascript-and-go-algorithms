@@ -6,22 +6,23 @@ import (
 
 type TreeNode = structures.TreeNode
 
-// Similar to 0102, simply change the return value
-func maxDepth1(root *TreeNode) int {
+// Similar to 0102
+func levelOrderBottom(root *TreeNode) [][]int {
 	var result [][]int
 	if root == nil {
-		return len(result)
+		return result
 	}
 
 	queue := []*TreeNode{root}
 
 	for len(queue) > 0 {
-		length := len(queue) // Assign queue's length to a variable
+		length := len(queue)
 		var temp []int
 
 		for i := 0; i < length; i++ {
 			node := queue[0]
 			queue = queue[1:]
+
 			temp = append(temp, node.Val)
 			if node.Left != nil {
 				queue = append(queue, node.Left)
@@ -31,15 +32,8 @@ func maxDepth1(root *TreeNode) int {
 			}
 		}
 
-		result = append(result, temp)
+		result = append([][]int{temp}, result...)
 	}
 
-	return len(result)
-}
-
-func maxDepth(root *TreeNode) int {
-	if root == nil {
-		return 0
-	}
-	return max(maxDepth(root.Left), maxDepth(root.Right)) + 1
+	return result
 }
