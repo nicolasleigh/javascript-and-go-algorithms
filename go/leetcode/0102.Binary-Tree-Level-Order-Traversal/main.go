@@ -6,7 +6,6 @@ import (
 	"github.com/NicolasLeigh/algorithms/structures"
 )
 
-// TreeNode represents a node in the binary tree
 type TreeNode = structures.TreeNode
 
 func levelOrder(root *TreeNode) [][]int {
