@@ -1,7 +1,6 @@
 package leetcode
 
 import (
-	"fmt"
 	"slices"
 	"testing"
 )
@@ -48,8 +47,6 @@ func TestProblem1(t *testing.T) {
 			want: []int{},
 		},
 	}
-
-	fmt.Printf("------------------------Leetcode Problem 1------------------------\n")
 
 	for _, v := range tests {
 		t.Run(v.name, func(t *testing.T) {
