@@ -22,6 +22,9 @@ Output: "A"
 */
 
 func convert(s string, numRows int) string {
+	if numRows == 1 {
+		return s
+	}
 	matrix, down, up := make([][]byte, numRows), 0, numRows-2
 	for i := 0; i != len(s); {
 		if down != numRows {
