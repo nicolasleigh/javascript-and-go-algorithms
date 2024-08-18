@@ -28,7 +28,9 @@ Output: "a"
 func longestPalindrome(s string) string {
 	res := ""
 	for i := 0; i < len(s); i++ {
+		// If the length of the palindrome is odd
 		res = maxPalindrome(s, i, i, res)
+		// If the length of the palindrome is even
 		res = maxPalindrome(s, i, i+1, res)
 	}
 	return res
