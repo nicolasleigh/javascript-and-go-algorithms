@@ -85,3 +85,92 @@ Since 4193 is in the range [-2<sup>31</sup>, 2<sup>31</sup> - 1], the final resu
 - [Reverse Integer (Medium)](https://leetcode.com/problems/reverse-integer/)
 - [Valid Number (Hard)](https://leetcode.com/problems/valid-number/)
 - [Check if Numbers Are Ascending in a Sentence (Easy)](https://leetcode.com/problems/check-if-numbers-are-ascending-in-a-sentence/)
+
+---
+
+Great question — the **"4. Check for overflow/underflow"** part is key to preventing incorrect results or runtime errors.
+
+Let’s take a closer look at this code:
+
+```js
+if (result > Math.floor((2 ** 31 - 1) / 10) || (result === Math.floor((2 ** 31 - 1) / 10) && digit > 7)) {
+  return sign === 1 ? 2 ** 31 - 1 : -(2 ** 31);
+}
+```
+
+---
+
+### 🔹 Why is overflow/underflow a problem?
+
+JavaScript can handle very large numbers, but **LeetCode limits the result to 32-bit signed integers**:
+
+- **Minimum**: −2³¹ = **−2147483648**
+- **Maximum**: 2³¹ − 1 = **2147483647**
+
+If the result goes **outside this range**, we need to **clamp it** to the min or max.
+
+---
+
+### 🔸 When can this happen?
+
+Since we’re building the number **digit by digit**, it may grow beyond 2147483647 or -2147483648 if we’re not careful. So we **check before adding the next digit**.
+
+---
+
+### 🔹 How the check works
+
+Suppose you're about to do:
+
+```js
+result = result * 10 + digit;
+```
+
+You must first make sure this operation **won’t overflow**.
+
+---
+
+#### ✅ Step-by-step logic
+
+We are safe **only if**:
+
+```js
+result * 10 + digit <= 2147483647   (if positive)
+```
+
+Instead of computing `result * 10 + digit` directly (which could already overflow), we reverse the logic:
+
+```js
+result <= Math.floor(2147483647 / 10);
+```
+
+- `Math.floor(2147483647 / 10)` → **214748364**
+
+If `result` is **greater than 214748364**, then multiplying it by 10 would already go over the limit.
+
+Also, if `result == 214748364`, then the **next digit** must be **≤ 7** (because 214748364 \* 10 + 7 = 2147483647 is OK, but +8 would overflow).
+
+That’s what this part does:
+
+```js
+result > 214748364 || (result === 214748364 && digit > 7);
+```
+
+So we return:
+
+```js
+sign === 1 ? 2147483647 : -2147483648;
+```
+
+---
+
+### 🔸 Summary
+
+| Check                                   | Purpose                                                   |
+| --------------------------------------- | --------------------------------------------------------- |
+| `result > 214748364`                    | Adding another digit will **definitely overflow**         |
+| `result === 214748364 && digit > 7`     | We're right at the edge — the digit will push it **over** |
+| `sign === 1 ? 2147483647 : -2147483648` | Clamp to the correct 32-bit signed int limit              |
+
+---
+
+Let me know if you want a version with logging or debugging output to better understand it step-by-step!

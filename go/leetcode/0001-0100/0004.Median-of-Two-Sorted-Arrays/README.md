@@ -42,3 +42,69 @@
 **Similar Questions**:
 
 - [Median of a Row Wise Sorted Matrix (Medium)](https://leetcode.com/problems/median-of-a-row-wise-sorted-matrix)
+
+---
+
+
+
+This solution solves the **"Median of Two Sorted Arrays"** problem in **logarithmic time** using **binary search**, and your confusion lies in:
+
+```js
+let k = Math.ceil((m + n) / 2);
+let nums2Mid = k - nums1Mid;
+```
+
+Let’s first understand the **goal**:
+
+---
+
+### 🔹 Goal: Find the Median of Two Sorted Arrays
+
+* When the combined length `(m + n)` is **odd**, the **median** is the `k`-th smallest number.
+* When `(m + n)` is **even**, the **median** is the **average** of the `k`-th and `(k+1)`-th smallest numbers.
+
+In both cases, the **median lies around the middle**, so this solution tries to **find the k-th smallest element** in the merged array, without actually merging them.
+
+---
+
+### 🔹 Why `let k = Math.ceil((m + n) / 2);`
+
+We are performing binary search to find the correct partition between `nums1` and `nums2` such that:
+
+* The **left half** contains `k` elements.
+* The **right half** contains the rest.
+
+We want to divide the combined arrays into **two halves**, such that:
+
+* All elements on the **left** are less than or equal to all elements on the **right**.
+* The **left half has k elements**.
+
+So `k = Math.ceil((m + n) / 2)` is the **target number of elements** on the left side.
+
+> Even if the total length is even, we use `ceil()` because later we handle the even case by taking average of middle two numbers.
+
+---
+
+### 🔹 Why `let nums2Mid = k - nums1Mid;`
+
+We are **binary searching** in `nums1` to find the correct number of elements to take from it (`nums1Mid`), so that the total left side (nums1 + nums2) has exactly `k` elements.
+
+Hence:
+
+```js
+nums2Mid = k - nums1Mid;
+```
+
+This ensures that the total number of elements taken from `nums1` and `nums2` for the **left half** is exactly `k`.
+
+---
+
+### 🔸 Summary
+
+* `k = Math.ceil((m + n) / 2)` → number of elements we want on the **left side** of the combined arrays.
+* `nums1Mid = guess of how many elements to take from nums1`.
+* `nums2Mid = k - nums1Mid` → the rest comes from nums2.
+
+This setup lets the algorithm **partition both arrays correctly** and find the median in `O(log(min(m, n)))` time.
+
+Let me know if you'd like a **step-by-step example** to see how this works in practice.

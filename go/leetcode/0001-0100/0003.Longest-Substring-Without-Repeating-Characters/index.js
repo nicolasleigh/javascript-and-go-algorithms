@@ -3,6 +3,7 @@
  * @return {number}
  */
 
+// Sliding window
 function lengthOfLongestSubstring(s) {
   if (s.length === 0) {
     return 0;
