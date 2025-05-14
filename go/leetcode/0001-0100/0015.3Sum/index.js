@@ -1,50 +1,42 @@
 // 15. 3Sum
 // https://leetcode.com/problems/3sum/description/
-
 /**
  * @param {number[]} nums
  * @return {number[][]}
  */
-var threeSum = function (nums) {
+function threeSum(nums) {
+  const result = [];
+  const n = nums.length;
+  if (n < 3) return result;
+
   nums.sort((a, b) => a - b);
-  let answer = [];
 
-  if (nums.length < 3) {
-    return answer;
-  }
+  for (let i = 0; i < n - 2; i++) {
+    // Skip duplicates for i
+    if (i > 0 && nums[i] === nums[i - 1]) continue;
+    // If the current number is greater than 0, break (can't make 0 with positive numbers)
+    if (nums[i] > 0) break;
 
-  for (let i = 0; i < nums.length; i++) {
-    if (nums[i] > 0) {
-      break;
-    }
+    let left = i + 1;
+    let right = n - 1;
 
-    if (i > 0 && nums[i] === nums[i - 1]) {
-      continue;
-    }
+    while (left < right) {
+      const sum = nums[i] + nums[left] + nums[right];
 
-    let low = i + 1;
-    let high = nums.length - 1;
-
-    while (low < high) {
-      const sum = nums[i] + nums[low] + nums[high];
-      if (sum > 0) {
-        high--;
+      if (sum === 0) {
+        result.push([nums[i], nums[left], nums[right]]);
+        // Skip duplicates for left and right
+        while (left < right && nums[left] === nums[left + 1]) left++;
+        while (left < right && nums[right] === nums[right - 1]) right--;
+        left++;
+        right--;
       } else if (sum < 0) {
-        low++;
+        left++;
       } else {
-        answer.push([nums[i], nums[low], nums[high]]);
-        let lastLow = nums[low];
-        let lastHigh = nums[high];
-
-        do {
-          low++;
-        } while (low < high && nums[low] === lastLow);
-
-        do {
-          high--;
-        } while (low < high && nums[high] === lastHigh);
+        right--;
       }
     }
   }
-  return answer;
-};
+
+  return result;
+}
