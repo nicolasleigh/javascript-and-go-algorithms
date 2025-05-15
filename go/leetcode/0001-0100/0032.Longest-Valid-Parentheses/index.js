@@ -1,3 +1,8 @@
+/**
+ * @param {string} s
+ * @return {number}
+ */
+
 // Solution 1: Stack
 var longestValidParentheses = function (s) {
   let stack = [-1]; // Stack stores indices, initialize with -1 to handle edge cases
