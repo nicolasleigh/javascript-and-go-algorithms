@@ -37,3 +37,24 @@ var jump = function (nums) {
 
   return timesOfJump;
 };
+
+var jump = function (nums) {
+  if (nums.length === 1) return 0;
+
+  let steps = 0;
+  let canReach = 0;
+  let needChoose = 0;
+
+  for (let i = 0; i < nums.length; i++) {
+    canReach = Math.max(canReach, i + nums[i]);
+    if (canReach >= nums.length - 1) {
+      return steps + 1;
+    }
+    if (i === needChoose) {
+      needChoose = canReach;
+      steps++;
+    }
+  }
+
+  return steps;
+};
