@@ -29,3 +29,25 @@ var uniquePaths = function (m, n) {
   }
   return dp[m - 1][n - 1];
 };
+
+var uniquePaths = function (m, n) {
+  // Initialize a 2D array `dp` with dimensions m x n
+  const dp = new Array(m).fill(0).map(() => new Array(n).fill(0));
+
+  // Base case: there's only 1 way to reach any cell in the first row or first column
+  for (let i = 0; i < m; i++) {
+    dp[i][0] = 1;
+  }
+  for (let j = 0; j < n; j++) {
+    dp[0][j] = 1;
+  }
+
+  // Fill the rest of the dp table
+  for (let i = 1; i < m; i++) {
+    for (let j = 1; j < n; j++) {
+      dp[i][j] = dp[i - 1][j] + dp[i][j - 1];
+    }
+  }
+
+  return dp[m - 1][n - 1];
+};
