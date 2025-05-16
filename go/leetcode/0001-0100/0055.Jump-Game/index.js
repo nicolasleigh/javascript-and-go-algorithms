@@ -27,3 +27,15 @@ var canJump = function (nums) {
   }
   return true;
 };
+
+// Solution 2 - Greedy
+var canJump = function (nums) {
+  let farthest = 0;
+
+  for (let i = 0; i < nums.length; i++) {
+    if (i > farthest) return false; // can't reach this index
+    farthest = Math.max(farthest, i + nums[i]);
+  }
+
+  return true;
+};
