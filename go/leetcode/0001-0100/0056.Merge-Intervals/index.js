@@ -11,7 +11,7 @@ var merge = function (intervals) {
   let prev = intervals[0];
   let res = [];
 
-  for (let i = 0; i < intervals.length; i++) {
+  for (let i = 1; i < intervals.length; i++) {
     let cur = intervals[i];
     if (cur[0] > prev[1]) {
       res.push(prev);
