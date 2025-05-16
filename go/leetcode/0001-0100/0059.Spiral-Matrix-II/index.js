@@ -45,6 +45,48 @@ function spiralMatrix2(n) {
   return result;
 }
 
+// Solution 2
+/**
+ * @param {number} n
+ * @return {number[][]}
+ */
+var generateMatrix = function (n) {
+  const res = Array.from({ length: n }, () => Array(n).fill(0));
+  let num = 1,
+    left = 0,
+    right = n - 1,
+    top = 0,
+    bottom = n - 1;
+
+  while (left <= right && top <= bottom) {
+    // Left → Right
+    for (let col = left; col <= right; col++) {
+      res[top][col] = num++;
+    }
+    top++;
+
+    // Top ↓ Bottom
+    for (let row = top; row <= bottom; row++) {
+      res[row][right] = num++;
+    }
+    right--;
+
+    // Right ← Left
+    for (let col = right; col >= left; col--) {
+      res[bottom][col] = num++;
+    }
+    bottom--;
+
+    // Bottom ↑ Top
+    for (let row = bottom; row >= top; row--) {
+      res[row][left] = num++;
+    }
+    left++;
+  }
+
+  return res;
+};
+
 console.log(spiralMatrix2(3));
 console.log(spiralMatrix2(4));
 console.log(spiralMatrix2(5));
