@@ -33,7 +33,7 @@ var getPermutation = function (n, k) {
   return result;
 };
 
-// Solution 2
+// Solution 2 - Brute Force
 function getPermutation(n, k) {
   const nums = Array.from({ length: n }, (_, i) => i + 1);
   const used = new Array(n).fill(false);
