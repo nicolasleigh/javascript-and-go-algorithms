@@ -7,6 +7,7 @@
  * @return {number}
  */
 var minDistance = function (word1, word2) {
+  // dp[i][j] means the minimum number of operations to convert word1[0...i-1] to word2[0...j-1].
   let dp = Array(word1.length + 1)
     .fill()
     .map(() => Array(word2.length + 1).fill(0));
