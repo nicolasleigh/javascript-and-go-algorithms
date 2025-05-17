@@ -61,6 +61,8 @@ var largestRectangleArea = function (heights) {
 var largestRectangleArea = function (heights) {
   let stack = [];
   let maxArea = 0;
+
+  // Prepend and append 0 to handle edge boundaries
   heights.push(0);
   heights.unshift(0); // Different
 
