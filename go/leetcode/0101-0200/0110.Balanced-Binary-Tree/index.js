@@ -27,3 +27,20 @@ var isBalanced = function (root) {
   }
   return getDepth(root) !== -1;
 };
+
+// Solution 2
+// Main function to check if the tree is balanced
+var isBalanced = function (root) {
+  if (!root) return true;
+
+  const leftHeight = maxDepth(root.left);
+  const rightHeight = maxDepth(root.right);
+
+  return Math.abs(leftHeight - rightHeight) <= 1 && isBalanced(root.left) && isBalanced(root.right);
+};
+
+// Helper function to get the depth of a tree (same as problem 104)
+function maxDepth(root) {
+  if (!root) return 0;
+  return Math.max(maxDepth(root.left), maxDepth(root.right)) + 1;
+}
