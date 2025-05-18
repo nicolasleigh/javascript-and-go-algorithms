@@ -37,3 +37,39 @@ var minDepth = function (root) {
   }
   return result.length; // return the length of the result array
 };
+
+// Solution 2
+var minDepth = function (root) {
+  if (!root) return 0;
+
+  let queue = [{ node: root, depth: 1 }];
+
+  while (queue.length) {
+    const { node, depth } = queue.shift();
+
+    // If we find a leaf node, return its depth
+    if (!node.left && !node.right) {
+      return depth;
+    }
+
+    if (node.left) queue.push({ node: node.left, depth: depth + 1 });
+    if (node.right) queue.push({ node: node.right, depth: depth + 1 });
+  }
+};
+
+// Solution 3
+var minDepth = function (root) {
+  if (root === null) {
+    return 0;
+  }
+
+  if (root.left === null) {
+    return minDepth(root.right) + 1;
+  }
+
+  if (root.right === null) {
+    return minDepth(root.left) + 1;
+  }
+
+  return Math.min(minDepth(root.left), minDepth(root.right)) + 1;
+};
