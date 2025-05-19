@@ -13,20 +13,26 @@
  * @param {ListNode} head
  * @return {ListNode}
  */
+
 var detectCycle = function (head) {
   let slow = head;
   let fast = head;
-  while (fast && fast.next && fast.next.next) {
+
+  // Step 1: Detect if a cycle exists
+  while (fast !== null && fast.next !== null) {
     slow = slow.next;
     fast = fast.next.next;
+
     if (slow === fast) {
-      slow = head;
-      while (slow !== fast) {
+      // Step 2: Find the start of the cycle
+      let entry = head;
+      while (entry !== slow) {
+        entry = entry.next;
         slow = slow.next;
-        fast = fast.next;
       }
-      return slow;
+      return entry;
     }
   }
-  return null;
+
+  return null; // No cycle
 };
