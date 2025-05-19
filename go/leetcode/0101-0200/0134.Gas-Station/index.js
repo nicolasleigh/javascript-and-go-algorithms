@@ -6,6 +6,7 @@
  * @param {number[]} cost
  * @return {number}
  */
+// Greedy
 var canCompleteCircuit = function (gas, cost) {
   let start = 0;
   let rest = 0;
