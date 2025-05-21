@@ -1,5 +1,3 @@
-// 203. Remove Linked List Elements
-
 /**
  * Definition for singly-linked list.
  * function ListNode(val, next) {
@@ -27,3 +25,23 @@ var removeElements = function (head, val) {
   }
   return head;
 };
+
+// Solution 2
+function removeElements(head, val) {
+  const dummy = new ListNode(0); // dummy node before head
+  dummy.next = head;
+
+  let prev = dummy;
+  let curr = head;
+
+  while (curr !== null) {
+    if (curr.val === val) {
+      prev.next = curr.next; // remove current node
+    } else {
+      prev = curr; // move prev only when not removing
+    }
+    curr = curr.next;
+  }
+
+  return dummy.next;
+}
