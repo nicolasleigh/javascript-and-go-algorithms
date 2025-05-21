@@ -1,6 +1,3 @@
-// 199. Binary Tree Right Side View
-// https://leetcode.com/problems/binary-tree-right-side-view/description/
-
 /**
  * Definition for a binary tree node.
  * function TreeNode(val, left, right) {
@@ -30,5 +27,49 @@ var rightSideView = function (root) {
     }
     result.push(temp.at(-1)); // push the last element of the temp array
   }
+  return result;
+};
+
+// BFS
+var rightSideView = function (root) {
+  if (!root) return [];
+
+  const queue = [root];
+  const result = [];
+
+  while (queue.length > 0) {
+    let levelSize = queue.length;
+    let rightMost = null;
+
+    for (let i = 0; i < levelSize; i++) {
+      const node = queue.shift();
+
+      if (node.left) queue.push(node.left);
+      if (node.right) queue.push(node.right);
+
+      rightMost = node; // last node in the level
+    }
+
+    result.push(rightMost.val);
+  }
+
+  return result;
+};
+
+// DFS (Preorder, Right First)
+var rightSideView = function (root) {
+  const result = [];
+
+  const dfs = (node, level) => {
+    if (!node) return;
+    if (level === result.length) {
+      result.push(node.val);
+    }
+
+    dfs(node.right, level + 1); // right first
+    dfs(node.left, level + 1);
+  };
+
+  dfs(root, 0);
   return result;
 };
