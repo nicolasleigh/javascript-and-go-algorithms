@@ -1,5 +1,3 @@
-// 209. Minimum Size Subarray Sum
-
 function minSubArrayLen(target, arr) {
   //sliding window, BUT the window size is not fixed
   let windowSum = 0;
