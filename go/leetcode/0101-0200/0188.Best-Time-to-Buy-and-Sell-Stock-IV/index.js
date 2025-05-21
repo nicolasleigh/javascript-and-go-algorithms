@@ -1,6 +1,3 @@
-// 188. Best Time to Buy and Sell Stock IV
-// https://leetcode.com/problems/best-time-to-buy-and-sell-stock-iv/description/
-
 /**
  * @param {number} k
  * @param {number[]} prices
@@ -19,3 +16,34 @@ var maxProfit = function (k, prices) {
   }
   return dp[2 * k];
 };
+
+// Solution 2
+function maxProfit(k, prices) {
+  if (prices.length === 0) return 0;
+
+  // buy[i]: the max profit after buying the i-th stock (i.e., i-th transaction's buy).
+  // sell[i]: the max profit after selling the i-th stock (i.e., i-th transaction's sell).
+  const buy = new Array(k + 1).fill(-Infinity);
+  const sell = new Array(k + 1).fill(0);
+
+  // Greedy case: as many transactions as we want
+  if (k >= Math.floor(prices.length / 2)) {
+    let profit = 0;
+    for (let i = 1; i < prices.length; i++) {
+      if (prices[i] > prices[i - 1]) {
+        profit += prices[i] - prices[i - 1];
+      }
+    }
+    return profit;
+  }
+
+  // DP approach
+  for (const price of prices) {
+    for (let i = 1; i <= k; i++) {
+      buy[i] = Math.max(buy[i], sell[i - 1] - price);
+      sell[i] = Math.max(sell[i], buy[i] + price);
+    }
+  }
+
+  return sell[k];
+}
