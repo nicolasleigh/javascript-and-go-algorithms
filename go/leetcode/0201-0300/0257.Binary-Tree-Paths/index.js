@@ -1,6 +1,3 @@
-// 257. Binary Tree Paths
-// https://leetcode.com/problems/binary-tree-paths/description/
-
 /**
  * Definition for a binary tree node.
  * function TreeNode(val, left, right) {
@@ -27,6 +24,31 @@ var binaryTreePaths = function (root) {
     }
   }
   preOrder(root, []);
-  let ans = paths.map((path) => path.join('->'));
+  let ans = paths.map((path) => path.join("->"));
   return ans;
 };
+
+function binaryTreePaths(root) {
+  const paths = [];
+
+  function dfs(node, path) {
+    if (!node) return;
+
+    // Add current node value to path
+    path += node.val;
+
+    // If it's a leaf, add the complete path
+    if (!node.left && !node.right) {
+      paths.push(path);
+      return;
+    }
+
+    // If not a leaf, continue DFS with '->' separator
+    path += "->";
+    dfs(node.left, path);
+    dfs(node.right, path);
+  }
+
+  dfs(root, "");
+  return paths;
+}
