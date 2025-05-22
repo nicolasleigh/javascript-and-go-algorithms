@@ -1,6 +1,3 @@
-// 222. Count Complete Tree Nodes
-// https://leetcode.com/problems/count-complete-tree-nodes/description/
-
 /**
  * Definition for a binary tree node.
  * function TreeNode(val, left, right) {
@@ -16,9 +13,12 @@
 var countNodes = function (root) {
   const getNodeSum = function (node) {
     if (!node) return 0;
+
     let leftNum = getNodeSum(node.left);
     let rightNum = getNodeSum(node.right);
+
     return leftNum + rightNum + 1;
   };
+
   return getNodeSum(root);
 };
