@@ -1,6 +1,3 @@
-// 216. Combination Sum III
-// https://leetcode.com/problems/combination-sum-iii/description/
-
 /**
  * @param {number} k
  * @param {number} n
