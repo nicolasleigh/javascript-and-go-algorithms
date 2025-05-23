@@ -1,6 +1,3 @@
-// 322. Coin Change
-// https://leetcode.com/problems/coin-change/description/
-
 /**
  * @param {number[]} coins
  * @param {number} amount
