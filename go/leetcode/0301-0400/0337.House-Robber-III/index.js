@@ -1,6 +1,3 @@
-// 337. House Robber III
-// https://leetcode.com/problems/house-robber-iii/description/
-
 /**
  * Definition for a binary tree node.
  * function TreeNode(val, left, right) {
