@@ -1,6 +1,3 @@
-// 377. Combination Sum IV
-// https://leetcode.com/problems/combination-sum-iv/description/
-
 /**
  * @param {number[]} nums
  * @param {number} target
@@ -46,3 +43,20 @@ var combinationSum4 = function (nums, target) {
   }
   return dp[target];
 };
+
+function combinationSum4(nums, target) {
+  // dp[i] means the number of combinations to get sum i.
+  const dp = new Array(target + 1).fill(0);
+  dp[0] = 1; // One way to make target 0 (choose nothing)
+
+  for (let i = 1; i <= target; i++) {
+    for (const num of nums) {
+      // If i - num >= 0, we can use num to build up to i.
+      if (i - num >= 0) {
+        dp[i] += dp[i - num]; // not use num + use num
+      }
+    }
+  }
+
+  return dp[target];
+}
