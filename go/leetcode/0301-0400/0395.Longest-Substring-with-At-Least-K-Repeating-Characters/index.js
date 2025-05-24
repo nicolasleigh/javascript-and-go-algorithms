@@ -1,3 +1,9 @@
+/**
+ * @param {string} s
+ * @param {number} k
+ * @return {number}
+ */
+
 var longestSubstring = function (s, k) {
   if (s.length === 0 || k > s.length) return 0;
 
