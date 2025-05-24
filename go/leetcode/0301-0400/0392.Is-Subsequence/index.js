@@ -1,6 +1,3 @@
-// 392. Is Subsequence
-// https://leetcode.com/problems/is-subsequence/description/
-
 /**
  * @param {string} s
  * @param {string} t
