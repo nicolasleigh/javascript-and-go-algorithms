@@ -1,6 +1,3 @@
-// 404. Sum of Left Leaves
-// https://leetcode.com/problems/sum-of-left-leaves/description/
-
 /**
  * Definition for a binary tree node.
  * function TreeNode(val, left, right) {
@@ -28,3 +25,19 @@ function dfs(node, isLeft) {
   let rightSum = dfs(node.right, false);
   return leftSum + rightSum;
 }
+
+// Solution 2
+var sumOfLeftLeaves = function (root) {
+  if (!root) return 0;
+
+  let sum = 0;
+
+  if (root.left && !root.left.left && !root.left.right) {
+    sum += root.left.val;
+  }
+
+  sum += sumOfLeftLeaves(root.left);
+  sum += sumOfLeftLeaves(root.right);
+
+  return sum;
+};
