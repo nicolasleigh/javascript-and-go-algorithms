@@ -1,6 +1,3 @@
-// 376. Wiggle Subsequence
-// https://leetcode.com/problems/wiggle-subsequence/description/
-
 /**
  * @param {number[]} nums
  * @return {number}
@@ -21,3 +18,24 @@ var wiggleMaxLength = function (nums) {
   }
   return result;
 };
+
+// Greedy
+// up tracks the longest subsequence ending with an upward wiggle.
+// down tracks the longest subsequence ending with a downward wiggle.
+// Every time you see an up, you can extend a previous down subsequence and vice versa.
+function wiggleMaxLength(nums) {
+  if (nums.length < 2) return nums.length;
+
+  let up = 1;
+  let down = 1;
+
+  for (let i = 1; i < nums.length; i++) {
+    if (nums[i] > nums[i - 1]) {
+      up = down + 1;
+    } else if (nums[i] < nums[i - 1]) {
+      down = up + 1;
+    }
+  }
+
+  return Math.max(up, down);
+}
