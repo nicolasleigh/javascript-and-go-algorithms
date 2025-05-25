@@ -1,6 +1,3 @@
-// 416. Partition Equal Subset Sum
-// https://leetcode.com/problems/partition-equal-subset-sum/description/
-
 /**
  * @param {number[]} nums
  * @return {boolean}
@@ -25,4 +22,23 @@ var canPartition = function (nums) {
   }
 
   return row[sum / 2];
+};
+
+// 0/1 Knapsack
+var canPartition = function (nums) {
+  const total = nums.reduce((acc, num) => acc + num, 0);
+  if (total % 2 !== 0) return false;
+
+  const target = total / 2;
+  // dp[i] means: Can we reach sum i using some subset?
+  const dp = new Array(target + 1).fill(false);
+  dp[0] = true;
+
+  for (const num of nums) {
+    for (let i = target; i >= num; i--) {
+      dp[i] = dp[i] || dp[i - num];
+    }
+  }
+
+  return dp[target];
 };
