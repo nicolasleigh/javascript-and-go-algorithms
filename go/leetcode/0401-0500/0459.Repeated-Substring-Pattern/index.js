@@ -1,6 +1,3 @@
-// 459. Repeated Substring Pattern
-// https://leetcode.com/problems/repeated-substring-pattern/description/
-
 /**
  * @param {string} s
  * @return {boolean}
