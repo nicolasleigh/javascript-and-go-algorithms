@@ -1,6 +1,3 @@
-// 450. Delete Node in a BST
-// https://leetcode.com/problems/delete-node-in-a-bst/description/
-
 /**
  * Definition for a binary tree node.
  * function TreeNode(val, left, right) {
@@ -44,3 +41,29 @@ var deleteNode = function (root, key) {
   root.right = deleteNode(root.right, temp.val);
   return root;
 };
+
+var deleteNode = function (root, key) {
+  if (!root) return null;
+
+  if (key < root.val) {
+    root.left = deleteNode(root.left, key);
+  } else if (key > root.val) {
+    root.right = deleteNode(root.right, key);
+  } else {
+    // Found the node to delete
+    if (!root.left) return root.right;
+    if (!root.right) return root.left;
+
+    // Case 3: Two children - find in-order successor
+    let successor = findMin(root.right);
+    root.val = successor.val; // Copy successor's value to root
+    root.right = deleteNode(root.right, successor.val); // Delete successor
+  }
+
+  return root;
+};
+
+function findMin(node) {
+  while (node.left) node = node.left;
+  return node;
+}
