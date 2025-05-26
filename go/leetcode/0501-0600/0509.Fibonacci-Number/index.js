@@ -1,6 +1,3 @@
-// 509. Fibonacci Number
-// https://leetcode.com/problems/fibonacci-number/description/
-
 /**
  * @param {number} n
  * @return {number}

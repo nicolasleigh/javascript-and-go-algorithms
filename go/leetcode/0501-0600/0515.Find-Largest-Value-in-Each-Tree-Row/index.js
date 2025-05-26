@@ -1,6 +1,3 @@
-// 515. Find Largest Value in Each Tree Row
-// https://leetcode.com/problems/find-largest-value-in-each-tree-row/description/
-
 /**
  * Definition for a binary tree node.
  * function TreeNode(val, left, right) {
@@ -14,21 +11,20 @@
  * @return {number[]}
  */
 var largestValues = function (root) {
-  let result = [];
-  let queue = [];
-  queue.push(root);
   if (!root) return [];
+  let result = [];
+  let queue = [root];
 
-  while (queue.length) {
+  while (queue.length > 0) {
     let length = queue.length; // important to store the length of the queue
-    let temp = [];
+    let level = [];
     for (let i = 0; i < length; i++) {
       let node = queue.shift();
-      temp.push(node.val);
+      level.push(node.val);
       if (node.left) queue.push(node.left);
       if (node.right) queue.push(node.right);
     }
-    let max = Math.max(...temp); // find the max value of the temp array
+    let max = Math.max(...level); // find the max value of the level array
     result.push(max);
   }
   return result;

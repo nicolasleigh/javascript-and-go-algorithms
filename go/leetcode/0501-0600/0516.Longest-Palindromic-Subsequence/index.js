@@ -1,6 +1,3 @@
-// 516. Longest Palindromic Subsequence
-// https://leetcode.com/problems/longest-palindromic-subsequence/description/
-
 /**
  * @param {string} s
  * @return {number}
