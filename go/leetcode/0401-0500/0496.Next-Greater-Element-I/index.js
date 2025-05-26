@@ -1,5 +1,3 @@
-// 496. Next Greater Element I
-// https://leetcode.com/problems/next-greater-element-i/description/
 // https://leetcode.com/problems/next-greater-element-i/solutions/97595/java-10-lines-linear-time-complexity-o-n-with-explanation/
 /**
  * @param {number[]} nums1
@@ -27,4 +25,26 @@ var nextGreaterElement = function (nums1, nums2) {
   }
 
   return nums1;
+};
+
+/**
+ * @param {number[]} nums1
+ * @param {number[]} nums2
+ * @return {number[]}
+ */
+var nextGreaterElement = function (nums1, nums2) {
+  const stack = [];
+  const map = new Map(); // maps num -> next greater num
+
+  for (let num of nums2) {
+    // Stack stores elements for which we haven't found the next greater
+    while (stack.length && stack[stack.length - 1] < num) {
+      let prev = stack.pop();
+      map.set(prev, num); // current num is the next greater for prev
+    }
+    stack.push(num);
+  }
+
+  // Build result for nums1 based on precomputed map
+  return nums1.map((num) => map.get(num) ?? -1);
 };
