@@ -1,6 +1,3 @@
-// 494. Target Sum
-// https://leetcode.com/problems/target-sum/description/
-
 /**
  * @param {number[]} nums
  * @param {number} target
@@ -58,4 +55,34 @@ var findTargetSumWays = function (nums, target) {
   }
 
   return dp[l];
+};
+
+/**
+ * @param {number[]} nums
+ * @param {number} target
+ * @return {number}
+ */
+// Memoization - Top-down DP
+var findTargetSumWays = function (nums, target) {
+  const memo = new Map();
+
+  function dfs(index, currentSum) {
+    const key = `${index},${currentSum}`;
+    if (memo.has(key)) {
+      return memo.get(key);
+    }
+
+    if (index === nums.length) {
+      return currentSum === target ? 1 : 0;
+    }
+
+    const add = dfs(index + 1, currentSum + nums[index]);
+    const subtract = dfs(index + 1, currentSum - nums[index]);
+
+    const result = add + subtract;
+    memo.set(key, result);
+    return result;
+  }
+
+  return dfs(0, 0);
 };

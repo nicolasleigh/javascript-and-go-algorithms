@@ -1,6 +1,3 @@
-// 491. Non-decreasing Subsequences
-// https://leetcode.com/problems/non-decreasing-subsequences/description/
-
 /**
  * @param {number[]} nums
  * @return {number[][]}
