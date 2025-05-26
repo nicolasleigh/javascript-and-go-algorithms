@@ -1,6 +1,3 @@
-// 503. Next Greater Element II
-// https://leetcode.com/problems/next-greater-element-ii/description/
-
 /**
  * @param {number[]} nums
  * @return {number[]}
@@ -39,5 +36,31 @@ var nextGreaterElements = function (nums) {
     }
     stack.push(i % len);
   }
+  return res;
+};
+
+/**
+ * @param {number[]} nums
+ * @return {number[]}
+ */
+var nextGreaterElements = function (nums) {
+  const n = nums.length;
+  const res = new Array(n).fill(-1);
+  const stack = []; // stores indices
+
+  for (let i = 0; i < 2 * n; i++) {
+    const num = nums[i % n];
+
+    while (stack.length && nums[stack[stack.length - 1]] < num) {
+      const idx = stack.pop();
+      res[idx] = num;
+    }
+
+    // Only push index during first round
+    if (i < n) {
+      stack.push(i);
+    }
+  }
+
   return res;
 };
