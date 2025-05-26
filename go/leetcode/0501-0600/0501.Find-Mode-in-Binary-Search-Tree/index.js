@@ -1,6 +1,3 @@
-// 501. Find Mode in Binary Search Tree
-// https://leetcode.com/problems/find-mode-in-binary-search-tree/description/
-
 /**
  * Definition for a binary tree node.
  * function TreeNode(val, left, right) {
@@ -20,7 +17,8 @@ var findMode = function (root) {
 
   const traversal = function (root) {
     root.left && traversal(root.left);
-    map.set(root.val, map.has(root.val) ? map.get(root.val) + 1 : 1);
+    // map.set(root.val, map.has(root.val) ? map.get(root.val) + 1 : 1);
+    map.set(root.val, (map.get(root.val) || 0) + 1);
     root.right && traversal(root.right);
   };
 
@@ -36,4 +34,41 @@ var findMode = function (root) {
     }
   }
   return result;
+};
+
+/**
+ * @param {TreeNode} root
+ * @return {number[]}
+ */
+var findMode = function (root) {
+  let currentVal = null;
+  let currentCount = 0;
+  let maxCount = 0;
+  const modes = [];
+
+  const inOrder = (node) => {
+    if (!node) return;
+
+    inOrder(node.left);
+
+    if (node.val === currentVal) {
+      currentCount++;
+    } else {
+      currentVal = node.val;
+      currentCount = 1;
+    }
+
+    if (currentCount > maxCount) {
+      maxCount = currentCount;
+      modes.length = 0; // reset
+      modes.push(currentVal);
+    } else if (currentCount === maxCount) {
+      modes.push(currentVal);
+    }
+
+    inOrder(node.right);
+  };
+
+  inOrder(root);
+  return modes;
 };
