@@ -1,7 +1,4 @@
-// 530. Minimum Absolute Difference in BST
 // Similar to the "98. Validate Binary Search Tree"
-// https://leetcode.com/problems/minimum-absolute-difference-in-bst/description/
-
 /**
  * Definition for a binary tree node.
  * function TreeNode(val, left, right) {
