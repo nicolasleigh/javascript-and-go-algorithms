@@ -1,6 +1,3 @@
-// 538. Convert BST to Greater Tree
-// https://leetcode.com/problems/convert-bst-to-greater-tree/description/
-
 /**
  * Definition for a binary tree node.
  * function TreeNode(val, left, right) {
