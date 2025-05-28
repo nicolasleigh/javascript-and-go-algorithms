@@ -1,6 +1,3 @@
-// 714. Best Time to Buy and Sell Stock with Transaction Fee
-// https://leetcode.com/problems/best-time-to-buy-and-sell-stock-with-transaction-fee/description/
-
 /**
  * @param {number[]} prices
  * @param {number} fee
@@ -9,8 +6,8 @@
 // s0 --buy--> s1
 // s1 --sell--> s0
 var maxProfit = function (prices, fee) {
-  let s0 = [];
-  let s1 = [];
+  let s0 = []; // Not hold stock
+  let s1 = []; // Hold stock
 
   s0[0] = 0;
   s1[0] = -prices[0];
@@ -21,4 +18,20 @@ var maxProfit = function (prices, fee) {
     s1[i] = Math.max(s1[i - 1], s0[i - 1] - prices[i]);
   }
   return s0[prices.length - 1];
+};
+
+var maxProfit = function (prices, fee) {
+  let n = prices.length;
+  let hold = -prices[0]; // max profit while holding a stock
+  let cash = 0; // max profit while not holding a stock
+
+  for (let i = 1; i < n; i++) {
+    let prevHold = hold;
+    let prevCash = cash;
+
+    hold = Math.max(prevHold, prevCash - prices[i]);
+    cash = Math.max(prevCash, prevHold + prices[i] - fee);
+  }
+
+  return cash;
 };

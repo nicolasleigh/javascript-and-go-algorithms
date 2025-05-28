@@ -1,6 +1,3 @@
-// 707. Design Linked List
-// https://leetcode.com/problems/design-linked-list/
-
 var MyLinkedList = function () {
   this.head = null;
   this.tail = null;

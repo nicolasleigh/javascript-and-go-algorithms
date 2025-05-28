@@ -1,6 +1,3 @@
-// 700. Search in a Binary Search Tree
-// https://leetcode.com/problems/search-in-a-binary-search-tree/description/
-
 /**
  * Definition for a binary tree node.
  * function TreeNode(val, left, right) {
@@ -19,4 +16,16 @@ var searchBST = function (root, val) {
   if (root.left && val < root.val) return searchBST(root.left, val);
   if (root.right && val > root.val) return searchBST(root.right, val);
   return null;
+};
+
+var searchBST = function (root, val) {
+  if (root === null || root.val === val) {
+    return root;
+  }
+
+  if (val < root.val) {
+    return searchBST(root.left, val);
+  } else {
+    return searchBST(root.right, val);
+  }
 };
