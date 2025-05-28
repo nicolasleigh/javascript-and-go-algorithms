@@ -1,6 +1,3 @@
-// 617. Merge Two Binary Trees
-// https://leetcode.com/problems/merge-two-binary-trees/description/
-
 /**
  * Definition for a binary tree node.
  * function TreeNode(val, left, right) {
@@ -14,11 +11,14 @@
  * @param {TreeNode} root2
  * @return {TreeNode}
  */
+
 var mergeTrees = function (root1, root2) {
-  if (root1 === null) return root2;
-  if (root2 === null) return root1;
-  const resNode = new TreeNode(root1.val + root2.val);
-  resNode.left = mergeTrees(root1.left, root2.left);
-  resNode.right = mergeTrees(root1.right, root2.right);
-  return resNode;
+  if (!root1) return root2;
+  if (!root2) return root1;
+
+  const merged = new TreeNode(root1.val + root2.val);
+  merged.left = mergeTrees(root1.left, root2.left);
+  merged.right = mergeTrees(root1.right, root2.right);
+
+  return merged;
 };

@@ -1,6 +1,3 @@
-// 669. Trim a Binary Search Tree
-// https://leetcode.com/problems/trim-a-binary-search-tree/description/
-
 /**
  * Definition for a binary tree node.
  * function TreeNode(val, left, right) {
@@ -26,5 +23,21 @@ var trimBST = function (root, low, high) {
   } else if (root.val > high) {
     root = trimBST(root.left, low, high);
   }
+  return root;
+};
+
+var trimBST = function (root, low, high) {
+  if (!root) return null;
+
+  if (root.val < low) {
+    return trimBST(root.right, low, high); // discard left subtree
+  }
+
+  if (root.val > high) {
+    return trimBST(root.left, low, high); // discard right subtree
+  }
+
+  root.left = trimBST(root.left, low, high);
+  root.right = trimBST(root.right, low, high);
   return root;
 };

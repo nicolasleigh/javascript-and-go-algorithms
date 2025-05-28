@@ -1,6 +1,3 @@
-// 637. Average of Levels in Binary Tree
-// https://leetcode.com/problems/average-of-levels-in-binary-tree/description/
-
 /**
  * Definition for a binary tree node.
  * function TreeNode(val, left, right) {
@@ -31,5 +28,29 @@ var averageOfLevels = function (root) {
     let avg = temp.reduce((acc, cur) => acc + cur, 0) / temp.length; // calculate the average of the temp array
     result.push(avg);
   }
+  return result;
+};
+
+var averageOfLevels = function (root) {
+  if (!root) return [];
+
+  const result = [];
+  const queue = [root];
+
+  while (queue.length > 0) {
+    let levelSize = queue.length;
+    let sum = 0;
+
+    for (let i = 0; i < levelSize; i++) {
+      const node = queue.shift();
+      sum += node.val;
+
+      if (node.left) queue.push(node.left);
+      if (node.right) queue.push(node.right);
+    }
+
+    result.push(sum / levelSize);
+  }
+
   return result;
 };
