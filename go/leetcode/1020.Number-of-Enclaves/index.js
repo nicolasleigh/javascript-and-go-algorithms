@@ -1,6 +1,3 @@
-// 1020. Number of Enclaves
-// https://leetcode.com/problems/number-of-enclaves/description/
-
 /**
  * @param {number[][]} grid
  * @return {number}
@@ -38,12 +35,7 @@ var numEnclaves = function (grid) {
   }
 
   function dfs(i, j, isCounting) {
-    let condition =
-      i < 0 ||
-      i >= grid.length ||
-      j < 0 ||
-      j >= grid[0].length ||
-      grid[i][j] === 0;
+    let condition = i < 0 || i >= grid.length || j < 0 || j >= grid[0].length || grid[i][j] === 0;
 
     if (condition) return;
     if (isCounting) count++;
@@ -54,6 +46,42 @@ var numEnclaves = function (grid) {
     dfs(i + 1, j, isCounting);
     dfs(i, j - 1, isCounting);
     dfs(i, j + 1, isCounting);
+  }
+
+  return count;
+};
+
+var numEnclaves = function (grid) {
+  const rows = grid.length;
+  const cols = grid[0].length;
+
+  const dfs = (r, c) => {
+    if (r < 0 || r >= rows || c < 0 || c >= cols || grid[r][c] === 0) return;
+    grid[r][c] = 0; // mark as sea (visited)
+    dfs(r + 1, c);
+    dfs(r - 1, c);
+    dfs(r, c + 1);
+    dfs(r, c - 1);
+  };
+
+  // Step 1: Flood-fill all land cells connected to the boundary
+  for (let r = 0; r < rows; r++) {
+    dfs(r, 0);
+    dfs(r, cols - 1);
+  }
+  for (let c = 0; c < cols; c++) {
+    dfs(0, c);
+    dfs(rows - 1, c);
+  }
+
+  // Step 2: Count remaining land cells (enclaves)
+  let count = 0;
+  for (let r = 0; r < rows; r++) {
+    for (let c = 0; c < cols; c++) {
+      if (grid[r][c] === 1) {
+        count++;
+      }
+    }
   }
 
   return count;
