@@ -1,6 +1,3 @@
-// 1047. Remove All Adjacent Duplicates In String
-// https://leetcode.com/problems/remove-all-adjacent-duplicates-in-string/description/
-
 /**
  * @param {string} s
  * @return {string}
@@ -20,7 +17,21 @@ var removeDuplicates = function (s) {
     }
   }
 
-  const result = stack.join('');
+  const result = stack.join("");
 
   return result;
+};
+
+var removeDuplicates = function (s) {
+  const stack = [];
+
+  for (const char of s) {
+    if (stack.length && stack[stack.length - 1] === char) {
+      stack.pop(); // remove duplicate
+    } else {
+      stack.push(char);
+    }
+  }
+
+  return stack.join("");
 };

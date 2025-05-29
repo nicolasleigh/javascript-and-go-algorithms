@@ -1,6 +1,3 @@
-// 1035. Uncrossed Lines
-// https://leetcode.com/problems/uncrossed-lines/description/
-
 /**
  * @param {number[]} nums1
  * @param {number[]} nums2
@@ -8,19 +5,21 @@
  */
 // Same as "1143. Longest Common Subsequence"
 var maxUncrossedLines = function (nums1, nums2) {
-  const dp = Array(nums1.length + 1)
-    .fill()
-    .map(() => Array(nums2.length + 1).fill(0));
+  const m = nums1.length;
+  const n = nums2.length;
 
-  for (let i = 1; i <= nums1.length; ++i) {
-    for (let j = 1; j <= nums2.length; ++j) {
+  // Create a (m+1) x (n+1) DP table
+  const dp = Array.from({ length: m + 1 }, () => Array(n + 1).fill(0));
+
+  for (let i = 1; i <= m; i++) {
+    for (let j = 1; j <= n; j++) {
       if (nums1[i - 1] === nums2[j - 1]) {
-        dp[i][j] = dp[i - 1][j - 1] + 1;
+        dp[i][j] = 1 + dp[i - 1][j - 1]; // match
       } else {
-        dp[i][j] = Math.max(dp[i - 1][j], dp[i][j - 1]);
+        dp[i][j] = Math.max(dp[i - 1][j], dp[i][j - 1]); // skip one
       }
     }
   }
 
-  return dp[nums1.length][nums2.length];
+  return dp[m][n];
 };

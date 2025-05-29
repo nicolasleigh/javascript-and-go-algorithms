@@ -1,6 +1,3 @@
-// 1049. Last Stone Weight II
-// https://leetcode.com/problems/last-stone-weight-ii/description/
-
 // We are interested in minimizing the difference in sums of these sets.
 // The sets are not empty. In other words we can't have all items in one set.
 // So this reduces to the problem of finding a set whose sum is as close to total/2 as possible.
@@ -27,10 +24,7 @@ var lastStoneWeightII = function (stones) {
   for (let i = 1; i <= n; i++) {
     for (let j = 0; j <= halfSum; j++) {
       if (stones[i - 1] <= j) {
-        dp[i][j] = Math.max(
-          dp[i - 1][j],
-          dp[i - 1][j - stones[i - 1]] + stones[i - 1]
-        );
+        dp[i][j] = Math.max(dp[i - 1][j], dp[i - 1][j - stones[i - 1]] + stones[i - 1]);
       } else {
         dp[i][j] = dp[i - 1][j];
       }
@@ -57,4 +51,22 @@ var lastStoneWeightII = function (stones) {
   }
 
   return sum - 2 * dp[halfSum];
+};
+
+// This is a classic 0/1 Knapsack problem:
+// Think of splitting the stones into two groups whose total weights are as equal as possible.
+// The minimal remaining stone weight is |sum1 - sum2|, where sum1 + sum2 = total.
+// So we aim to find a subset whose total weight is as close as possible to half of the total sum.
+var lastStoneWeightII = function (stones) {
+  const total = stones.reduce((a, b) => a + b, 0);
+  const target = Math.floor(total / 2);
+  const dp = new Array(target + 1).fill(0);
+
+  for (const stone of stones) {
+    for (let j = target; j >= stone; j--) {
+      dp[j] = Math.max(dp[j], dp[j - stone] + stone);
+    }
+  }
+
+  return total - 2 * dp[target];
 };

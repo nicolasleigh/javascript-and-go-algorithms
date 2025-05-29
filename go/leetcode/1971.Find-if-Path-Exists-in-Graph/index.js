@@ -1,6 +1,3 @@
-// 1971. Find if Path Exists in Graph
-// https://leetcode.com/problems/find-if-path-exists-in-graph/description/
-
 /**
  * @param {number} n
  * @param {number[][]} edges
@@ -28,6 +25,32 @@ var validPath = function (n, edges, source, destination) {
     }
     return false;
   }
+
+  return dfs(source);
+};
+
+var validPath = function (n, edges, source, destination) {
+  const graph = Array.from({ length: n }, () => []);
+
+  // Build adjacency list
+  for (const [u, v] of edges) {
+    graph[u].push(v);
+    graph[v].push(u);
+  }
+
+  const visited = new Array(n).fill(false);
+
+  const dfs = (node) => {
+    if (node === destination) return true;
+    visited[node] = true;
+
+    for (const neighbor of graph[node]) {
+      if (!visited[neighbor]) {
+        if (dfs(neighbor)) return true;
+      }
+    }
+    return false;
+  };
 
   return dfs(source);
 };
