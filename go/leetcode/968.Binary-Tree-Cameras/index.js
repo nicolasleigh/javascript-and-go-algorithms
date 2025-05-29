@@ -1,6 +1,3 @@
-// 968. Binary Tree Cameras
-// https://leetcode.com/problems/binary-tree-cameras/description/
-
 /**
  * Definition for a binary tree node.
  * function TreeNode(val, left, right) {

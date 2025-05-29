@@ -1,6 +1,3 @@
-// 797. All Paths From Source to Target
-// https://leetcode.com/problems/all-paths-from-source-to-target/description/
-
 /**
  * @param {number[][]} graph
  * @return {number[][]}
@@ -25,4 +22,25 @@ var allPathsSourceTarget = function (graph) {
   path.push(0);
   dfs(0);
   return res;
+};
+
+var allPathsSourceTarget = function (graph) {
+  const result = [];
+  const target = graph.length - 1;
+
+  const dfs = (node, path) => {
+    if (node === target) {
+      result.push([...path]);
+      return;
+    }
+
+    for (const neighbor of graph[node]) {
+      path.push(neighbor);
+      dfs(neighbor, path);
+      path.pop(); // backtrack
+    }
+  };
+
+  dfs(0, [0]);
+  return result;
 };

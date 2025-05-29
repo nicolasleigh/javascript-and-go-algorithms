@@ -1,6 +1,3 @@
-// 827. Making A Large Island
-// https://leetcode.com/problems/making-a-large-island/description/
-
 /**
  * @param {number[][]} grid
  * @return {number}
@@ -29,8 +26,7 @@ var largestIsland = function (grid) {
 
   function paint(r, c, color) {
     // if not the island cell or already painted, do nothing.
-    if (r < 0 || r === rowLen || c < 0 || c === colLen || grid[r][c] !== 1)
-      return;
+    if (r < 0 || r === rowLen || c < 0 || c === colLen || grid[r][c] !== 1) return;
 
     grid[r][c] = color; // paint the cell
     islandSize[color] = (islandSize[color] || 0) + 1; // update the size
@@ -56,13 +52,7 @@ var largestIsland = function (grid) {
         let nextCol = c + dir[i][1];
 
         // if the neighbor cell is not the island cell, skip
-        if (
-          nextRow < 0 ||
-          nextRow === rowLen ||
-          nextCol < 0 ||
-          nextCol === colLen ||
-          grid[nextRow][nextCol] === 0
-        )
+        if (nextRow < 0 || nextRow === rowLen || nextCol < 0 || nextCol === colLen || grid[nextRow][nextCol] === 0)
           continue;
 
         // if the neighbor is the island, add it to the set

@@ -1,27 +1,27 @@
-// 763. Partition Labels
-// https://leetcode.com/problems/partition-labels/description/
-
 /**
  * @param {string} s
  * @return {number[]}
  */
 var partitionLabels = function (s) {
-  let lastIdx = new Map();
-  let res = [];
-  let left = 0;
-  let right = 0;
+  const lastIndex = new Map();
+  const result = [];
 
+  // Step 1: Record the last index of each character
   for (let i = 0; i < s.length; i++) {
-    lastIdx.set(s[i], i);
+    lastIndex.set(s[i], i);
   }
 
-  for (let i = 0; i < s.length; i++) {
-    right = Math.max(right, lastIdx.get(s[i]));
+  // Step 2: Greedily partition
+  let start = 0;
+  let end = 0;
 
-    if (i === right) {
-      res.push(right - left + 1);
-      left = i + 1;
+  for (let i = 0; i < s.length; i++) {
+    end = Math.max(end, lastIndex.get(s[i]));
+    if (i === end) {
+      result.push(end - start + 1);
+      start = i + 1;
     }
   }
-  return res;
+
+  return result;
 };

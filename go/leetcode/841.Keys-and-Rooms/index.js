@@ -1,6 +1,3 @@
-// 841. Keys and Rooms
-// https://leetcode.com/problems/keys-and-rooms/description/
-
 /**
  * @param {number[][]} rooms
  * @return {boolean}
@@ -17,5 +14,5 @@ var canVisitAllRooms = function (rooms) {
   }
 
   dfs(0);
-  return visited.every((item) => item === true);
+  return visited.every(Boolean);
 };

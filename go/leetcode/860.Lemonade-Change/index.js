@@ -1,6 +1,3 @@
-// 860. Lemonade Change
-// https://leetcode.com/problems/lemonade-change/description/
-
 /**
  * @param {number[]} bills
  * @return {boolean}
