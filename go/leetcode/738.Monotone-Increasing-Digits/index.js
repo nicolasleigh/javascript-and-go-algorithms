@@ -1,13 +1,10 @@
-// 738. Monotone Increasing Digits
-// https://leetcode.com/problems/monotone-increasing-digits/description/
-
 /**
  * @param {number} n
  * @return {number}
  */
 var monotoneIncreasingDigits = function (n) {
   n = String(n)
-    .split('')
+    .split("")
     .map((item) => Number(item));
 
   let flag = Infinity;
@@ -23,6 +20,24 @@ var monotoneIncreasingDigits = function (n) {
     n[i] = 9;
   }
 
-  n = Number(n.join(''));
+  n = Number(n.join(""));
   return n;
+};
+
+var monotoneIncreasingDigits = function (n) {
+  const digits = String(n).split("").map(Number);
+  let mark = digits.length;
+
+  for (let i = digits.length - 1; i > 0; i--) {
+    if (digits[i] < digits[i - 1]) {
+      digits[i - 1]--;
+      mark = i;
+    }
+  }
+
+  for (let i = mark; i < digits.length; i++) {
+    digits[i] = 9;
+  }
+
+  return parseInt(digits.join(""));
 };
