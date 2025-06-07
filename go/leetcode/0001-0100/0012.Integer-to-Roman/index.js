@@ -14,8 +14,8 @@ function intToRoman(num) {
     while (values[i] > num) {
       i++;
     }
-    num -= values[i];
-    res += symbols[i];
+    num = num - values[i];
+    res = res + symbols[i];
   }
 
   return res;

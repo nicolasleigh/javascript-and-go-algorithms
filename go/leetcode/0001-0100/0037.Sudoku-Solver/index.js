@@ -1,5 +1,4 @@
 // 37. Sudoku Solver
-// https://leetcode.com/problems/sudoku-solver/description/
 
 /**
  * @param {character[][]} board
@@ -38,7 +37,7 @@ var solveSudoku = function (board) {
   function backtrack() {
     for (let i = 0; i < len; i++) {
       for (let j = 0; j < board[0].length; j++) {
-        if (board[i][j] !== '.') continue;
+        if (board[i][j] !== ".") continue;
 
         for (let val = 1; val <= 9; val++) {
           if (!isValid(i, j, String(val))) continue;

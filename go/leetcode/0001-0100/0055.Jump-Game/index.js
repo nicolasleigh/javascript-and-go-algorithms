@@ -1,6 +1,4 @@
 // 55. Jump Game
-// https://leetcode.com/problems/jump-game/description/
-
 /*
 Imagine you have a car, and you have some distance to travel (the length of the array). 
 This car has some amount of gasoline, and as long as it has gasoline, it can keep traveling on this road (the array). 
@@ -9,7 +7,6 @@ However, every time we find an amount of gasoline that is greater than our curre
 We keep repeating this process until we either run out of gasoline (and return false), or we reach the end with just enough gasoline (or more to spare), in which case we return true.
 Note: We can let our gas tank get to zero as long as we are able to gas up at that immediate location (element in the array) that our car is currently at.
 */
-
 /**
  * @param {number[]} nums
  * @return {boolean}
@@ -30,11 +27,11 @@ var canJump = function (nums) {
 
 // Solution 2 - Greedy
 var canJump = function (nums) {
-  let farthest = 0;
+  let canReach = 0;
 
   for (let i = 0; i < nums.length; i++) {
-    if (i > farthest) return false; // can't reach this index
-    farthest = Math.max(farthest, i + nums[i]);
+    if (i > canReach) return false; // can't reach this index
+    canReach = Math.max(canReach, i + nums[i]);
   }
 
   return true;

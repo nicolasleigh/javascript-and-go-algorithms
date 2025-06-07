@@ -1,6 +1,4 @@
 // 56. Merge Intervals
-// https://leetcode.com/problems/merge-intervals/description/
-
 /**
  * @param {number[][]} intervals
  * @return {number[][]}
@@ -14,9 +12,11 @@ var merge = function (intervals) {
   for (let i = 1; i < intervals.length; i++) {
     let cur = intervals[i];
     if (cur[0] > prev[1]) {
+      // No overlap
       res.push(prev);
       prev = cur;
     } else {
+      // Overlap, merge
       prev[1] = Math.max(cur[1], prev[1]);
     }
   }

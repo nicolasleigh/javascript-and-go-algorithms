@@ -11,10 +11,10 @@ function isPalindrome(x) {
   }
 
   const s = x.toString();
-  const length = s.length;
+  const len = s.length;
 
-  for (let i = 0; i <= Math.floor(length / 2); i++) {
-    if (s[i] !== s[length - 1 - i]) {
+  for (let i = 0; i <= Math.floor(len / 2); i++) {
+    if (s[i] !== s[len - 1 - i]) {
       return false;
     }
   }

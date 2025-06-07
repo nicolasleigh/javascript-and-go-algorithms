@@ -6,8 +6,8 @@
 
 // Binary Search
 var search = function (nums, target) {
-  let low = 0,
-    high = nums.length - 1;
+  let low = 0;
+  let high = nums.length - 1;
 
   while (low <= high) {
     const mid = Math.floor(low + (high - low) / 2);

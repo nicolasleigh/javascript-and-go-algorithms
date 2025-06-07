@@ -5,9 +5,8 @@
 
 // Sliding window
 function lengthOfLongestSubstring(s) {
-  if (s.length === 0) {
-    return 0;
-  }
+  if (s.length === 0) return 0;
+
   const bitSet = new Array(128).fill(false); // ASCII length, that is 2^7 = 128
   let res = 0;
   let l = 0;
@@ -21,8 +20,8 @@ function lengthOfLongestSubstring(s) {
     } else {
       bitSet[s.charCodeAt(r)] = true;
       r++;
+      res = Math.max(res, r - l); // Calculate the maximum length of the substring
     }
-    res = Math.max(res, r - l); // Calculate the maximum length of the substring
 
     // Avoid index out of range error
     if (r >= s.length) {

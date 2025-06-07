@@ -1,23 +1,11 @@
 // 17. Letter Combinations of a Phone Number
-// https://leetcode.com/problems/letter-combinations-of-a-phone-number/description/
 
 /**
  * @param {string} digits
  * @return {string[]}
  */
 var letterCombinations = function (digits) {
-  const map = [
-    '',
-    '',
-    'abc',
-    'def',
-    'ghi',
-    'jkl',
-    'mno',
-    'pqrs',
-    'tuv',
-    'wxyz',
-  ];
+  const map = ["", "", "abc", "def", "ghi", "jkl", "mno", "pqrs", "tuv", "wxyz"];
   const res = [];
   const comb = [];
   const k = digits.length;
@@ -28,12 +16,12 @@ var letterCombinations = function (digits) {
     let index = digits[n];
 
     if (n === k) {
-      res.push(comb.join(''));
+      res.push(comb.join(""));
       return;
     }
 
     if (k === 1) {
-      res.push(...map[digits[0]].split(''));
+      res.push(...map[digits[0]].split(""));
       return;
     }
 

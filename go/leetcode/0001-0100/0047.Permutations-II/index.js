@@ -1,11 +1,8 @@
 // 47. Permutations II
-// https://leetcode.com/problems/permutations-ii/description/
-
 /**
  * @param {number[]} nums
  * @return {number[][]}
  */
-
 var permuteUnique = function (nums) {
   let res = [];
   let comb = [];

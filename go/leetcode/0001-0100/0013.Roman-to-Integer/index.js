@@ -23,9 +23,9 @@ function romanToInt(s) {
     const num = roman[char];
 
     if (num < lastNum) {
-      total -= num;
+      total = total - num;
     } else {
-      total += num;
+      total = total + num;
     }
 
     lastNum = num;

@@ -11,8 +11,8 @@ var searchRange = function (nums, target) {
 
 // Binary search to find the first occurrence of the target
 function searchFirstEqualElement(nums, target) {
-  let low = 0,
-    high = nums.length - 1;
+  let low = 0;
+  let high = nums.length - 1;
 
   while (low <= high) {
     const mid = Math.floor(low + (high - low) / 2);
@@ -33,8 +33,8 @@ function searchFirstEqualElement(nums, target) {
 
 // Binary search to find the last occurrence of the target
 function searchLastEqualElement(nums, target) {
-  let low = 0,
-    high = nums.length - 1;
+  let low = 0;
+  let high = nums.length - 1;
 
   while (low <= high) {
     const mid = Math.floor(low + (high - low) / 2);

@@ -13,10 +13,8 @@ function rotate(matrix) {
     }
   }
 
-  // Vertical axis flip (reverse each row)
+  // // Vertical axis flip (reverse each row)
   for (let i = 0; i < length; i++) {
-    for (let j = 0; j < Math.floor(length / 2); j++) {
-      [matrix[i][j], matrix[i][length - j - 1]] = [matrix[i][length - j - 1], matrix[i][j]];
-    }
+    matrix[i].reverse();
   }
 }

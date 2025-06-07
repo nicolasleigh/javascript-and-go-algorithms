@@ -1,11 +1,8 @@
 // 53. Maximum Subarray
-// https://leetcode.com/problems/maximum-subarray/description/
-
 /**
  * @param {number[]} nums
  * @return {number}
  */
-
 var maxSubArray = function (nums) {
   // dp[i] store the maximum sum of subArrays ending at index i.
   let dp = new Array(nums.length).fill(0);

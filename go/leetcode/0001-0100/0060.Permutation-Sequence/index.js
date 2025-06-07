@@ -51,6 +51,7 @@ function getPermutation(n, k) {
 
     for (let i = 0; i < n; i++) {
       if (used[i]) continue;
+
       used[i] = true;
       path.push(nums[i]);
       backtrack(path);
