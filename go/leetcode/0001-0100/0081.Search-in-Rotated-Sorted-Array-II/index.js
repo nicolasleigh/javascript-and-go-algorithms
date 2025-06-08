@@ -42,14 +42,12 @@ var search = function (nums, target) {
 function removeDuplicate(nums) {
   const seen = new Set();
   const result = [];
-
   for (let num of nums) {
     if (!seen.has(num)) {
       seen.add(num);
       result.push(num);
     }
   }
-
   return result;
 }
 

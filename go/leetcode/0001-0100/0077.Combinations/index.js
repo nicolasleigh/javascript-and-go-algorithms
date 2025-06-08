@@ -1,6 +1,4 @@
 // 77. Combinations
-// https://leetcode.com/problems/combinations/description/
-
 /**
  * @param {number} n
  * @param {number} k

@@ -1,6 +1,4 @@
 // 107. Binary Tree Level Order Traversal II
-// https://leetcode.com/problems/binary-tree-level-order-traversal-ii/description/
-
 /**
  * Definition for a binary tree node.
  * function TreeNode(val, left, right) {
@@ -14,21 +12,22 @@
  * @return {number[][]}
  */
 var levelOrderBottom = function (root) {
-  let result = [];
-  let queue = [];
-  queue.push(root);
   if (!root) return [];
+  let result = [];
+  let queue = [root];
 
-  while (queue.length) {
-    let length = queue.length; // important to store the length of the queue
-    let temp = [];
-    for (let i = 0; i < length; i++) {
+  while (queue.length > 0) {
+    let levelSize = queue.length; // important to store the length of the queue
+    let level = [];
+
+    for (let i = 0; i < levelSize; i++) {
       let node = queue.shift();
-      temp.push(node.val);
+      level.push(node.val);
       if (node.left) queue.push(node.left);
       if (node.right) queue.push(node.right);
     }
-    result.unshift(temp); // unshift instead of push
+    result.unshift(level); // unshift instead of push
   }
+
   return result;
 };

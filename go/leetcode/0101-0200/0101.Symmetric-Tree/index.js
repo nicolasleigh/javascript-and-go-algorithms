@@ -1,6 +1,4 @@
 // 101. Symmetric Tree
-// https://leetcode.com/problems/symmetric-tree/description/
-
 /**
  * Definition for a binary tree node.
  * function TreeNode(val, left, right) {

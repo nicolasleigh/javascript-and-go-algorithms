@@ -1,13 +1,9 @@
 // 90. Subsets II
-// https://leetcode.com/problems/subsets-ii/description/
-
 /**
  * @param {number[]} nums
  * @return {number[][]}
  */
 
-// Input: nums = [1,2,2]
-// Output: [[],[1],[1,2],[1,2,2],[2],[2,2]]
 var subsetsWithDup = function (nums) {
   let res = [];
   let comb = [];

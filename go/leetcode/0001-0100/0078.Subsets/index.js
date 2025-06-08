@@ -1,13 +1,8 @@
 // 78. Subsets
-// https://leetcode.com/problems/subsets/description/
-
 /**
  * @param {number[]} nums
  * @return {number[][]}
  */
-// Input: nums = [1,2,3]
-// Output: [[],[1],[2],[1,2],[3],[1,3],[2,3],[1,2,3]]
-
 var subsets = function (nums) {
   let res = [];
   let comb = [];

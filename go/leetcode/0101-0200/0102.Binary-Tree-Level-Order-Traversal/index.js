@@ -1,5 +1,4 @@
 // 102. Binary Tree Level Order Traversal
-// https://leetcode.com/problems/binary-tree-level-order-traversal/description/
 
 /**
  * Definition for a binary tree node.
@@ -14,21 +13,23 @@
  * @return {number[][]}
  */
 var levelOrder = function (root) {
-  let result = [];
-  let queue = [];
-  queue.push(root);
   if (!root) return [];
 
-  while (queue.length) {
-    let length = queue.length; // important to store the length of the queue
-    let temp = [];
-    for (let i = 0; i < length; i++) {
+  let result = [];
+  let queue = [root];
+
+  while (queue.length > 0) {
+    let levelSize = queue.length; // important to store the length of the queue
+    let level = [];
+
+    for (let i = 0; i < levelSize; i++) {
       let node = queue.shift();
-      temp.push(node.val);
+      level.push(node.val);
       if (node.left) queue.push(node.left);
       if (node.right) queue.push(node.right);
     }
-    result.push(temp);
+    result.push(level);
   }
+
   return result;
 };
