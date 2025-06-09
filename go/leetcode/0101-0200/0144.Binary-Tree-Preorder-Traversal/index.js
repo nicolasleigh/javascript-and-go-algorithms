@@ -1,6 +1,4 @@
 // 144. Binary Tree Preorder Traversal
-// https://leetcode.com/problems/binary-tree-preorder-traversal/description/
-
 /**
  * Definition for a binary tree node.
  * function TreeNode(val, left, right) {

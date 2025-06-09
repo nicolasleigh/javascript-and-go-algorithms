@@ -1,6 +1,4 @@
 // 145. Binary Tree Postorder Traversal
-// https://leetcode.com/problems/binary-tree-postorder-traversal/description/
-
 /**
  * Definition for a binary tree node.
  * function TreeNode(val, left, right) {

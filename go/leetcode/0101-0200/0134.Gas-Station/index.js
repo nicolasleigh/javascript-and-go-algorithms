@@ -1,6 +1,4 @@
 // 134. Gas Station
-// https://leetcode.com/problems/gas-station/description/
-
 /**
  * @param {number[]} gas
  * @param {number[]} cost

@@ -1,6 +1,4 @@
 // 116. Populating Next Right Pointers in Each Node
-// https://leetcode.com/problems/populating-next-right-pointers-in-each-node/description/
-
 /**
  * // Definition for a Node.
  * function Node(val, left, right, next) {
@@ -16,15 +14,15 @@
  * @return {Node}
  */
 var connect = function (root) {
-  let queue = [];
-  queue.push(root);
   if (!root) return root;
+  let queue = [root];
 
-  while (queue.length) {
-    let length = queue.length; // important to store the length of the queue
+  while (queue.length > 0) {
+    let levelSize = queue.length; // important to store the length of the queue
     let prev;
     let curr;
-    for (let i = 0; i < length; i++) {
+
+    for (let i = 0; i < levelSize; i++) {
       if (i === 0) {
         prev = queue.shift();
       } else {

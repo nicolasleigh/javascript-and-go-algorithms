@@ -1,6 +1,4 @@
 // 131. Palindrome Partitioning
-// https://leetcode.com/problems/palindrome-partitioning/description/
-
 /**
  * @param {string} s
  * @return {string[][]}

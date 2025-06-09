@@ -13,17 +13,20 @@ var insertionSortList = function (head) {
 
   const dummy = new ListNode(0);
   let cur = head;
-  let pre = dummy;
+  let pre = dummy; // pre.next is null
 
   while (cur) {
     let next = cur.next;
 
     // Find the right place to insert cur
+    // If the current node is greater than the pre.Next node, in this case, the current node cannot be the first node,
+    // so we need to move the pre pointer to the right position and make the current node become the pre.Next node.
     while (pre.next && pre.next.val < cur.val) {
       pre = pre.next;
     }
 
     // Insert cur between pre and pre.next
+    // If the current node is less than the pre.Next node, make the current node become the pre.Next node(aka the first node).
     cur.next = pre.next;
     pre.next = cur;
 

@@ -1,7 +1,5 @@
 // 115. Distinct Subsequences
-// https://leetcode.com/problems/distinct-subsequences/description/
 // https://leetcode.com/problems/distinct-subsequences/solutions/37327/easy-to-understand-dp-in-java/
-
 /**
  * @param {string} s
  * @param {string} t
