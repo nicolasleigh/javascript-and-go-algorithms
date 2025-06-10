@@ -1,6 +1,4 @@
 // 226. Invert Binary Tree
-// https://leetcode.com/problems/invert-binary-tree/description/
-
 /**
  * Definition for a binary tree node.
  * function TreeNode(val, left, right) {
