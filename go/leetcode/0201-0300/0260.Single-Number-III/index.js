@@ -12,6 +12,8 @@ function singleNumber(nums) {
   }
 
   // Step 2: Find any set bit (we use the rightmost set bit)
+  // -xor: This is the two’s complement negation of xor.
+  // In binary arithmetic, negating a number in two’s complement involves flipping all the bits and adding 1.
   let diffBit = xor & -xor;
 
   // Step 3: Partition numbers into two groups and XOR separately

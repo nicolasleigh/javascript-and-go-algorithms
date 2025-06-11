@@ -1,6 +1,6 @@
 /**
  * @param {number[]} nums
- * @return {number}
+ * @return {number[]}
  */
 
 // Similar to 0169

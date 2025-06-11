@@ -28,6 +28,7 @@ var binaryTreePaths = function (root) {
   return ans;
 };
 
+// Solution 2
 function binaryTreePaths(root) {
   const paths = [];
 
