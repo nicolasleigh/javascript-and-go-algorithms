@@ -1,3 +1,9 @@
+/**
+ * @param {string} s
+ * @param {string} t
+ * @return {character}
+ */
+
 // Solution 1 - Frequency Counting
 var findTheDifference = function (s, t) {
   const count = {};

@@ -18,13 +18,13 @@ var levelOrder = function (root) {
 
   while (queue.length) {
     let length = queue.length; // important to store the length of the queue
-    let temp = [];
+    let level = [];
     for (let i = 0; i < length; i++) {
       let node = queue.shift();
-      temp.push(node.val);
+      level.push(node.val);
       if (node.children) queue.push(...node.children); // spread the children array
     }
-    result.push(temp);
+    result.push(level);
   }
   return result;
 };
