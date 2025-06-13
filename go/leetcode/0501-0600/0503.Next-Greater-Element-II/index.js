@@ -10,33 +10,14 @@ var nextGreaterElements = function (nums) {
   let res = new Array(nums.length).fill(-1);
 
   for (let i = 0; i < temp.length; i++) {
-    if (temp[i] <= temp[stack.at(-1)]) {
-      stack.push(i);
-    } else {
-      while (stack.length && temp[i] > temp[stack.at(-1)]) {
-        let top = stack.pop();
-        res[top] = temp[i];
-      }
-      stack.push(i);
+    while (stack.length && temp[i] > temp[stack.at(-1)]) {
+      let top = stack.pop();
+      res[top] = temp[i];
     }
+    stack.push(i);
   }
 
   return res.slice(0, nums.length);
-};
-
-var nextGreaterElements = function (nums) {
-  let stack = [];
-  let res = new Array(nums.length).fill(-1);
-  let len = nums.length;
-
-  for (let i = 0; i < len * 2; i++) {
-    while (stack.length && nums[i % len] > nums[stack.at(-1)]) {
-      let top = stack.pop();
-      res[top] = nums[i % len];
-    }
-    stack.push(i % len);
-  }
-  return res;
 };
 
 /**

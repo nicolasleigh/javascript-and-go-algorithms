@@ -17,3 +17,17 @@ var findMaxConsecutiveOnes = function (nums) {
 
   return maxCount;
 };
+
+var findMaxConsecutiveOnes = function (nums) {
+  let maxCount = 0;
+  nums
+    .join("")
+    .split("0")
+    .forEach((item) => {
+      if (item.length > maxCount) {
+        maxCount = item.length;
+      }
+    });
+
+  return maxCount;
+};
