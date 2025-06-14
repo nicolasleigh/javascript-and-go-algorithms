@@ -5,7 +5,7 @@
  */
 var checkSubarraySum = function (nums, k) {
   const modMap = new Map();
-  modMap.set(0, -1); // Handle case where prefix itself is divisible by k
+  modMap.set(0, -1); // Special case: subarray from beginning. Handle case where prefix itself is divisible by k
 
   let sum = 0;
   for (let i = 0; i < nums.length; i++) {

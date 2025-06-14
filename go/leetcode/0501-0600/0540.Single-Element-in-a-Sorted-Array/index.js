@@ -4,8 +4,8 @@
  */
 var singleNonDuplicate = function (nums) {
   let res = 0;
-  for (let i = 0; i < nums.length; i++) {
-    res = res ^ nums[i];
+  for (const num of nums) {
+    res = res ^ num;
   }
   return res;
 };
