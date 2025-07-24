@@ -1,13 +1,11 @@
 // 39. Combination Sum
 
 /**
- * @param {iber[]} candidates
+ * @param {number[]} candidates
  * @param {number} target
  * @return {number[][]}
  */
 
-// Input: candidates = [2,3,6,7], target = 7
-// Output: [[2,2,3],[7]]
 var combinationSum = function (candidates, target) {
   const res = [];
   const comb = [];

@@ -7,7 +7,7 @@ var minPathSum = function (grid) {
   const m = grid.length;
   const n = grid[0].length;
 
-  // Create a 2D dp array
+  // dp[i][j] will hold the minimum path sum to reach cell (i, j)
   const dp = new Array(m).fill(0).map(() => new Array(n).fill(0));
 
   dp[0][0] = grid[0][0];

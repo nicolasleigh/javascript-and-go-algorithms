@@ -52,8 +52,8 @@ var findWords = function (board, words) {
     ];
 
     for (const [dr, dc] of directions) {
-      const nr = r + dr,
-        nc = c + dc;
+      const nr = r + dr;
+      const nc = c + dc;
       if (nr >= 0 && nr < rows && nc >= 0 && nc < cols && board[nr][nc] !== "#") {
         dfs(nr, nc, nextNode);
       }

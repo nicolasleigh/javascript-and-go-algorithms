@@ -5,8 +5,8 @@
 
 var countBattleships = function (board) {
   let count = 0;
-  const m = board.length,
-    n = board[0].length;
+  const m = board.length;
+  const n = board[0].length;
 
   for (let i = 0; i < m; i++) {
     for (let j = 0; j < n; j++) {

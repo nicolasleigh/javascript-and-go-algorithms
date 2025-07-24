@@ -1,13 +1,18 @@
-function minSubArrayLen(target, arr) {
+/**
+ * @param {number} target
+ * @param {number[]} nums
+ * @return {number}
+ */
+function minSubArrayLen(target, nums) {
   //sliding window, BUT the window size is not fixed
   let windowSum = 0;
   let minLength = Infinity;
   let windowStart = 0;
 
   //First, we will add-up elements from the beginning of the array until their sum becomes greater than or equal to target.
-  for (let windowEnd = 0; windowEnd < arr.length; windowEnd++) {
+  for (let windowEnd = 0; windowEnd < nums.length; windowEnd++) {
     //add the next element
-    windowSum += arr[windowEnd];
+    windowSum += nums[windowEnd];
 
     //shrink the window as small as possible
     //until windowSum is small than target
@@ -19,7 +24,7 @@ function minSubArrayLen(target, arr) {
       minLength = Math.min(minLength, windowEnd - windowStart + 1);
 
       //Subtract the first element of the window from the running sum to shrink the sliding window.
-      windowSum -= arr[windowStart];
+      windowSum -= nums[windowStart];
       windowStart++;
     }
   }

@@ -13,7 +13,7 @@ var letterCombinations = function (digits) {
 
   // n is the index of the digit in the input
   function backtrack(n) {
-    let index = digits[n];
+    let num = digits[n];
 
     if (n === k) {
       res.push(comb.join(""));
@@ -25,8 +25,8 @@ var letterCombinations = function (digits) {
       return;
     }
 
-    for (let i = 0; i < map[index].length; i++) {
-      comb.push(map[index][i]);
+    for (let i = 0; i < map[num].length; i++) {
+      comb.push(map[num][i]);
       backtrack(n + 1);
       comb.pop();
     }

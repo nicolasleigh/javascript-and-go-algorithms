@@ -5,6 +5,8 @@
 
 var mySqrt = function (x) {
   let low = 0;
+  // We use x + 1 so that low has a chance to move up to x itself if needed
+  //  (e.g., for x = 1, we want to check mid = 1).
   let high = x + 1;
 
   while (low !== high - 1) {

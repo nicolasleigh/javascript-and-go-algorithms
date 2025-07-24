@@ -4,8 +4,8 @@
  * @return {number[]}
  */
 var twoSum = function (numbers, target) {
-  let i = 0,
-    j = numbers.length - 1;
+  let i = 0;
+  let j = numbers.length - 1;
 
   while (i < j) {
     const sum = numbers[i] + numbers[j];

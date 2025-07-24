@@ -5,9 +5,6 @@
  * @return {number}
  */
 
-// Input: nums = [2,3,1,1,4]
-// Output: 2
-
 var jump = function (nums) {
   const size = nums.length;
   let destination = size - 1;

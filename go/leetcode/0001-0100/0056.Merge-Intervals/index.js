@@ -4,6 +4,7 @@
  * @return {number[][]}
  */
 var merge = function (intervals) {
+  // Sort the intervals by their start
   intervals.sort((a, b) => a[0] - b[0]);
 
   let prev = intervals[0];
@@ -21,6 +22,7 @@ var merge = function (intervals) {
     }
   }
 
+  // Push the last interval
   res.push(prev);
   return res;
 };

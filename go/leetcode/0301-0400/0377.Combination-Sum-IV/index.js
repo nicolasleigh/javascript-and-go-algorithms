@@ -53,7 +53,7 @@ function combinationSum4(nums, target) {
     for (const num of nums) {
       // If i - num >= 0, we can use num to build up to i.
       if (i - num >= 0) {
-        dp[i] += dp[i - num]; // not use num + use num
+        dp[i] += dp[i - num];
       }
     }
   }

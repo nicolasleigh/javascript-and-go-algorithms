@@ -14,10 +14,11 @@ function multiply(num1, num2) {
       const mul = (num1[i] - "0") * (num2[j] - "0");
       const p1 = i + j;
       const p2 = i + j + 1;
+      // 本次循环的p2是上次循环的p1，即是上次循环的进位位置
       const sum = mul + result[p2];
 
       result[p2] = sum % 10;
-      result[p1] += Math.floor(sum / 10);
+      result[p1] += Math.floor(sum / 10); // 将进位加到p1位置
     }
   }
 

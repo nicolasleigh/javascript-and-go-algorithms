@@ -40,8 +40,5 @@ function recoverTree(root) {
   // Swap the values of the two nodes
   if (first && second) {
     [first.val, second.val] = [second.val, first.val];
-    // let temp = first.val;
-    // first.val = second.val;
-    // second.val = temp;
   }
 }

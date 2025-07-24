@@ -20,8 +20,8 @@ function findLongestWord(s, dictionary) {
 
 // Helper function to check if `word` is a subsequence of `s`
 function match(s, word) {
-  let i = 0,
-    j = 0;
+  let i = 0;
+  let j = 0;
   while (i < s.length && j < word.length) {
     if (s[i] === word[j]) {
       j++;

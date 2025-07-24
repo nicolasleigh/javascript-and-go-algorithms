@@ -23,9 +23,9 @@ var singleNumber = function (nums) {
 
 // Solution 2
 var singleNumber = function (nums) {
-  let x1 = 0,
-    x2 = 0,
-    mask = 0;
+  let x1 = 0;
+  let x2 = 0;
+  let mask = 0;
 
   for (let i of nums) {
     x2 ^= x1 & i;

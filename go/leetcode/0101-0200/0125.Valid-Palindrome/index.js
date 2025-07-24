@@ -5,8 +5,8 @@
 
 function isPalindrome(s) {
   s = s.toLowerCase();
-  let i = 0,
-    j = s.length - 1;
+  let i = 0;
+  let j = s.length - 1;
 
   while (i < j) {
     while (i < j && !isChar(s[i])) i++;

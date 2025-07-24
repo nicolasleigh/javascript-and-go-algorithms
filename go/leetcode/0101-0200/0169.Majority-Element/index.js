@@ -14,5 +14,5 @@ var majorityElement = function (nums) {
     }
   }
 
-  return 0; // This line should never be reached if the input guarantees a majority element
+  return 0;
 };

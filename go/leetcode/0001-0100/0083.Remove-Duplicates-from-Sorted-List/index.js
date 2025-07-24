@@ -32,14 +32,14 @@ function deleteDuplicates(head) {
 
 // Solution 2
 function deleteDuplicates(head) {
-  let current = head;
+  let cur = head;
 
-  while (current !== null && current.next !== null) {
-    if (current.val === current.next.val) {
+  while (cur !== null && cur.next !== null) {
+    if (cur.val === cur.next.val) {
       // Skip the duplicate
-      current.next = current.next.next;
+      cur.next = cur.next.next;
     } else {
-      current = current.next;
+      cur = cur.next;
     }
   }
 

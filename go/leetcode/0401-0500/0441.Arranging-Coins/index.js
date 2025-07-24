@@ -1,7 +1,7 @@
 // Binary Search
 var arrangeCoins = function (n) {
-  let left = 0,
-    right = n;
+  let left = 0;
+  let right = n;
 
   while (left <= right) {
     const mid = Math.floor((left + right) / 2);

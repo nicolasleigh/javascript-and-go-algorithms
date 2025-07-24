@@ -12,21 +12,13 @@
  * @return {ListNode}
  */
 
-var getListLen = function (head) {
-  let len = 0;
-  let cur = head;
-  while (cur) {
-    len++;
-    cur = cur.next;
-  }
-  return len;
-};
 var getIntersectionNode = function (headA, headB) {
   let curA = headA;
   let curB = headB;
   let lenA = getListLen(headA);
   let lenB = getListLen(headB);
 
+  // Ensure curA is always the longer list
   if (lenA < lenB) {
     [curA, curB] = [curB, curA];
     [lenA, lenB] = [lenB, lenA];
@@ -43,6 +35,16 @@ var getIntersectionNode = function (headA, headB) {
   }
   return curA;
 };
+
+function getListLen(head) {
+  let len = 0;
+  let cur = head;
+  while (cur) {
+    len++;
+    cur = cur.next;
+  }
+  return len;
+}
 
 // Approach 2
 var getIntersectionNode2 = function (headA, headB) {

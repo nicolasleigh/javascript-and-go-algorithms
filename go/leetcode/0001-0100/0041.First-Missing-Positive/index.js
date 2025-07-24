@@ -5,14 +5,10 @@
 
 // O(n) space
 var firstMissingPositive = function (nums) {
-  const numMap = new Map();
-
-  for (const num of nums) {
-    numMap.set(num, true);
-  }
+  const set = new Set(nums);
 
   for (let i = 1; i <= nums.length; i++) {
-    if (!numMap.has(i)) {
+    if (!set.has(i)) {
       return i;
     }
   }

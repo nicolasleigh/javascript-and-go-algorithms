@@ -5,11 +5,11 @@
  * @return {boolean}
  */
 
-function containsNearbyAlmostDuplicate(nums, k, t) {
-  if (t < 0) return false; // absolute difference can't be negative
+function containsNearbyAlmostDuplicate(nums, indexDiff, valueDiff) {
+  if (valueDiff < 0) return false; // absolute difference can't be negative
 
   const map = new Map();
-  const bucketSize = t + 1;
+  const bucketSize = valueDiff + 1;
 
   const getBucketId = (num) => {
     return Math.floor(num / bucketSize);
@@ -29,9 +29,9 @@ function containsNearbyAlmostDuplicate(nums, k, t) {
 
     map.set(bucketId, num);
 
-    // Maintain sliding window of size k
-    if (i >= k) {
-      const oldBucketId = getBucketId(nums[i - k]);
+    // Maintain sliding window of size indexDiff
+    if (i >= indexDiff) {
+      const oldBucketId = getBucketId(nums[i - indexDiff]);
       map.delete(oldBucketId);
     }
   }

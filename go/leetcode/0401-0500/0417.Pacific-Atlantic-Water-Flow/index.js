@@ -87,13 +87,16 @@ var pacificAtlantic = function (heights) {
     }
   };
 
-  // Pacific: top row & left column
-  for (let i = 0; i < m; i++) dfs(i, 0, pacific);
-  for (let j = 0; j < n; j++) dfs(0, j, pacific);
-
-  // Atlantic: bottom row & right column
-  for (let i = 0; i < m; i++) dfs(i, n - 1, atlantic);
-  for (let j = 0; j < n; j++) dfs(m - 1, j, atlantic);
+  // First column and last column
+  for (let i = 0; i < m; i++) {
+    dfs(i, 0, pacific);
+    dfs(i, n - 1, atlantic);
+  }
+  // First row and last row
+  for (let j = 0; j < n; j++) {
+    dfs(0, j, pacific);
+    dfs(m - 1, j, atlantic);
+  }
 
   const result = [];
   for (let i = 0; i < m; i++) {

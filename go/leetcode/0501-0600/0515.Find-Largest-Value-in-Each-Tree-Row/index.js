@@ -16,7 +16,7 @@ var largestValues = function (root) {
   let queue = [root];
 
   while (queue.length > 0) {
-    let length = queue.length; // important to store the length of the queue
+    let length = queue.length;
     let level = [];
     for (let i = 0; i < length; i++) {
       let node = queue.shift();

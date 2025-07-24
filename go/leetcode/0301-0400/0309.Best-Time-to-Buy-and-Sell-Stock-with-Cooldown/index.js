@@ -26,9 +26,9 @@ var maxProfit = function (prices) {
   stateC[0] = -Infinity;
 
   for (let i = 1; i < prices.length; i++) {
-    stateA[i] = Math.max(stateA[i - 1], stateC[i - 1]);
-    stateB[i] = Math.max(stateB[i - 1], stateA[i - 1] - prices[i]);
-    stateC[i] = stateB[i - 1] + prices[i];
+    stateA[i] = Math.max(stateA[i - 1], stateC[i - 1]); // How to enter stateA: stateA to stateA (rest) or stateC to stateA (cooldown)
+    stateB[i] = Math.max(stateB[i - 1], stateA[i - 1] - prices[i]); // How to enter stateB: stateB to stateB (rest) or stateA to stateB (buy)
+    stateC[i] = stateB[i - 1] + prices[i]; // How to enter stateC: stateB to stateC (sell)
   }
 
   return Math.max(stateA[prices.length - 1], stateC[prices.length - 1]);

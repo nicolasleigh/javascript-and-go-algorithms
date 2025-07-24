@@ -29,17 +29,18 @@ var findMaxForm = function (strs, m, n) {
 
 // 0/1 Knapsack - DP Bottom-Up
 var findMaxForm = function (strs, m, n) {
+  // dp[i][j] represents the maximum number of strings we can choose using at most: i zeroes and j ones
   const dp = Array.from({ length: m + 1 }, () => Array(n + 1).fill(0));
 
   for (const str of strs) {
-    let zeros = 0,
-      ones = 0;
+    let zeros = 0;
+    let ones = 0;
     for (const ch of str) {
       if (ch === "0") zeros++;
       else ones++;
     }
 
-    // Go backwards to avoid overwriting
+    // Go backward because we want to ensure each string is only used once (like in 0/1 Knapsack)
     for (let i = m; i >= zeros; i--) {
       for (let j = n; j >= ones; j--) {
         dp[i][j] = Math.max(dp[i][j], dp[i - zeros][j - ones] + 1);

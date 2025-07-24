@@ -32,7 +32,6 @@ function sortedListToBST(head) {
 
 function createBST(nums) {
   if (nums.length === 0) return null;
-  if (nums.length === 1) return new TreeNode(nums[0]);
 
   const mid = Math.floor(nums.length / 2);
   const root = new TreeNode(nums[mid]);

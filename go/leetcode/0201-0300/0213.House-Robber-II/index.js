@@ -8,7 +8,6 @@ var rob = function (nums) {
 
   function robRange(start, end) {
     if (nums.length === 1) return nums[0];
-    if (end === start) return nums[start];
 
     let dp = Array(nums.length).fill(0);
     dp[start] = nums[start];
@@ -27,7 +26,7 @@ var rob = function (nums) {
 var rob = function (nums) {
   if (nums.length === 1) return nums[0];
 
-  // Helper to solve House Robber I
+  // Same as House Robber I
   const rob1 = (nums) => {
     // dp[i] represents the largest value can be robbed from nums[0] to nums[i]
     let dp = new Array(nums.length).fill(0);

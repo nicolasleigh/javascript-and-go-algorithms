@@ -9,8 +9,8 @@ var solution = function (isBadVersion) {
    * @return {integer} The first bad version
    */
   return function (n) {
-    let left = 1,
-      right = n;
+    let left = 1;
+    let right = n;
     while (left < right) {
       const mid = Math.floor(left + (right - left) / 2);
       if (isBadVersion(mid)) {

@@ -2,6 +2,7 @@
  * @param {number[]} nums
  * @return {number}
  */
+// Greedy
 var wiggleMaxLength = function (nums) {
   if (nums.length <= 1) return nums.length;
 
@@ -19,7 +20,7 @@ var wiggleMaxLength = function (nums) {
   return result;
 };
 
-// Greedy
+// DP
 // up tracks the longest subsequence ending with an upward wiggle.
 // down tracks the longest subsequence ending with a downward wiggle.
 // Every time you see an up, you can extend a previous down subsequence and vice versa.

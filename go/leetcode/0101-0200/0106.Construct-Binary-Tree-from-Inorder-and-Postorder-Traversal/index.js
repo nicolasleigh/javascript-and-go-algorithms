@@ -15,7 +15,7 @@
 var buildTree = function (inorder, postorder) {
   if (postorder.length === 0) return null;
 
-  const rootVal = postorder.pop();
+  const rootVal = postorder.pop(); // change from shift() to pop()
   const index = inorder.indexOf(rootVal);
   const rootNode = new TreeNode(rootVal);
 

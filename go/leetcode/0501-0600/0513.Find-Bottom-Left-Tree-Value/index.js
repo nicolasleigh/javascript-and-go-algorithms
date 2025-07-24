@@ -30,3 +30,17 @@ var findBottomLeftValue = function (root) {
   }
   return result.at(-1)[0]; // return the first element of the last level
 };
+
+// Solution 2
+var findBottomLeftValue = function (root) {
+  let queue = [root];
+  let leftValue = root.val;
+
+  while (queue.length > 0) {
+    let node = queue.shift();
+    leftValue = node.val;
+    if (node.right) queue.push(node.right);
+    if (node.left) queue.push(node.left);
+  }
+  return leftValue;
+};

@@ -13,12 +13,11 @@ var maxProfit = function (prices) {
     if (prices[l] < prices[r]) {
       let profit = prices[r] - prices[l]; // Current profit
       maxProfit = Math.max(maxProfit, profit);
-      r++;
     } else {
       // Update the buying price if the current price is lower than the current buying price.
       l = r;
-      r++;
     }
+    r++;
   }
   return maxProfit;
 };

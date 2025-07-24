@@ -27,5 +27,5 @@ var findPeakElement = function (nums) {
     }
   }
 
-  return -1; // Should never reach here if input constraints are respected
+  return -1;
 };

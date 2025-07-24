@@ -7,6 +7,7 @@ var integerBreak = function (n) {
   dp[2] = 1;
 
   for (let i = 3; i <= n; i++) {
+    // `j < i` also correct, but because n and k are greater than or equal 2, it's better to use `j < i - 1`
     for (let j = 1; j < i - 1; j++) {
       dp[i] = Math.max(dp[i], dp[i - j] * j, (i - j) * j);
     }

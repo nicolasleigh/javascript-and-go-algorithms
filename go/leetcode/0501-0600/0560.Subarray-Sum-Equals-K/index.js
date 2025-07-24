@@ -27,15 +27,15 @@ var subarraySum = function (nums, k) {
  * @param {number} k
  * @return {number}
  */
-var subarraySum = function (arr, k) {
-  const n = arr.length;
+var subarraySum = function (nums, k) {
+  const n = nums.length;
 
   const prefix = new Array(n);
-  prefix[0] = arr[0];
+  prefix[0] = nums[0];
 
   // Build the prefix sum array
   for (let i = 1; i < n; i++) {
-    prefix[i] = arr[i] + prefix[i - 1];
+    prefix[i] = nums[i] + prefix[i - 1];
   }
 
   const map = new Map(); // To store prefix sum counts

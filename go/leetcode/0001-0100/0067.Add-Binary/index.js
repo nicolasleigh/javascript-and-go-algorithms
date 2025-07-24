@@ -36,6 +36,11 @@ var addBinary = function (a, b) {
 };
 
 // Solution 2
+/**
+ * @param {string} a
+ * @param {string} b
+ * @return {string}
+ */
 var addBinary = function (a, b) {
   let i = a.length - 1;
   let j = b.length - 1;

@@ -46,3 +46,48 @@ var maxDepth = function (root) {
   dfs(root, 1);
   return res;
 };
+
+// BFS
+var maxDepth = function (root) {
+  if (!root) return 0;
+  let queue = [root];
+  let result = [];
+
+  while (queue.length > 0) {
+    let levelSize = queue.length;
+    let level = [];
+
+    for (let i = 0; i < levelSize; i++) {
+      let node = queue.shift();
+      level.push(node);
+
+      for (const item of node.children) {
+        queue.push(item);
+      }
+    }
+    result.push(level);
+  }
+
+  return result.length;
+};
+
+var maxDepth = function (root) {
+  if (!root) return 0;
+  let queue = [root];
+  let count = 0;
+
+  while (queue.length > 0) {
+    let levelSize = queue.length;
+
+    for (let i = 0; i < levelSize; i++) {
+      let node = queue.shift();
+
+      for (const item of node.children) {
+        queue.push(item);
+      }
+    }
+    count++;
+  }
+
+  return count;
+};

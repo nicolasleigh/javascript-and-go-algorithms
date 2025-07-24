@@ -43,13 +43,14 @@ var findTargetSumWays = function (nums, target) {
 
   if (sum < Math.abs(target) || (sum + target) % 2 !== 0) return 0;
 
+  // We define dp[i] as the number of ways to sum up to i using any subset of nums.
   let dp = Array(l + 1).fill(0);
   dp[0] = 1;
 
-  for (let i = 1; i <= nums.length; i++) {
+  for (const num of nums) {
     for (let j = l; j >= 0; j--) {
-      if (nums[i - 1] <= j) {
-        dp[j] = dp[j] + dp[j - nums[i - 1]];
+      if (num <= j) {
+        dp[j] = dp[j] + dp[j - num];
       }
     }
   }

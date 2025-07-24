@@ -29,7 +29,8 @@ var pathSum = function (root, targetSum) {
     // Recurse left and right
     let totalPaths = pathsEndingHere + dfs(node.left, currentSum) + dfs(node.right, currentSum);
 
-    // Backtrack: remove the current prefix sum
+    // Backtrack: remove the current prefix sum to avoid counting it in the sibling branch
+    // root = [1,-2,-3] targetSum = -1, output should be 1. If we don't remove the current branch prefix sum, output will be 2.
     prefixSumMap.set(currentSum, prefixSumMap.get(currentSum) - 1);
 
     return totalPaths;

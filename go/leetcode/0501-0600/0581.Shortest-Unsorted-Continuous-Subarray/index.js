@@ -5,10 +5,10 @@
 
 var findUnsortedSubarray = function (nums) {
   let n = nums.length;
-  let start = -1,
-    end = -2; // initialize for edge case when array is already sorted
-  let min = nums[n - 1],
-    max = nums[0];
+  let start = -1;
+  let end = -2; // initialize for edge case when array is already sorted
+  let min = nums[n - 1];
+  let max = nums[0];
 
   for (let i = 1; i < n; i++) {
     max = Math.max(max, nums[i]);

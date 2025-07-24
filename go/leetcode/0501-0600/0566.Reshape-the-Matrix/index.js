@@ -11,8 +11,8 @@ var matrixReshape = function (mat, r, c) {
   if (m * n !== r * c) return mat;
 
   const result = Array.from({ length: r }, () => new Array(c));
-  let row = 0,
-    col = 0;
+  let row = 0;
+  let col = 0;
 
   for (let i = 0; i < m; i++) {
     for (let j = 0; j < n; j++) {

@@ -26,16 +26,15 @@ function rotateRight(head, k) {
     cur = cur.next;
   }
 
-  // Make it a circular list
-  cur.next = head;
-
   // If no rotation needed
-  let step = len - (k % len);
-  if (step === len) {
-    cur.next = null; // break the circle
+  if (k % len === 0) {
     return head;
   }
 
+  // Make it a circular list
+  cur.next = head;
+
+  let step = len - (k % len);
   cur = newHead;
   while (step > 0) {
     cur = cur.next;

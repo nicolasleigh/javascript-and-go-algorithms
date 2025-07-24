@@ -76,11 +76,11 @@ We want to find **how many ways** we can assign `+` or `-` to the numbers so tha
 
 ```
                                  dfs(0, 0)
-                               /          \
-                     dfs(1, 1)            dfs(1, -1)
-                    /        \           /          \
-           dfs(2, 2)       dfs(2, 0)  dfs(2, 0)     dfs(2, -2)
-            /    \         /     \     /     \       /     \
+                               /            \
+                     dfs(1, 1)                 dfs(1, -1)
+                    /        \                /             \
+           dfs(2, 2)       dfs(2, 0)         dfs(2, 0)           dfs(2, -2)
+            /    \         /     \           /         \         /        \
   dfs(3, 3) dfs(3, 1) dfs(3, 1) dfs(3, -1) dfs(3, 1) dfs(3, -1) dfs(3, -1) dfs(3, -3)
 ```
 

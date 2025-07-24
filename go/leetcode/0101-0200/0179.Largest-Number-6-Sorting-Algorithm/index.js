@@ -5,7 +5,7 @@
 var largestNumber = function (nums) {
   // Custom comparator: if a+b > b+a, then a should come before b
   nums.sort((a, b) => {
-    const s1 = "" + a + b;
+    const s1 = "" + a + b; // convert numbers to strings
     const s2 = "" + b + a;
     return s2.localeCompare(s1);
   });

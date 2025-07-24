@@ -4,6 +4,12 @@
  * @return {number}
  */
 
+// If a character occurs less than k times, then it can’t be part of any valid substring,
+// because every character in a valid substring must appear at least k times.
+// So we can:
+// - Find such invalid characters.
+// - Split the string at these characters.
+// - Recursively apply the logic on each split part.
 var longestSubstring = function (s, k) {
   if (s.length === 0 || k > s.length) return 0;
 

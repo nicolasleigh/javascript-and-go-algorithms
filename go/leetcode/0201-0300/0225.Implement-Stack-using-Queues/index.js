@@ -25,8 +25,8 @@ MyStack.prototype.empty = function () {
 
 // Two-queues version
 var MyStack = function () {
-  this.q1 = [];
-  this.q2 = [];
+  this.q1 = []; // Main queue
+  this.q2 = []; // Temporary queue
 };
 
 MyStack.prototype.push = function (x) {

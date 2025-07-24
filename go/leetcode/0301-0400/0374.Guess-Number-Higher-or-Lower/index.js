@@ -25,5 +25,5 @@ function guessNumber(n) {
     else left = mid + 1;
   }
 
-  return -1; // just in case, though it's guaranteed there's a solution
+  return -1;
 }

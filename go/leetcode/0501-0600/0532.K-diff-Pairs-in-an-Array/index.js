@@ -5,8 +5,6 @@
  */
 
 var findPairs = function (nums, k) {
-  if (k < 0) return 0; // Absolute difference cannot be negative
-
   const map = new Map();
   let count = 0;
 

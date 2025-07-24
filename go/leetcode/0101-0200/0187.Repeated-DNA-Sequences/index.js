@@ -1,3 +1,7 @@
+/**
+ * @param {string} s
+ * @return {string[]}
+ */
 function findRepeatedDnaSequences(s) {
   const counter = new Map();
   const res = [];

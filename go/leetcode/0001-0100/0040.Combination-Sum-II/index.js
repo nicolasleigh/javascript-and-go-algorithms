@@ -6,8 +6,6 @@
  * @return {number[][]}
  */
 
-// Input: candidates = [2,5,2,1,2], target = 5
-// Output: [[1, 2, 2], [5]];
 var combinationSum2 = function (candidates, target) {
   const res = [];
   const comb = [];

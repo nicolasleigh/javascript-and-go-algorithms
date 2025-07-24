@@ -9,6 +9,9 @@ function kthSmallest(matrix, k) {
   let left = matrix[0][0];
   let right = matrix[n - 1][n - 1];
 
+  // We start at bottom-left of matrix.
+  // If matrix[row][col] <= mid, everything above is also ≤ mid (because columns are sorted). So we count row + 1 elements and move right.
+  // If matrix[row][col] > mid, we move up to smaller numbers.
   const countLessEqual = (mid) => {
     let count = 0;
     let row = n - 1;
@@ -24,6 +27,8 @@ function kthSmallest(matrix, k) {
     return count;
   };
 
+  // If the count is less than k, the k-th smallest must be greater than mid.
+  // If the count is greater than or equal to k, the k-th smallest could be ≤ mid, so we reduce the search range.
   while (left < right) {
     const mid = Math.floor((left + right) / 2);
     const count = countLessEqual(mid);

@@ -1,3 +1,7 @@
+/**
+ * @param {number} n
+ * @return {number[]}
+ */
 function countBits(n) {
   const res = [];
 

@@ -5,6 +5,7 @@
  */
 
 // Topological Sort https://www.youtube.com/watch?v=EUDwWbvtB_Q
+// [[1,0],[1,2],[2,3],[2,4],[2,5],[3,1],[4,5]] - false
 function canFinish(numCourses, prerequisites) {
   const indegree = new Array(numCourses).fill(0);
   const adj = Array.from({ length: numCourses }, () => []);

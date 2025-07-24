@@ -46,3 +46,150 @@ Other valid but smaller subsets include {&quot;0001&quot;, &quot;1&quot;} and {&
 - [Count Subarrays With More Ones Than Zeros (Medium)](https://leetcode.com/problems/count-subarrays-with-more-ones-than-zeros)
 - [Non-negative Integers without Consecutive Ones (Hard)](https://leetcode.com/problems/non-negative-integers-without-consecutive-ones)
 - [All Divisions With the Highest Score of a Binary Array (Medium)](https://leetcode.com/problems/all-divisions-with-the-highest-score-of-a-binary-array)
+
+---
+
+Great! Let's walk through a **full dry-run** of the LeetCode **474. Ones and Zeroes** solution on a **small input**, step by step.
+
+---
+
+## 🧪 Input Example:
+
+```js
+strs = ["10", "0001", "1"]
+m = 2  // max zeros
+n = 2  // max ones
+```
+
+Goal: Select the **maximum number of strings** from `strs` so that total 0s ≤ `m` and total 1s ≤ `n`.
+
+---
+
+## ✅ Step 1: Initialize DP table
+
+We create a `(m+1) x (n+1)` table filled with 0s:
+
+```
+Initial DP table (m=2, n=2):
+
+    0  1  2
+  ---------
+0 | 0  0  0
+1 | 0  0  0
+2 | 0  0  0
+```
+
+---
+
+## 🧩 Step 2: Process string `"10"`
+
+* `"10"` has **1 zero**, **1 one**
+
+We update the DP table **backwards**:
+
+```js
+for (i = 2; i >= 1; i--) {
+  for (j = 2; j >= 1; j--) {
+    dp[i][j] = max(dp[i][j], dp[i - 1][j - 1] + 1);
+  }
+}
+```
+
+### Updates:
+
+* `dp[2][2] = max(0, dp[1][1] + 1) = 1`
+* `dp[2][1] = max(0, dp[1][0] + 1) = 1`
+* `dp[1][2] = max(0, dp[0][1] + 1) = 1`
+* `dp[1][1] = max(0, dp[0][0] + 1) = 1`
+
+### Updated DP:
+
+```
+    0  1  2
+  ---------
+0 | 0  0  0
+1 | 0  1  1
+2 | 0  1  1
+```
+
+---
+
+## 🧩 Step 3: Process string `"0001"`
+
+* `"0001"` has **3 zeros**, **1 one**
+
+We **skip** this string because it needs 3 zeros, but `m = 2` → not enough zero budget
+
+No change to the table.
+
+---
+
+## 🧩 Step 4: Process string `"1"`
+
+* `"1"` has **0 zeros**, **1 one**
+
+We update the DP table **backwards**:
+
+```js
+for (i = 2; i >= 0; i--) {
+  for (j = 2; j >= 1; j--) {
+    dp[i][j] = max(dp[i][j], dp[i][j - 1] + 1);
+  }
+}
+```
+
+### Selected updates:
+
+* `dp[2][2] = max(1, dp[2][1] + 1) = max(1, 1 + 1) = 2`
+* `dp[2][1] = max(1, dp[2][0] + 1) = max(1, 0 + 1) = 1` ✅ unchanged
+* `dp[1][2] = max(1, dp[1][1] + 1) = max(1, 1 + 1) = 2`
+* `dp[1][1] = max(1, dp[1][0] + 1) = max(1, 0 + 1) = 1` ✅ unchanged
+* `dp[0][2] = max(0, dp[0][1] + 1) = 1`
+* `dp[0][1] = max(0, dp[0][0] + 1) = 1`
+
+### Final DP:
+
+```
+    0  1  2
+  ---------
+0 | 0  1  1
+1 | 0  1  2
+2 | 0  1  2
+```
+
+---
+
+## 🎯 Final Answer:
+
+```js
+return dp[m][n] = dp[2][2] = 2
+```
+
+So, we can pick at most **2 strings** within the given 0s and 1s budget.
+
+---
+
+## 📘 Which strings were chosen?
+
+Out of `["10", "0001", "1"]`:
+
+* "0001" is skipped (needs 3 zeroes)
+* We can choose:
+
+  * `"10"` (1 zero, 1 one)
+  * `"1"` (0 zero, 1 one)
+    → Total: 1+0=1 zero, 1+1=2 ones ✅ fits within (m=2, n=2)
+
+---
+
+## ✅ Summary:
+
+| Step | String | 0s | 1s | Used? | DP Table Updated? |
+| ---- | ------ | -- | -- | ----- | ----------------- |
+| 1    | "10"   | 1  | 1  | ✅     | Yes               |
+| 2    | "0001" | 3  | 1  | ❌     | No                |
+| 3    | "1"    | 0  | 1  | ✅     | Yes               |
+
+---
+
+Let me know if you want a Go version of this code, or a visual illustration of the 3D DP state!

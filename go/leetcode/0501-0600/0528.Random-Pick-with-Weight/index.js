@@ -11,8 +11,8 @@ class Solution {
 
   pickIndex() {
     const target = Math.random() * this.totalSum;
-    let left = 0,
-      right = this.prefixSums.length - 1;
+    let left = 0;
+    let right = this.prefixSums.length - 1;
 
     // Binary search
     while (left < right) {

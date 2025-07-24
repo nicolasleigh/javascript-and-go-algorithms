@@ -51,8 +51,9 @@ var change = function (amount, coins) {
   dp[0] = 1; // One way to make amount 0 (no coins)
 
   for (let coin of coins) {
+    // left to right, because we can use the same coin multiple times
     for (let i = coin; i <= amount; i++) {
-      dp[i] += dp[i - coin];
+      dp[i] = dp[i] + dp[i - coin];
     }
   }
 

@@ -25,3 +25,20 @@ function createBST(nums, l, r) {
 
   return node;
 }
+
+// Solution 2
+var sortedArrayToBST = function (nums) {
+  return createBST(nums);
+};
+
+function createBST(nums) {
+  if (nums.length === 0) return null;
+
+  const mid = Math.floor(nums.length / 2);
+  const root = new TreeNode(nums[mid]);
+
+  root.left = createBST(nums.slice(0, mid));
+  root.right = createBST(nums.slice(mid + 1));
+
+  return root;
+}

@@ -18,6 +18,19 @@ var findComplement = function (num) {
   return (mask - 1) ^ num;
 };
 
+// Solution 2
+var findComplement = function (num) {
+  // Step 1: Find the bitmask with the same number of bits, all set to 1
+  let mask = 1;
+  while (mask < num) {
+    mask = (mask << 1) | 1;
+  }
+
+  // Step 2: XOR num with the mask to flip all bits
+  return num ^ mask;
+};
+
+// Solution 3
 var findComplement = function (num) {
   const binary = num.toString(2); // convert to binary string
   let flipped = "";
@@ -25,9 +38,4 @@ var findComplement = function (num) {
     flipped += ch === "0" ? "1" : "0";
   }
   return parseInt(flipped, 2);
-};
-
-var findComplement = function (num) {
-  const mask = (1 << num.toString(2).length) - 1;
-  return num ^ mask;
 };

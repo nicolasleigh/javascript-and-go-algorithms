@@ -14,14 +14,14 @@
 var isValidBST = function (root) {
   const tempArr = [];
 
-  function inorderTraversal(root) {
+  function inorder(root) {
     // if (root === null) return;
-    root.left && inorderTraversal(root.left);
+    root.left && inorder(root.left);
     tempArr.push(root.val);
-    root.right && inorderTraversal(root.right);
+    root.right && inorder(root.right);
   }
 
-  inorderTraversal(root);
+  inorder(root);
 
   for (let i = 0; i < tempArr.length - 1; i++) {
     if (tempArr[i] >= tempArr[i + 1]) return false;

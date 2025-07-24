@@ -14,8 +14,8 @@ var checkInclusion = function (s1, s2) {
     freqS1[c] = (freqS1[c] || 0) + 1;
   }
 
-  let left = 0,
-    right = 0;
+  let left = 0;
+  let right = 0;
 
   while (right < s2.length) {
     const charRight = s2[right];

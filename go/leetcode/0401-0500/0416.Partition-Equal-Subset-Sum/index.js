@@ -30,7 +30,7 @@ var canPartition = function (nums) {
   if (total % 2 !== 0) return false;
 
   const target = total / 2;
-  // dp[i] means: Can we reach sum i using some subset?
+  // dp[i] means: Can we reach sum i using some subset or Can we fill the knapsack with capacity/weight i?
   const dp = new Array(target + 1).fill(false);
   dp[0] = true;
 

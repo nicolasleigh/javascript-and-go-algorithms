@@ -40,15 +40,8 @@ var search = function (nums, target) {
 
 // Helper function to remove duplicates
 function removeDuplicate(nums) {
-  const seen = new Set();
-  const result = [];
-  for (let num of nums) {
-    if (!seen.has(num)) {
-      seen.add(num);
-      result.push(num);
-    }
-  }
-  return result;
+  const set = new Set(nums);
+  return Array.from(set);
 }
 
 // Solution 2
@@ -58,8 +51,8 @@ function removeDuplicate(nums) {
  * @return {boolean}
  */
 var search = function (nums, target) {
-  let low = 0,
-    high = nums.length - 1;
+  let low = 0;
+  let high = nums.length - 1;
 
   while (low <= high) {
     const mid = Math.floor((low + high) / 2);

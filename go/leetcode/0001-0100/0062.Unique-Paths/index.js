@@ -5,13 +5,14 @@
  * @return {number}
  */
 var uniquePaths = function (m, n) {
+  // dp[i][j] represents the number of unique paths from (0, 0) to (i, j)
   let dp = Array(m)
     .fill()
-    .map(() => Array(n));
+    .map(() => Array(n).fill(0));
 
   // let dp = Array(m).fill().map(() => Array(n).fill(1)); // by using this line, we can remove the following two for loops
 
-  // dp[i][j] represents the number of unique paths from (0, 0) to (i, j)
+  // Base case: there's only 1 way to reach any cell in the first row or first column
   for (let i = 0; i < m; i++) {
     dp[i][0] = 1;
   }

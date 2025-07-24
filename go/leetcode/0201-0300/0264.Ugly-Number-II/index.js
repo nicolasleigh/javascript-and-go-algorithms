@@ -5,9 +5,9 @@
 
 function nthUglyNumber(n) {
   const ugly = [1];
-  let i2 = 0,
-    i3 = 0,
-    i5 = 0;
+  let i2 = 0;
+  let i3 = 0;
+  let i5 = 0;
 
   while (ugly.length < n) {
     const next2 = ugly[i2] * 2;

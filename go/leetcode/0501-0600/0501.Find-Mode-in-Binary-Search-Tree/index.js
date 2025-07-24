@@ -15,14 +15,13 @@ var findMode = function (root) {
   let maxCount = Number.MIN_SAFE_INTEGER;
   let result = [];
 
-  const traversal = function (root) {
-    root.left && traversal(root.left);
-    // map.set(root.val, map.has(root.val) ? map.get(root.val) + 1 : 1);
+  const inorder = function (root) {
+    root.left && inorder(root.left);
     map.set(root.val, (map.get(root.val) || 0) + 1);
-    root.right && traversal(root.right);
+    root.right && inorder(root.right);
   };
 
-  traversal(root);
+  inorder(root);
 
   for (let [key, value] of map) {
     if (value > maxCount) {
@@ -46,10 +45,10 @@ var findMode = function (root) {
   let maxCount = 0;
   const modes = [];
 
-  const inOrder = (node) => {
+  const inorder = (node) => {
     if (!node) return;
 
-    inOrder(node.left);
+    inorder(node.left);
 
     if (node.val === currentVal) {
       currentCount++;
@@ -66,9 +65,9 @@ var findMode = function (root) {
       modes.push(currentVal);
     }
 
-    inOrder(node.right);
+    inorder(node.right);
   };
 
-  inOrder(root);
+  inorder(root);
   return modes;
 };

@@ -1,3 +1,4 @@
+// 242. Valid Anagram
 /**
  * @param {string} s
  * @param {string} t
@@ -6,13 +7,16 @@
 // Solution 1
 var isAnagram = function (s, t) {
   if (s.length !== t.length) return false;
-  let helperArr = new Array(26).fill(0);
+
+  let count = new Array(26).fill(0);
   let pivot = "a".charCodeAt(0);
+
   for (let i = 0; i < s.length; i++) {
-    helperArr[s.charCodeAt(i) - pivot]++;
-    helperArr[t.charCodeAt(i) - pivot]--;
+    count[s.charCodeAt(i) - pivot]++;
+    count[t.charCodeAt(i) - pivot]--;
   }
-  return helperArr.every((i) => i === 0);
+
+  return count.every((i) => i === 0);
 };
 
 // Solution 2

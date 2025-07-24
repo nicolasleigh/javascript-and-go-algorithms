@@ -5,8 +5,8 @@
 var maxProduct = function (nums) {
   if (nums.length === 0) return 0;
 
-  let max = nums[0];
-  let min = nums[0];
+  let max = nums[0]; // Maximum product ending at current position
+  let min = nums[0]; // Minimum product ending at current position (to handle negative numbers)
   let res = nums[0];
 
   for (let i = 1; i < nums.length; i++) {

@@ -9,7 +9,7 @@ var reverseWords = function (s) {
 };
 
 // Approach 2
-var reverseWords2 = function (s) {
+var reverseWords = function (s) {
   // Trim the input string to remove leading and trailing spaces
   let i = 0;
   let j = s.length - 1;
@@ -29,18 +29,5 @@ var reverseWords2 = function (s) {
   // Split the trimmed string into words based on spaces
   let words = s.split(/\s+/);
 
-  // Initialize the output string
-  let result = "";
-
-  // Iterate through the words in reverse order
-  for (let k = words.length - 1; k > 0; k--) {
-    result += words[k] + " ";
-  }
-
-  // Append the first word to the output (without trailing space)
-  result += words[0];
-
-  return result;
+  return words.reverse().join(" ");
 };
-
-console.log(reverseWords("the sky is blue"));

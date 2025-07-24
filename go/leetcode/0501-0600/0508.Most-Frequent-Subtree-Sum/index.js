@@ -15,11 +15,11 @@ var findFrequentTreeSum = function (root) {
   const freqMap = new Map();
   let maxFreq = 0;
 
-  const postOrder = (node) => {
+  const postorder = (node) => {
     if (!node) return 0;
 
-    const leftSum = postOrder(node.left);
-    const rightSum = postOrder(node.right);
+    const leftSum = postorder(node.left);
+    const rightSum = postorder(node.right);
     const total = node.val + leftSum + rightSum;
 
     const freq = (freqMap.get(total) || 0) + 1;
@@ -29,7 +29,7 @@ var findFrequentTreeSum = function (root) {
     return total;
   };
 
-  postOrder(root);
+  postorder(root);
 
   const result = [];
   for (const [sum, freq] of freqMap) {
