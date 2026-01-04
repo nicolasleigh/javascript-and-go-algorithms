@@ -1,4 +1,4 @@
-# [32. 最长有效括号](https://leetcode.cn/problems/longest-valid-parentheses/)
+# [32. 最长有效括号（Hard）](https://leetcode.cn/problems/longest-valid-parentheses/)
 
 <div><div class="elfjS" data-track-load="description_content"><p>给你一个只包含 <code>'('</code>&nbsp;和 <code>')'</code>&nbsp;的字符串，找出最长有效（格式正确且连续）括号<span data-keyword="substring" class=" cursor-pointer relative text-dark-blue-s text-sm"><button type="button" aria-haspopup="dialog" aria-expanded="false" aria-controls="radix-:r3g:" data-state="closed" class="">子串</button></span>的长度。</p>
 

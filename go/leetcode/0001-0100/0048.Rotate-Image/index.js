@@ -3,6 +3,7 @@
  * @return {void} Do not return anything, modify matrix in-place instead.
  */
 
+// 48. Rotate Image
 function rotate(matrix) {
   const length = matrix.length;
 

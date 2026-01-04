@@ -3,6 +3,8 @@
  * @param {number} target
  * @return {number}
  */
+
+// 35. Search Insert Position
 var searchInsert = function (nums, target) {
   let low = 0,
     high = nums.length - 1;

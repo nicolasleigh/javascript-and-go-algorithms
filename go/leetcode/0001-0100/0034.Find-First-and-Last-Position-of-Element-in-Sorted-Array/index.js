@@ -4,6 +4,7 @@
  * @return {number[]}
  */
 
+// 34. Find First and Last Position of Element in Sorted Array
 // Main function
 var searchRange = function (nums, target) {
   return [searchFirstEqualElement(nums, target), searchLastEqualElement(nums, target)];

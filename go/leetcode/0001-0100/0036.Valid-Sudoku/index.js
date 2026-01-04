@@ -2,6 +2,8 @@
  * @param {character[][]} board
  * @return {boolean}
  */
+
+// 36. Valid Sudoku
 var isValidSudoku = function (board) {
   const rows = Array.from({ length: 9 }, () => new Set());
   const cols = Array.from({ length: 9 }, () => new Set());
