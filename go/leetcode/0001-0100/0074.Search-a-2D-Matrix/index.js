@@ -3,6 +3,8 @@
  * @param {number} target
  * @return {boolean}
  */
+
+// 74. Search a 2D Matrix
 var searchMatrix = function (matrix, target) {
   if (matrix.length === 0 || matrix[0].length === 0) return false;
 

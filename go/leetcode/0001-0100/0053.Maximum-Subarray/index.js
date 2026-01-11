@@ -3,6 +3,7 @@
  * @param {number[]} nums
  * @return {number}
  */
+// Solution 1
 var maxSubArray = function (nums) {
   // dp[i] store the maximum sum of subArrays ending at index i.
   let dp = new Array(nums.length).fill(0);

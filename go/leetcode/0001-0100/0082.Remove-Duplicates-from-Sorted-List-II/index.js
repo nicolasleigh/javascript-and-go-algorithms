@@ -9,7 +9,7 @@
  * @param {ListNode} head
  * @return {ListNode}
  */
-
+// 82. Remove Duplicates from Sorted List II
 function deleteDuplicates(head) {
   // Create a dummy node to simplify edge cases (like duplicates at head)
   const dummy = new ListNode(0, head);

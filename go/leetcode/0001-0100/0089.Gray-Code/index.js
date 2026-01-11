@@ -2,7 +2,7 @@
  * @param {number} n
  * @return {number[]}
  */
-
+// 89. Gray Code
 // When n=3, we can get the result based on n=2. 00,01,11,10 -> (000,001,011,010)(110,111,101,100)
 function grayCode(n) {
   const res = [0];

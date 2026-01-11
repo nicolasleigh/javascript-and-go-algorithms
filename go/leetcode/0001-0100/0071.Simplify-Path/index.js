@@ -2,6 +2,8 @@
  * @param {string} path
  * @return {string}
  */
+
+// 71. Simplify Path
 var simplifyPath = function (path) {
   const parts = path.split("/");
   const stack = [];

@@ -3,6 +3,7 @@
  * @param {string} word
  * @return {boolean}
  */
+// 79. Word Search
 var exist = function (board, word) {
   const rows = board.length;
   const cols = board[0].length;

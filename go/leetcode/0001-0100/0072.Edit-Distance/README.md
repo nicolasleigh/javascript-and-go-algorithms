@@ -1,4 +1,4 @@
-# [72. Edit Distance (Hard)](https://leetcode.com/problems/edit-distance)
+# [72. Edit Distance (Medium)](https://leetcode.com/problems/edit-distance)
 
 <p>Given two words <em>word1</em> and <em>word2</em>, find the minimum number of operations required to convert <em>word1</em> to <em>word2</em>.</p>
 

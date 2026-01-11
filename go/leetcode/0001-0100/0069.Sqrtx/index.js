@@ -3,6 +3,7 @@
  * @return {number}
  */
 
+// 69. Sqrt(x)
 var mySqrt = function (x) {
   let low = 0;
   // We use x + 1 so that low has a chance to move up to x itself if needed
