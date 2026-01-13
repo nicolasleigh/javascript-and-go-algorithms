@@ -3,6 +3,7 @@
  * @param {number} target
  * @return {number[]}
  */
+// 1. Two Sum 
 var twoSum = function (nums, target) {
   let map = new Map();
   let result = [];
