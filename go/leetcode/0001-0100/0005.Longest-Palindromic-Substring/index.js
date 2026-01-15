@@ -3,6 +3,7 @@
  * @return {string}
  */
 
+// 5. Longest Palindromic Substring
 function longestPalindrome(s) {
   let res = "";
 
