@@ -4,6 +4,7 @@
  */
 
 // Sliding window
+// 3. Longest Substring Without Repeating Characters
 function lengthOfLongestSubstring(s) {
   if (s.length === 0) return 0;
 
