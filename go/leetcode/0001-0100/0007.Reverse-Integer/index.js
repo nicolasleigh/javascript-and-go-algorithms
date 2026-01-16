@@ -3,6 +3,7 @@
  * @return {number}
  */
 
+// 7. Reverse Integer
 function reverse(x) {
   let tmp = 0;
   let sign = x < 0;
