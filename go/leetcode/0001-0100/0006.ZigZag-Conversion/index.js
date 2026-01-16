@@ -4,6 +4,7 @@
  * @return {string}
  */
 
+// 6. ZigZag Conversion
 function convert(s, numRows) {
   if (numRows === 1) return s; // Special case where numRows is 1
 
