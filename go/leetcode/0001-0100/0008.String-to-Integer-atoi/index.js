@@ -2,6 +2,8 @@
  * @param {string} s
  * @return {number}
  */
+
+// 8. String to Integer (atoi)
 function myAtoi(s) {
   let i = 0;
   let n = s.length;

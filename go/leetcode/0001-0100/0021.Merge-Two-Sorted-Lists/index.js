@@ -11,6 +11,7 @@ function mergeTwoLists(l1, l2) {
   }
 }
 
+// 21. Merge Two Sorted Lists
 function mergeTwoLists(l1, l2) {
   const dummy = new ListNode(-1); // Dummy node to simplify the merge
   let current = dummy;

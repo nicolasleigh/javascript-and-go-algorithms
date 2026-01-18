@@ -1,3 +1,13 @@
+"""
+Explanation:
+
+longestPalindrome iterates through each character in the string and checks for both odd and even-length palindromes using the maxPalindrome helper function.
+
+maxPalindrome expands the window outwards from the center (using two pointers, left and right) while the characters at the current left and right pointers are equal.
+
+For each potential palindrome, the function updates the result if the new substring is longer than the current longest palindrome found.
+"""
+
 #  5. Longest Palindromic Substring
 class Solution:
     def longestPalindrome(self, s: str) -> str:

@@ -1,3 +1,17 @@
+"""
+Explanation:
+
+A ListNode class is used to define the linked list nodes.
+
+We initialize a dummy head node to simplify the list construction.
+
+The carry is initialized to 0, and we iterate through both linked lists l1 and l2 while either list has nodes or there is a carry.
+
+For each iteration, the sum of corresponding nodes and the carry is computed.
+
+The result node is created with the remainder (sum_val % 10), and the carry is updated for the next iteration (carry = sum_val // 10).
+"""
+
 class ListNode:
     def __init__(self, val=0, next=None):
         self.val = val

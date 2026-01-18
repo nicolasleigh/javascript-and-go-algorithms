@@ -1,5 +1,3 @@
-// 19. Remove Nth Node From End of List
-
 /**
  * Definition for singly-linked list.
  * function ListNode(val, next) {
@@ -12,6 +10,8 @@
  * @param {number} n
  * @return {ListNode}
  */
+
+// 19. Remove Nth Node From End of List
 var removeNthFromEnd = function (head, n) {
   const dummy = new ListNode(0);
   dummy.next = head;

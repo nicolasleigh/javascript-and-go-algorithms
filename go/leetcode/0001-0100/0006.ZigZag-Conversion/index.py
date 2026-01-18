@@ -1,3 +1,17 @@
+"""
+Explanation:
+
+convert: This function takes the string s and the number of rows numRows. If numRows is 1, it returns the string as is since there’s no zigzag pattern possible.
+
+matrix: An array of lists is used to store characters in their respective rows.
+
+The down and up variables control the movement of the "zigzag" pattern, alternating between moving down and up through the rows.
+
+When the zigzag reaches the bottom (after numRows - 1), it switches to moving upwards, and once it reaches the top, it switches back down, continuing this pattern.
+
+The final step concatenates all rows and returns the zigzagged string.
+"""
+
 # 6. ZigZag Conversion
 class Solution:
     def convert(self, s: str, numRows: int) -> str:

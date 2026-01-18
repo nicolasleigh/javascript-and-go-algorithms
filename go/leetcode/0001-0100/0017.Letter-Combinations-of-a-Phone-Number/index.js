@@ -1,9 +1,9 @@
-// 17. Letter Combinations of a Phone Number
-
 /**
  * @param {string} digits
  * @return {string[]}
- */
+*/
+
+// 17. Letter Combinations of a Phone Number
 var letterCombinations = function (digits) {
   const map = ["", "", "abc", "def", "ghi", "jkl", "mno", "pqrs", "tuv", "wxyz"];
   const res = [];
@@ -36,6 +36,7 @@ var letterCombinations = function (digits) {
   return res;
 };
 
+// 17. Letter Combinations of a Phone Number
 var letterCombinations = function (digits) {
   const map = ["", "", "abc", "def", "ghi", "jkl", "mno", "pqrs", "tuv", "wxyz"];
   const res = [];

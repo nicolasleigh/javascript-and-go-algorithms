@@ -1,9 +1,10 @@
-// 16. 3Sum Closest
 /**
  * @param {number[]} nums
  * @param {number} target
  * @return {number}
  */
+
+// 16. 3Sum Closest
 function threeSumClosest(nums, target) {
   const n = nums.length;
   if (n < 3) return 0;

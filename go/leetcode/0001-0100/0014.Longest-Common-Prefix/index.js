@@ -3,6 +3,7 @@
  * @return {string}
  */
 
+// 14. Longest Common Prefix
 function longestCommonPrefix(strs) {
   // Make sure the strs[0] is the shortest string
   strs.sort((a, b) => a.length - b.length);

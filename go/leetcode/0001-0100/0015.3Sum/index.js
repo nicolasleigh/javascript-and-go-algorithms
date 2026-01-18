@@ -1,8 +1,9 @@
-// 15. 3Sum
 /**
  * @param {number[]} nums
  * @return {number[][]}
  */
+
+// 15. 3Sum
 function threeSum(nums) {
   const result = [];
   const n = nums.length;

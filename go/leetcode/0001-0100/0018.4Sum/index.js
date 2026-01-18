@@ -1,10 +1,10 @@
-// 18. 4Sum
-
 /**
  * @param {number[]} nums
  * @param {number} target
  * @return {number[][]}
  */
+
+// 18. 4Sum
 function fourSum(nums, target) {
   const result = [];
   const n = nums.length;
