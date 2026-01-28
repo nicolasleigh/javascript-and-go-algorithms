@@ -17,6 +17,7 @@ function removeElement(nums, val) {
  * @param {number} val
  * @return {number}
  */
+// 27. Remove Element
 function removeElement(nums, val) {
   // Index where we place the next non-val element
   let insertPos = 0;

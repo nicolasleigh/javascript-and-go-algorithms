@@ -1,4 +1,3 @@
-// 98. Validate Binary Search Tree
 /**
  * Definition for a binary tree node.
  * function TreeNode(val, left, right) {
@@ -11,6 +10,7 @@
  * @param {TreeNode} root
  * @return {boolean}
  */
+// 98. Validate Binary Search Tree
 var isValidBST = function (root) {
   const tempArr = [];
 

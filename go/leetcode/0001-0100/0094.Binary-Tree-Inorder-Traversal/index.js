@@ -1,4 +1,3 @@
-// 94. Binary Tree Inorder Traversal
 /**
  * Definition for a binary tree node.
  * function TreeNode(val, left, right) {
@@ -11,6 +10,7 @@
  * @param {TreeNode} root
  * @return {number[]}
  */
+// 94. Binary Tree Inorder Traversal
 var inorderTraversal = function (root) {
   const result = [];
   function traverse(node) {

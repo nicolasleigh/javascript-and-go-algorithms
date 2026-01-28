@@ -41,6 +41,7 @@ var addBinary = function (a, b) {
  * @param {string} b
  * @return {string}
  */
+// 67. Add Binary
 var addBinary = function (a, b) {
   let i = a.length - 1;
   let j = b.length - 1;

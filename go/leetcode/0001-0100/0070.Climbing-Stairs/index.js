@@ -1,8 +1,8 @@
-// 70. Climbing Stairs
 /**
  * @param {number} n
  * @return {number}
  */
+// 70. Climbing Stairs
 var climbStairs = function (n) {
   let dp = [];
   dp[1] = 1;

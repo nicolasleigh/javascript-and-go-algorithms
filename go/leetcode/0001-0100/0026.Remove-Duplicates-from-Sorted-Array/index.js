@@ -3,6 +3,7 @@
  * @return {number}
  */
 
+// 26. Remove Duplicates from Sorted Array
 var removeDuplicates = function (nums) {
   if (nums.length === 0) return 0;
 

@@ -1,4 +1,3 @@
-// 24. Swap Nodes in Pairs
 
 /**
  * Definition for singly-linked list.
@@ -11,6 +10,7 @@
  * @param {ListNode} head
  * @return {ListNode}
  */
+// 24. Swap Nodes in Pairs
 var swapPairs = function (head) {
   if (head == null || head.next == null) {
     return head;

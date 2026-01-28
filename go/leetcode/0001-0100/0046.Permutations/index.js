@@ -1,10 +1,9 @@
-// 46. Permutations
 
 /**
  * @param {number[]} nums
  * @return {number[][]}
  */
-
+// 46. Permutations
 var permute = function (nums) {
   let res = [];
   let comb = [];

@@ -1,8 +1,8 @@
-// 47. Permutations II
 /**
  * @param {number[]} nums
  * @return {number[][]}
  */
+// 47. Permutations II
 var permuteUnique = function (nums) {
   let res = [];
   let comb = [];

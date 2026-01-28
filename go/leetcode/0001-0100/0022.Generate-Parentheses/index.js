@@ -2,7 +2,7 @@
  * @param {number} n
  * @return {string[]}
  */
-
+// 22. Generate Parentheses
 function generateParenthesis(n) {
   const res = [];
   if (n === 0) return res;

@@ -1,8 +1,8 @@
-// 78. Subsets
 /**
  * @param {number[]} nums
  * @return {number[][]}
  */
+// 78. Subsets
 var subsets = function (nums) {
   let res = [];
   let comb = [];

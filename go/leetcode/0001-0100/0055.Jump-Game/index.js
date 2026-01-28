@@ -26,6 +26,7 @@ var canJump = function (nums) {
 };
 
 // Solution 2 - Greedy
+// 55. Jump Game
 var canJump = function (nums) {
   let canReach = 0;
 

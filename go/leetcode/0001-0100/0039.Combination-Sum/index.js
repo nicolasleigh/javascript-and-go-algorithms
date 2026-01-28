@@ -1,11 +1,10 @@
-// 39. Combination Sum
-
 /**
  * @param {number[]} candidates
  * @param {number} target
  * @return {number[][]}
  */
 
+// 39. Combination Sum
 var combinationSum = function (candidates, target) {
   const res = [];
   const comb = [];

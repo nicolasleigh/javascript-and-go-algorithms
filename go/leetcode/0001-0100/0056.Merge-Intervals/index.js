@@ -1,8 +1,9 @@
-// 56. Merge Intervals
+
 /**
  * @param {number[][]} intervals
  * @return {number[][]}
  */
+// 56. Merge Intervals
 var merge = function (intervals) {
   // Sort the intervals by their start
   intervals.sort((a, b) => a[0] - b[0]);

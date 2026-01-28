@@ -1,8 +1,8 @@
-// 93. Restore IP Addresses
 /**
  * @param {string} s
  * @return {string[]}
  */
+// 93. Restore IP Addresses
 var restoreIpAddresses = function (s) {
   let res = [];
   let comb = [];

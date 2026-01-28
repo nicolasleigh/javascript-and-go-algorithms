@@ -1,9 +1,9 @@
-// 77. Combinations
 /**
  * @param {number} n
  * @param {number} k
  * @return {number[][]}
  */
+// 77. Combinations
 var combine = function (n, k) {
   const res = [];
   const comb = [];

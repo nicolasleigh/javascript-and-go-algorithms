@@ -4,6 +4,7 @@
  * @param {number} n
  * @return {number}
  */
+// 62. Unique Paths
 var uniquePaths = function (m, n) {
   // dp[i][j] represents the number of unique paths from (0, 0) to (i, j)
   let dp = Array(m)

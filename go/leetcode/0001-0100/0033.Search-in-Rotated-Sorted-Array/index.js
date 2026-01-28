@@ -4,8 +4,8 @@
  * @return {number}
  */
 
-// 33. Search in Rotated Sorted Array
 // Binary Search
+// 33. Search in Rotated Sorted Array
 var search = function (nums, target) {
   let low = 0;
   let high = nums.length - 1;

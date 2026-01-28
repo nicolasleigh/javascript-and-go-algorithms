@@ -34,6 +34,7 @@ var jump = function (nums) {
   return timesOfJump;
 };
 
+// 45. Jump Game II
 var jump = function (nums) {
   if (nums.length === 1) return 0;
 

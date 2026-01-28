@@ -9,6 +9,7 @@
  * @param {ListNode} head
  * @return {ListNode}
  */
+// 83. Remove Duplicates from Sorted List
 function deleteDuplicates(head) {
   let pre = head;
   let cur = head;

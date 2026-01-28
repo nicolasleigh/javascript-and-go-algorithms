@@ -3,6 +3,7 @@
  * @return {number}
  */
 
+// 58. Length of Last Word
 var lengthOfLastWord = function (s) {
   s = s.trim(); // Remove leading and trailing spaces
   const words = s.split(" "); // Split by space

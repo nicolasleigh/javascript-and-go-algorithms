@@ -1,9 +1,9 @@
-// 72. Edit Distance
 /**
  * @param {string} word1
  * @param {string} word2
  * @return {number}
  */
+// 72. Edit Distance
 var minDistance = function (word1, word2) {
   // dp[i][j] means the minimum number of operations to convert word1[0...i-1] to word2[0...j-1].
   let dp = Array(word1.length + 1)

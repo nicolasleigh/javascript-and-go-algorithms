@@ -1,4 +1,3 @@
-// 96. Unique Binary Search Trees
 /*    
     
     n = 0;     null   
@@ -12,24 +11,24 @@
     
     
     n = 2;    1__       			  __2     
-    		      \				      	/                 
-    		     count[1]	   	count[1]	
+              \				      	/                 
+             count[1]	   	count[1]	
     
     count[2] = 1 + 1 = 2
     
     
     
     n = 3;    1__				         __2__	              __3
-    		      \		             /       \			      /		
-    		  count[2]		  count[1]    count[1]		count[2]
+              \		             /       \			      /		
+          count[2]		  count[1]    count[1]		count[2]
     
     count[3] = 2 + 1 + 2  = 5
     
     
     
     n = 4;    1__  			  		__2__					           __3__                  
-    		      \				     /        \					        /		  \			
-    		  count[3]		 count[1]    count[2]		  count[2]   count[1]
+              \				     /        \					        /		  \			
+          count[3]		 count[1]    count[2]		  count[2]   count[1]
     
                  __4				
                /
@@ -45,6 +44,7 @@ And  so on...
  * @param {number} n
  * @return {number}
  */
+// 96. Unique Binary Search Trees
 var numTrees = function (n) {
   let dp = new Array(n + 1).fill(0);
   dp[0] = 1;
